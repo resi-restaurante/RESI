@@ -13,6 +13,6 @@ align-items:center;
 
 `;
 export const ButtonLogin = styled.button`
-
+border:0;
 
 `
