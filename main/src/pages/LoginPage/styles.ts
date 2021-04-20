@@ -2,21 +2,23 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width:100%;
-
 `;
 export const ContainerLogin = styled.div`
+  width:100vw;
+  height:100vh;
   display: flex;
-  justify-content:space-between;
+  justify-content:flex-end;
   align-items: center;
 
- background:#000;
- color: #e53935;
+  background-image: url("https://miro.medium.com/max/8000/1*2y73oaziSVYkYdH5Wbo1NA.jpeg");
+  height: 500px; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;
 
 .Formlogin{
-  width: 25rem;
-  height: 25rem;
-  padding: 3.75rem 2.5rem;
-  margin: 7rem;
+  width: 30rem;
+  height: 100%;
 
   display: flex;
   justify-content:center;

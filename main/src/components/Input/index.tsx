@@ -1,13 +1,16 @@
 import { Container } from './styles';
 
-
-function Input() {
+interface InputProps {
+  title: string;
+  descriptionPlaceholder: string;
+}
+function Input({ title, descriptionPlaceholder }: InputProps) {
   return (
     <Container>
 
       <form>
-        <label htmlFor=""></label>
-        <input type="text" />
+        <label htmlFor="">{title}</label>
+        <input type="text" placeholder={descriptionPlaceholder} />
       </form>
     </Container>
   );
