@@ -1,12 +1,11 @@
-import Header from './components/Header';
 import Routes from './pages/routes';
+import AppProvider from './core/hooks/index';
 
 function App() {
   return (
-
-    <Routes />
-
-
+    <AppProvider>
+      <Routes />
+    </AppProvider>
   )
 }
 
