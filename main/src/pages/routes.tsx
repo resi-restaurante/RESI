@@ -1,10 +1,9 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import LoginPage from './LoginPage';
 
-function Routes() {
+export function Routes() {
   return (
-
     <Router>
       <Switch>
         <Route path="/" exact>
@@ -15,7 +14,5 @@ function Routes() {
         </Route>
       </Switch>
     </Router>
-  )
+  );
 }
-
-export default Routes;

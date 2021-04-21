@@ -1,15 +1,10 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
-import firebase from 'firebase';
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  avatar_url: string;
-}
+/* prettier-ignore */
+/* eslint-disable */
+import React, { createContext, useCallback, useContext } from 'react';
+import firebase from '../firebase';
 
 interface SignInCredentials {
-  uid?:string;
+  uid?: string;
   email: string;
   password?: string;
   name: string;
@@ -24,13 +19,6 @@ interface SignUpCredentials {
   typeUser: string;
   cellphone: number;
 }
-
-interface UidUserCredential {
-  user: {
-    uid: string;
-  }
-}
-
 interface AuthContextData {
   signIn(credentials: SignInCredentials): void;
   signOut(): void;
@@ -41,45 +29,50 @@ interface AuthContextData {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
-
   const controller = new AbortController();
   const db = firebase.firestore();
   const user = firebase.auth().currentUser;
 
-  const saveUser = ({uid, email, name, typeUser, cellphone}: SignInCredentials) => {
-    const user  = {
+  const saveUser = ({
+    uid,
+    email,
+    name,
+    typeUser,
+    cellphone,
+  }: SignInCredentials) => {
+    const user = {
       uid,
       email,
       name,
       typeUser,
       cellphone,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
     };
-    db.collection("users")
+    db.collection('users')
       .doc(uid)
       .set(user)
       .then(() => {
-        // history.push("/nenhum-privilegio");
+        // history.push('/nenhum-privilegio');
       })
-      .catch((error) => {
-        console.log("erro: ", error);
+      .catch(error => {
+        console.log('erro: ', error);
       });
   };
 
   const signIn = useCallback(async ({ email, password }) => {
     await firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .catch((error) => {
-      let alertString = "Erro ao logar. Por favor tente novamente.";
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(error => {
+        let alertString = 'Erro ao logar. Por favor tente novamente.';
 
-      if (error.code === "auth/user-not-found") {
-        alertString = "Usuário não existente. Por favor tente novamente.";
-      } else if (error.code === "auth/wrong-password") {
-        alertString = "Senha incorreta. Por favor tente novamente.";
-      }
-    });
+        if (error.code === 'auth/user-not-found') {
+          alertString = 'Usuário não existente. Por favor tente novamente.';
+        } else if (error.code === 'auth/wrong-password') {
+          alertString = 'Senha incorreta. Por favor tente novamente.';
+        }
+      });
 
     return () => {
       const timeout = setTimeout(() => controller.abort(), 5000);
@@ -91,27 +84,22 @@ const AuthProvider: React.FC = ({ children }) => {
     firebase.auth().signOut();
   }, []);
 
-  const signUp = useCallback((
-        {email,
-        password,
-        name,
-        typeUser,
-        cellphone}: SignUpCredentials) => {
-
+  const signUp = useCallback(
+    ({ email, password, name, typeUser, cellphone }: SignUpCredentials) => {
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
-        .then((user): void=>{
+        .then((user): void => {
           const uid = user?.user?.uid;
-          saveUser({uid, email, name, typeUser, cellphone});
+          saveUser({ uid, email, name, typeUser, cellphone });
         })
-        .catch((error) => {
-          let alertString = "Erro ao logar. Por favor tente novamente.";
+        .catch(error => {
+          let alertString = 'Erro ao logar. Por favor tente novamente.';
 
-          if (error.code === "auth/user-not-found") {
-            alertString = "Usuário não existente. Por favor tente novamente.";
-          } else if (error.code === "auth/wrong-password") {
-            alertString = "Senha incorreta. Por favor tente novamente.";
+          if (error.code === 'auth/user-not-found') {
+            alertString = 'Usuário não existente. Por favor tente novamente.';
+          } else if (error.code === 'auth/wrong-password') {
+            alertString = 'Senha incorreta. Por favor tente novamente.';
           }
         });
 
@@ -119,22 +107,21 @@ const AuthProvider: React.FC = ({ children }) => {
         const timeout = setTimeout(() => controller.abort(), 5000);
         clearTimeout(timeout);
       };
-  },[])
-
-  const recoverPassword = useCallback((email: string) => {
-      firebase
-      .auth()
-      .sendPasswordResetEmail(email)
-      .catch((error) => {
-        console.log("erro", error);
-      });
-    },[]
+    },
+    [],
   );
 
+  const recoverPassword = useCallback((email: string) => {
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .catch(error => {
+        console.log('erro', error);
+      });
+  }, []);
+
   return (
-    <AuthContext.Provider
-      value={{ signIn, signOut, signUp, recoverPassword }}
-    >
+    <AuthContext.Provider value={{ signIn, signOut, signUp, recoverPassword }}>
       {children}
     </AuthContext.Provider>
   );

@@ -4,16 +4,12 @@ interface InputProps {
   title: string;
   descriptionPlaceholder: string;
 }
-function Input({ title, descriptionPlaceholder }: InputProps) {
+
+export function Input({ title, descriptionPlaceholder }: InputProps) {
   return (
     <Container>
-
-      <form>
-        <label htmlFor="">{title}</label>
-        <input type="text" placeholder={descriptionPlaceholder} />
-      </form>
+      <p>{title}</p>
+      <input type="text" placeholder={descriptionPlaceholder} />
     </Container>
   );
-};
-
-export default Input;
+}

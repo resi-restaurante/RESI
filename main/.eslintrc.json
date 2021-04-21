@@ -24,8 +24,15 @@
         "prettier"
     ],
     "rules": {
+      "react/jsx-props-no-spreading": "off",
+      "react/prop-types": "off",
+      "no-unused-expressions":"off",
+      "import/prefer-default-export": "off",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
+      "camelcase": "off",
+      "@typescript-eslint/ban-types": "off",
+      "import/no-duplicates":"off",
       "react/jsx-filename-extension": [
         1,
         {
