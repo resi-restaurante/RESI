@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ForgotPassword from './ForgotPassword';
 import Home from './Home';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
@@ -15,6 +16,9 @@ export function Routes() {
         </Route>
         <Route path="/register">
           <RegisterPage />
+        </Route>
+        <Route path="/forgotpassword">
+          <ForgotPassword />
         </Route>
       </Switch>
     </Router>

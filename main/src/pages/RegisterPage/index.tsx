@@ -24,7 +24,7 @@ export default function RegisterPage() {
             />
           </div>
           <footer>
-            <Link to="/">
+            <Link to="/login">
               <p>Voltar</p>
             </Link>
             <button type="button">Registrar</button>

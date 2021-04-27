@@ -13,13 +13,13 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
 
-    width: 40rem;
-    height: 38rem;
+    width: 42rem;
+    height: 40rem;
 
     margin: 3rem;
     padding: 1rem;
 
-    background: #043543;
+    background: #979797;
 
     border-radius: 1rem;
   }
@@ -32,6 +32,7 @@ export const Container = styled.div`
     padding-left: 20rem;
 
     p {
+      color: #575757;
       margin-right: 0.5rem;
       text-decoration: underline;
     }
@@ -60,7 +61,7 @@ export const Container = styled.div`
   .inputsContainer {
     display: grid;
     grid: 5rem/ 1fr 1fr;
-
+    gap: 1rem;
     padding-bottom: 2rem;
     margin-top: 5rem;
   }

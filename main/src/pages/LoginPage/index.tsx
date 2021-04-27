@@ -17,7 +17,7 @@ export default function LoginPage() {
             <Input title="Senha" descriptionPlaceholder="Digite sua senha" />
           </header>
           <main>
-            <Link to="/">
+            <Link to="/forgotpassword">
               <p className="forgetPassaword">Esqueci minha senha</p>
             </Link>
 
