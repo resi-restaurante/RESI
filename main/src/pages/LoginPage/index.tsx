@@ -1,29 +1,36 @@
+import { Link } from 'react-router-dom';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { Container, ContainerLogin } from './styles';
 
-function LoginPage() {
+export default function LoginPage() {
   return (
     <Container>
       <Header />
-      <img src="#" alt="" />
       <ContainerLogin>
-        <img src="logo.svg" alt="" />
         <div className="Formlogin">
-          <span>
-            <img src="images/logo.svg" alt="" />
-          </span>
+          <img src="images/logo.svg" alt="" />
 
-          <Input title="Email" descriptionPlaceholder="Digite seu email" />
+          <header>
+            <Input title="Email" descriptionPlaceholder="Digite seu email" />
 
-          <Input title="Senha" descriptionPlaceholder="Digite sua senha" />
-          <p>Esqueci minha senha</p>
-          <button type="button">LOGIN</button>
-          <p>Não tem uma conta? Cadastre-se!!</p>
+            <Input title="Senha" descriptionPlaceholder="Digite sua senha" />
+          </header>
+          <main>
+            <Link to="/forgotpassword">
+              <p className="forgetPassaword">Esqueci minha senha</p>
+            </Link>
+
+            <button type="button">LOGIN</button>
+          </main>
+
+          <footer>
+            <Link to="/register">
+              <p>Não tem uma conta? Cadastre-se!!</p>
+            </Link>
+          </footer>
         </div>
       </ContainerLogin>
     </Container>
   );
 }
-
-export default LoginPage;
