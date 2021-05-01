@@ -4,17 +4,21 @@ import React, { createContext, useCallback, useContext } from 'react';
 import firebase from '../firebase';
 
 interface SignInCredentials {
-  uid?: string;
   email: string;
   password?: string;
-  name: string;
-  typeUser: string;
-  cellphone: number;
 }
 
 interface SignUpCredentials {
   email: string;
   password: string;
+  name: string;
+  typeUser: string;
+  cellphone: number;
+}
+
+interface UserDatacredentials {
+  uid?: string;
+  email: string;
   name: string;
   typeUser: string;
   cellphone: number;
@@ -39,7 +43,7 @@ const AuthProvider: React.FC = ({ children }) => {
     name,
     typeUser,
     cellphone,
-  }: SignInCredentials) => {
+  }: UserDatacredentials) => {
     const user = {
       uid,
       email,
