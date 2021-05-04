@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div``;
 export const ContainerCard = styled.div`
@@ -6,6 +7,7 @@ export const ContainerCard = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #e53935;
   color: #000;
   .formCard {
     width: 24.6rem;
@@ -20,6 +22,10 @@ export const ContainerCard = styled.div`
     background: #f0f0f0;
     border: 0;
     border-radius: 1rem;
+
+    p {
+      margin-bottom: 1rem;
+    }
   }
   h2 {
     color: #000;
@@ -38,11 +44,31 @@ export const ContainerCard = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 2rem;
 
-    margin-top: 6rem;
+    button {
+      margin-bottom: 3.5rem;
+      margin-left: 5rem;
+    }
+
+    a {
+      margin-bottom: 4.5rem;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.1s;
+      display: flex;
+      flex-direction: row;
+      &:hover {
+        color: ${shade(0.1, '#fbfbfb')};
+      }
+    }
   }
   p {
-    text-decoration: underline;
-    margin-right: 1.5rem;
+    margin-top: 2rem;
   }
+`;
+
+export const RecoverPasswordText = styled.h6`
+  color: #000;
+  font-size: 16px;
 `;

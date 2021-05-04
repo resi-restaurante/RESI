@@ -1,34 +1,67 @@
+import { useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { Header } from '../../components/Header';
-import { Input } from '../../components/Input';
-import { Container } from './styles';
+import {
+  FiMail,
+  FiUser,
+  FiCalendar,
+  FiHome,
+  FiPhone,
+  FiLock,
+} from 'react-icons/fi';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
+import Input from '../../components/Input';
+import { Container, ContainerLogo } from './styles';
 
 export default function RegisterPage() {
+  const formRef = useRef<FormHandles>(null);
+
+  const handleSubmit = useCallback(() => {
+    console.log('Roi');
+  }, []);
+
   return (
     <Container>
-      <Header />
       <main>
         <div className="modalRegister">
-          <div className="containerLogo">
+          <ContainerLogo className="containerLogo">
             <img src="images/logo.svg" alt="Resi" />
-          </div>
-          <div className="inputsContainer">
-            <Input title="Nome" descriptionPlaceholder="Digite seu nome" />
-            <Input title="Email" descriptionPlaceholder="Digite seu email" />
-            <Input title="Data" descriptionPlaceholder="dd/mm/aa" />
-            <Input title="Cidade" descriptionPlaceholder="Digite sua cidade" />
-            <Input title="Senha" descriptionPlaceholder="Digite sua senha" />
-            <Input
-              title="Confirme sua senha"
-              descriptionPlaceholder="Confirme sua senha"
-            />
-          </div>
-          <footer>
-            <Link to="/login">
-              <p>Voltar</p>
-            </Link>
-            <button type="button">Registrar</button>
-          </footer>
+          </ContainerLogo>
+          <Form ref={formRef} onSubmit={handleSubmit} className="Formlogin">
+            <div className="inputsContainer">
+              <Input name="name" icon={FiUser} placeholder="Digite seu nome" />
+              <Input
+                name="email"
+                icon={FiMail}
+                placeholder="Digite seu email"
+              />
+              <Input name="email" icon={FiCalendar} placeholder="dd/mm/aa" />
+              <Input
+                name="email"
+                icon={FiHome}
+                placeholder="Digite sua cidade"
+              />
+              <Input
+                name="email"
+                icon={FiPhone}
+                placeholder="Digite seu telefone"
+                type="password"
+              />
+              <Input
+                name="email"
+                icon={FiLock}
+                placeholder="Digite sua senha"
+                style={{ width: '100%' }}
+                type="password"
+              />
+            </div>
+            <footer>
+              <Link to="/login">
+                <p>Voltar</p>
+              </Link>
+              <button type="button">Registrar</button>
+            </footer>
+          </Form>
         </div>
       </main>
     </Container>

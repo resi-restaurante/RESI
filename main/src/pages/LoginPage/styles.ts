@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div`
   width: 100%;
@@ -15,12 +16,16 @@ export const ContainerLogin = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 
+  img {
+    margin-top: 2rem;
+  }
+
   .Formlogin {
     width: 30rem;
     height: 100vh;
 
     display: flex;
-    justify-content: flex-safe;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 
@@ -28,20 +33,29 @@ export const ContainerLogin = styled.div`
     color: #fff;
     box-shadow: 1px solid rgba(0, 0, 0.05, 0.05);
 
-    header {
-      margin: 1.5rem;
+    .inputForm {
+      width: 80%;
+      text-align: left;
+      margin: 10px;
+      p {
+        margin-bottom: 0.2rem;
+      }
+
+      > p {
+        margin-top: 2rem;
+      }
     }
 
     main {
-      margin-top: 3rem;
+      margin-top: 1rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: row;
-      .forgetPassaword {
-        font-size: 1rem;
-        text-decoration: underline;
+
+      #forgetPassaword {
+        margin-bottom: 1rem;
       }
+
       button {
         width: 5.8rem;
         height: 2rem;
@@ -52,8 +66,25 @@ export const ContainerLogin = styled.div`
       }
     }
     footer {
-      padding: 7rem;
-      text-decoration: underline;
+      display: flex;
+      flex-direction: row;
+      padding: 5rem;
+      align-items: center;
+    }
+    a {
+      color: #fff;
+      margin-top: 24px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s;
+      display: flex;
+      flex-direction: row;
+      &:hover {
+        color: ${shade(0.2, '#fbfbfb')};
+      }
+      svg {
+        margin-left: 0.2rem;
+      }
     }
   }
 `;

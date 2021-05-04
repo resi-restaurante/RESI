@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div`
   background: #e53935;
@@ -19,22 +20,28 @@ export const Container = styled.div`
     margin: 3rem;
     padding: 1rem;
 
-    background: #979797;
+    background: #f0f0f0;
 
     border-radius: 1rem;
   }
   footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     margin-top: 6rem;
-    padding-left: 20rem;
 
-    p {
+    a {
       color: #575757;
-      margin-right: 0.5rem;
-      text-decoration: underline;
+      margin-left: 0.5rem;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.1s;
+      display: flex;
+      flex-direction: row;
+      &:hover {
+        color: ${shade(0.1, '#fbfbfb')};
+      }
     }
     button {
       width: 5.8rem;
@@ -47,17 +54,7 @@ export const Container = styled.div`
       border-radius: 4px;
     }
   }
-  .containerLogo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    background: #e53935;
-    width: 16.8rem;
-    height: 4rem;
-
-    border-radius: 10px;
-  }
   .inputsContainer {
     display: grid;
     grid: 5rem/ 1fr 1fr;
@@ -65,4 +62,16 @@ export const Container = styled.div`
     padding-bottom: 2rem;
     margin-top: 5rem;
   }
+`;
+
+export const ContainerLogo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #e53935;
+  width: 16.8rem;
+  height: 4rem;
+
+  border-radius: 10px;
 `;
