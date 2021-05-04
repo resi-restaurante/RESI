@@ -8,6 +8,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  img {
+    margin-top: 0.5rem;
+  }
 `;
 
 export const ButtonLogin = styled.button`

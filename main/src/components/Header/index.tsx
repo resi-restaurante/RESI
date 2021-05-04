@@ -5,7 +5,7 @@ export function Header() {
   return (
     <Container>
       <Link to="/">
-        <h1>RESI</h1>
+        <img src="images/logo.svg" alt="" />
       </Link>
       <Link to="/login">
         <ButtonLogin>Login</ButtonLogin>
