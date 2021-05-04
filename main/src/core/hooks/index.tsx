@@ -1,11 +1,11 @@
 import React from 'react';
 import { AuthProvider } from './auth';
-import { StabilishimentProvider } from './propertys';
+import { StablishimentProvider } from './propertys';
 
 const AppProvider: React.FC = ({ children }) => {
   return (
     <AuthProvider>
-      <StabilishimentProvider>{children}</StabilishimentProvider>
+      <StablishimentProvider>{children}</StablishimentProvider>
     </AuthProvider>
   );
 };
