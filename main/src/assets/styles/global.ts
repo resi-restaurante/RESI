@@ -11,7 +11,7 @@ export default createGlobalStyle`
   body{
     min-height: 100vh;
     min-width: 100vw;
-    background: #000;
+    background: #f0f0f0;
     color: #FFF;
     overflow-x: hidden;
     font-family: Roboto,sans-serif;
