@@ -1,18 +1,27 @@
 import { Link } from 'react-router-dom';
-import { ButtonLogin, Container } from './styles';
+import { Nav, ButtonLogin, Container } from './styles';
 
 export function Header() {
   return (
     <Container>
-      <Link to="/">
-        <img src="images/logo.svg" alt="" />
-      </Link>
-      <Link to="/login">
-        <ButtonLogin>Login</ButtonLogin>
-      </Link>
-      <Link to="/restaurants">
-        <ButtonLogin>Estabelecimentos</ButtonLogin>
-      </Link>
+      <Nav>
+        <Link to="/">
+          <img src="images/logo.svg" alt="" />
+        </Link>
+
+        <Link to="/restaurants">
+          <p>Estabelecimentos</p>
+        </Link>
+        <Link to="/">
+          <p>Contato</p>
+        </Link>
+        <Link to="/">
+          <p>Como Funciona ?</p>
+        </Link>
+        <Link to="/login">
+          <ButtonLogin>Login</ButtonLogin>
+        </Link>
+      </Nav>
     </Container>
   );
 }
