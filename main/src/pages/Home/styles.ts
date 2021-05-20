@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
+
   .InitialPage {
+    margin-bottom: 19rem;
     h1 {
       position: absolute;
       width: 298px;

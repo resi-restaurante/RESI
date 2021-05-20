@@ -10,6 +10,9 @@ export function Header() {
       <Link to="/login">
         <ButtonLogin>Login</ButtonLogin>
       </Link>
+      <Link to="/restaurants">
+        <ButtonLogin>Estabelecimentos</ButtonLogin>
+      </Link>
     </Container>
   );
 }
