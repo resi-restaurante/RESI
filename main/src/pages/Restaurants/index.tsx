@@ -1,3 +1,4 @@
+import Footer from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { Container } from './styles';
 
@@ -6,6 +7,7 @@ function Restaurants() {
     <Container>
       <Header />
       <h1>Aparecida, SP</h1>
+      <Footer />
     </Container>
   );
 }

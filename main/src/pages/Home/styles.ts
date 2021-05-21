@@ -51,12 +51,26 @@ export const FormHelp = styled.div`
     color: #000;
   }
   section {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    margin-top: 2rem;
+    grid-gap: 1rem;
+    margin-left: 10rem;
+    padding: 3rem 8rem;
+
+    img {
+      align-items: center;
+      grid-row-start: 1;
+      grid-row-end: 3;
+    }
     p {
+      display: flex;
+      align-items: flex-end;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 400;
+
+      font-family: Roboto, sans-serif;
       color: #000;
     }
   }
