@@ -5,3 +5,5 @@ export const Container = styled.div`
     color: #000;
   }
 `;
+
+export const ;
