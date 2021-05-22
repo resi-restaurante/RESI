@@ -6,6 +6,7 @@ import Home from './Home';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
 import RestaurantsListing from './Restaurants';
+import ContactPage from './Contact';
 
 export function Routes() {
   const location = useLocation();
@@ -28,6 +29,9 @@ export function Routes() {
           </Route>
           <Route path="/restaurants">
             <RestaurantsListing />
+          </Route>
+          <Route path="/contact">
+            <ContactPage />
           </Route>
         </Switch>
       </CSSTransition>
