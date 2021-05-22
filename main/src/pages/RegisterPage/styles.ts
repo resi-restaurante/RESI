@@ -29,8 +29,6 @@ export const Container = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    margin-top: 6rem;
-
     a {
       color: #575757;
       margin-left: 0.5rem;
@@ -61,6 +59,17 @@ export const Container = styled.div`
     gap: 1rem;
     padding-bottom: 2rem;
     margin-top: 5rem;
+
+    #switcher-container {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      p {
+        color: #575757;
+        margin-left: 1rem;
+      }
+    }
   }
 `;
 

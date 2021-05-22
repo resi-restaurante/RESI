@@ -9,9 +9,10 @@ interface SignInCredentials {
 }
 
 interface SignUpCredentials {
+  name: string;
   email: string;
   password: string;
-  name: string;
+  date: string;
   typeUser: string;
   cellphone: number;
 }
