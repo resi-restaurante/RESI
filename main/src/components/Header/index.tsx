@@ -12,7 +12,7 @@ export function Header() {
         <Link to="/restaurants">
           <p>Estabelecimentos</p>
         </Link>
-        <Link to="/">
+        <Link to="/contact">
           <p>Contato</p>
         </Link>
         <Link to="/">
