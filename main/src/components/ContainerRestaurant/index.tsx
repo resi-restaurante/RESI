@@ -1,12 +1,21 @@
 import { Container, RestaurantTitle, FoodPlate } from './styles';
 
-function ContainerRestaurant() {
+interface PropsRestaurantList {
+  restaurantName: string;
+  reservePrice: string;
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+function ContainerRestaurant({
+  restaurantName,
+  reservePrice,
+}: PropsRestaurantList) {
   return (
     <Container>
       <img src="images/restaurante.jpg" alt="" />
-      <RestaurantTitle>Restaurante Santa Fé</RestaurantTitle>
+      <RestaurantTitle>{restaurantName}</RestaurantTitle>
       <p>Mais informações...</p>
-      <FoodPlate>R$39,00</FoodPlate>
+      <FoodPlate>{`R$${reservePrice}`}</FoodPlate>
     </Container>
   );
 }

@@ -8,6 +8,7 @@ function Home() {
   return (
     <Container>
       <Header />
+
       <div className="InitialPage">
         <div>
           <img src="images/mesa.png" alt="" />
