@@ -3,18 +3,32 @@ import styled from 'styled-components';
 export const Container = styled.div`
   height: 80px;
   padding: 0 30px;
+  width: 100%;
   background: #e53935;
   color: #fff;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 1rem;
   position: static;
   top: 0;
   z-index: 10;
+  max-width: auto;
 
   img {
     margin-top: 0.5rem;
+  }
+
+  #container-label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+
+    a {
+      margin-left: 10vh;
+    }
   }
 `;
 export const Nav = styled.div`
