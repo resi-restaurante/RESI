@@ -9,6 +9,9 @@ function Restaurants() {
       <Header />
       <h1>Aparecida, SP</h1>
       <ContainerRestaurant />
+      <ContainerRestaurant />
+      <ContainerRestaurant />
+      <ContainerRestaurant />
       <Footer />
     </Container>
   );
