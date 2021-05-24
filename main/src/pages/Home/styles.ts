@@ -5,15 +5,17 @@ export const Container = styled.div`
 
   .InitialPage {
     margin-bottom: 19rem;
+    width: 100%;
+    max-width: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5rem;
+    image {
+      width: 100vw;
+      height: 100vh;
+    }
     h1 {
-      position: absolute;
-      width: 298px;
-      height: 126px;
-      left: 452px;
-      top: 110px;
-
       margin-left: 5rem;
-
       font-family: Roboto, sans-serif;
       font-weight: 200;
       font-size: 3rem;
@@ -41,11 +43,33 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const InputContainer = styled.div`
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+
+  input {
+    width: 70%;
+    padding: 6px;
+    border-radius: 5px;
+  }
+  button {
+    background: #e53935;
+    margin-left: 0.3rem;
+    padding: 0.5rem;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+`;
+
 export const FormHelp = styled.div`
   /* display: grid;
   grid-template-rows: 1fr 2fr; */
-
-  margin-top: 5rem;
+  background-color: #f6f6f6;
+  height: 70vh;
+  padding: 30px;
   h1 {
     margin-left: 3rem;
     color: #000;

@@ -1,18 +1,31 @@
+import { FiSearch } from 'react-icons/fi';
 import Footer from '../../components/Footer';
 import { Header } from '../../components/Header';
 
-import { Container, FormHelp } from './styles';
+import { Container, FormHelp, InputContainer } from './styles';
 
 function Home() {
   return (
     <Container>
       <Header />
       <div className="InitialPage">
-        <img src="images/mesa.png" alt="" />
-        <h1>Agende agora sua reserva em:</h1>
-        <select name="select">
-          <option value="city">Aparecida-Sp</option>
-        </select>
+        <div>
+          <img src="images/mesa.png" alt="" />
+        </div>
+        <div>
+          <h1>Agende agora</h1>
+          <h1>&nbsp;&nbsp;sua reserva em:</h1>
+          <InputContainer>
+            <input
+              name="email"
+              placeholder="Pesquise pela cidade"
+              style={{ width: '100%' }}
+            />
+            <button type="button">
+              <FiSearch size={20} color="#fff" />
+            </button>
+          </InputContainer>
+        </div>
       </div>
       <FormHelp>
         <h1>Como Funciona ? </h1>
