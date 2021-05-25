@@ -34,7 +34,6 @@ function Home() {
           </InputContainer>
         </div>
         <div id="image-container">
-          {/* <img src="images/mesa.svg" alt="" /> */}
           <img
             src="images/point.png"
             alt="Mulher agendando reserva no restaurante"
@@ -42,14 +41,20 @@ function Home() {
         </div>
       </div>
       <FormHelp>
-        <h1>Como Funciona ? </h1>
+        <h3>Veja alguns estabelecimentos: </h3>
         <section>
-          <img src="images/local.svg" alt="" />
-          <p>Escolha a cidade</p>
-          <img src="images/calendar.svg" alt="" />
-          <p>Agende a data de visita</p>
-          <img src="images/checked.svg" alt="" />
-          <p>Adeus filas </p>
+          <div className="card">
+            <img src="images/restaurante1.jpg" alt="Restaurante Real" />
+            <p>Restaurante Real</p>
+          </div>
+          <div className="card">
+            <img src="images/restaurante2.jpg" alt="Lanchonete da Maria" />
+            <p>Lanchonete da Maria</p>
+          </div>
+          <div className="card">
+            <img src="images/restaurante3.jpg" alt="Casa Americana" />
+            <p>Casa Americana</p>
+          </div>
         </section>
       </FormHelp>
       <Footer />

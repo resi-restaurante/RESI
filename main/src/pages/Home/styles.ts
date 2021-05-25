@@ -31,6 +31,7 @@ export const Container = styled.div`
     h3 {
       margin-top: 1rem;
       color: #696969;
+      font-weight: 200;
     }
     select {
       margin-left: 9rem;
@@ -97,9 +98,11 @@ export const FormHelp = styled.div`
   background-color: #f6f6f6;
   height: 70vh;
   padding: 30px;
-  margin-top: 10%;
-  h1 {
-    color: #000;
+  margin-top: 13%;
+  h3 {
+    color: #e53935;
+    text-align: center;
+    font-weight: 200;
   }
   section {
     display: grid;
@@ -123,6 +126,23 @@ export const FormHelp = styled.div`
 
       font-family: Roboto, sans-serif;
       color: #000;
+    }
+
+    .card {
+      background-color: #f0f0f0;
+      width: 15rem;
+      height: 16rem;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      img {
+        width: 90px;
+        height: 90px;
+        border-radius: 50px;
+        margin-top: 10px;
+      }
     }
   }
 `;
