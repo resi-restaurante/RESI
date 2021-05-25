@@ -11,21 +11,34 @@ function Home() {
 
       <div className="InitialPage">
         <div>
-          <img src="images/mesa.png" alt="" />
-        </div>
-        <div>
-          <h1>Agende agora</h1>
-          <h1>&nbsp;&nbsp;sua reserva em:</h1>
+          <h1>
+            Agende agora
+            <br /> sua <b style={{ color: '#e53935' }}>reserva</b> em:
+          </h1>
+          <h3>
+            Pesquise restaurantes pela cidade mais próxima <br />
+            ou para uma próxima viagem
+          </h3>
           <InputContainer>
+            <button type="button" className="get-start">
+              <p>Como começar</p>
+            </button>
             <input
               name="email"
               placeholder="Pesquise pela cidade"
               style={{ width: '100%' }}
             />
-            <button type="button">
+            <button type="button" className="search-button">
               <FiSearch size={20} color="#fff" />
             </button>
           </InputContainer>
+        </div>
+        <div id="image-container">
+          {/* <img src="images/mesa.svg" alt="" /> */}
+          <img
+            src="images/point.png"
+            alt="Mulher agendando reserva no restaurante"
+          />
         </div>
       </div>
       <FormHelp>
