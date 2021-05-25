@@ -4,8 +4,10 @@ export const Container = styled.div`
   height: 80px;
   padding: 0 30px;
   width: 100%;
-  background: #e53935;
-  color: #fff;
+  /* background: #e53935;
+  color: #fff; */
+  background: transparent;
+  color: #000;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,7 +46,7 @@ export const Nav = styled.div`
     margin-top: 2rem;
     text-align: center;
     font-family: Roboto, sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     &:hover {
       transition: all 0.2s ease-in-out;
       color: #c53030;
