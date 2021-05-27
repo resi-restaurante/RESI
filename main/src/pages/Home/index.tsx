@@ -1,7 +1,8 @@
 import { FiSearch } from 'react-icons/fi';
+
 import Footer from '../../components/Footer';
 import { Header } from '../../components/Header';
-
+/* eslint-disable-next-line jsx-a11y/alt-text */
 import {
   Container,
   FormFuncionalites,
@@ -9,7 +10,7 @@ import {
   InputContainer,
 } from './styles';
 
-function Home() {
+export default function Home() {
   return (
     <Container>
       <Header />
@@ -40,6 +41,7 @@ function Home() {
         </div>
         <div id="image-container">
           <img
+            id="mulher"
             src="images/point.png"
             alt="Mulher agendando reserva no restaurante"
           />
@@ -47,6 +49,7 @@ function Home() {
       </div>
       <FormHelp>
         <h3>Veja alguns estabelecimentos: </h3>
+
         <section>
           <div className="card">
             <img src="images/restaurante1.jpg" alt="Restaurante Real" />
@@ -80,7 +83,9 @@ function Home() {
             <img src="images/calendar.svg" alt="" />
           </div>
           <h3>Agende a data de visita</h3>
-          <span>Escolha a data e a hora de sua reserva</span>
+          <span>
+            Escolha a data e a hora de sua reserva com simples cliques.
+          </span>
           <button type="submit">Agendar</button>
         </section>
 
@@ -101,5 +106,3 @@ function Home() {
     </Container>
   );
 }
-
-export default Home;

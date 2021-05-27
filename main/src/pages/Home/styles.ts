@@ -2,6 +2,20 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
+  @media screen and (max-width: 720px) {
+    #mulher {
+      display: none;
+    }
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+    }
+    h3 {
+      text-align: center;
+    }
+    .InitialPage {
+    }
+  }
 
   .InitialPage {
     margin-bottom: 19rem;
@@ -55,6 +69,13 @@ export const Container = styled.div`
 `;
 
 export const InputContainer = styled.div`
+  @media screen and (max-width: 720px) {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    .get-start {
+      display: none;
+    }
+  }
   height: 3rem;
   display: flex;
   flex-direction: row;
@@ -93,6 +114,10 @@ export const InputContainer = styled.div`
 `;
 
 export const FormHelp = styled.div`
+  @media screen and (max-width: 720px) {
+    h3 {
+    }
+  }
   /* display: grid;
   grid-template-rows: 1fr 2fr; */
   background-color: #f6f6f6;
@@ -103,7 +128,9 @@ export const FormHelp = styled.div`
   h3 {
     color: #e53935;
     text-align: center;
-    font-weight: 200;
+    font-weight: 600;
+    font-size: 2rem;
+    font-family: Ubuntu, sans-serif;
   }
   section {
     display: grid;
@@ -162,10 +189,10 @@ export const FormFuncionalites = styled.div`
     align-items: center;
     text-align: center;
     background: #fff;
-    padding: 1rem 1.5rem;
+    padding: 3rem 3.5rem;
     border-radius: 8px;
     max-height: 468px;
-    margin-left: 32px;
+    margin-left: 2rem;
     box-shadow: 20px 20px 50px -30px #e53935;
   }
   &:first-child {
@@ -180,19 +207,19 @@ export const FormFuncionalites = styled.div`
   }
   h3 {
     font-size: 100%;
-    margin: 16px 0;
+    margin: 1.5rem 0;
     color: #000;
   }
   span {
     font-weight: 300;
     max-width: 240px;
     font-size: 80%;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
   button {
-    padding: 0.5rem 1rem;
+    padding: 1rem 2rem;
     text-transform: uppercase;
-    border-radius: 32px;
+    border-radius: 2rem;
     border: 0;
     cursor: pointer;
     font-size: 80%;
@@ -209,7 +236,7 @@ export const FormFuncionalites = styled.div`
 
   @media screen and (max-width: 720px) {
     margin-top: 10rem;
-    margin-bottom: 10rem;
+    margin-bottom: 12rem;
     flex-direction: column;
     .card {
       margin-left: 0;
