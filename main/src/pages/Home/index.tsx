@@ -2,7 +2,12 @@ import { FiSearch } from 'react-icons/fi';
 import Footer from '../../components/Footer';
 import { Header } from '../../components/Header';
 
-import { Container, FormHelp, InputContainer } from './styles';
+import {
+  Container,
+  FormFuncionalites,
+  FormHelp,
+  InputContainer,
+} from './styles';
 
 function Home() {
   return (
@@ -57,6 +62,41 @@ function Home() {
           </div>
         </section>
       </FormHelp>
+
+      <FormFuncionalites>
+        <section className="card">
+          <div className="icon">
+            <img src="images/local.svg" alt="" />
+          </div>
+          <h3>Escolha a cidade</h3>
+          <span>
+            Escolha o melhor restaurante da cidade onde você deseja comer.
+          </span>
+          <button type="submit">Localizar</button>
+        </section>
+
+        <section className="card">
+          <div className="icon">
+            <img src="images/calendar.svg" alt="" />
+          </div>
+          <h3>Agende a data de visita</h3>
+          <span>Escolha a data e a hora de sua reserva</span>
+          <button type="submit">Agendar</button>
+        </section>
+
+        <section className="card">
+          <div className="icon">
+            <img src="images/checked.svg" alt="" />
+          </div>
+          <h3>Adeus filas </h3>
+          <span>
+            Finalize o pagagamento e <strong>PRONTO! </strong>
+            Sua reserva de mesa foi feita com sucesso !
+          </span>
+          <button type="submit">Finalizar</button>
+        </section>
+      </FormFuncionalites>
+
       <Footer />
     </Container>
   );

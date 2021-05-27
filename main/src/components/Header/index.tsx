@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ButtonLogin, Container } from './styles';
+
+import { ButtonLogin, Container, ContainerLabel } from './styles';
 
 export function Header() {
   return (
@@ -9,7 +10,7 @@ export function Header() {
           <img src="images/logo.svg" alt="" />
         </Link>
       </div>
-      <div id="container-label">
+      <ContainerLabel>
         <Link to="/restaurants">
           <p>Estabelecimentos</p>
         </Link>
@@ -22,7 +23,7 @@ export function Header() {
         <Link to="/login">
           <ButtonLogin>Login</ButtonLogin>
         </Link>
-      </div>
+      </ContainerLabel>
     </Container>
   );
 }

@@ -99,6 +99,7 @@ export const FormHelp = styled.div`
   height: 70vh;
   padding: 30px;
   margin-top: 13%;
+
   h3 {
     color: #e53935;
     text-align: center;
@@ -143,6 +144,82 @@ export const FormHelp = styled.div`
         border-radius: 50px;
         margin-top: 10px;
       }
+    }
+  }
+`;
+export const FormFuncionalites = styled.div`
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #434343;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    max-height: 468px;
+    margin-left: 32px;
+    box-shadow: 20px 20px 50px -30px #e53935;
+  }
+  &:first-child {
+    margin-left: 0;
+  }
+  .icon {
+    width: 3rem;
+    height: 3rem;
+  }
+  img {
+    width: 100%;
+  }
+  h3 {
+    font-size: 100%;
+    margin: 16px 0;
+    color: #000;
+  }
+  span {
+    font-weight: 300;
+    max-width: 240px;
+    font-size: 80%;
+    margin-bottom: 16px;
+  }
+  button {
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    border-radius: 32px;
+    border: 0;
+    cursor: pointer;
+    font-size: 80%;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 16px 0;
+    background: linear-gradient(to right, #fe5f8f, #ffc7d9);
+    &:hover {
+      transition: all 0.2s ease-in-out;
+      background: linear-gradient(to right, #e53935, #c53030);
+      color: #f0f0f0;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    flex-direction: column;
+    .card {
+      margin-left: 0;
+      margin-bottom: 32px;
+    }
+    card:last-child {
+      margin-bottom: 0;
+    }
+    button {
+      font-size: 70%;
     }
   }
 `;

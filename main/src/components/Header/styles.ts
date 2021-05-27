@@ -20,17 +20,16 @@ export const Container = styled.div`
   img {
     margin-top: 0.5rem;
   }
+`;
+export const ContainerLabel = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
 
-  #container-label {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-
-    a {
-      margin-left: 10vh;
-    }
+  a {
+    margin-left: 10vh;
   }
 `;
 export const Nav = styled.div`
