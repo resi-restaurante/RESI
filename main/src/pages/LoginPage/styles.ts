@@ -5,6 +5,12 @@ export const Container = styled.div`
   width: 100%;
 `;
 export const ContainerLogin = styled.div`
+  @media screen and (max-width: 720px) {
+    background-image: none;
+    .FormLogin {
+      width: 100%;
+    }
+  }
   width: 100vw;
   height: 100vh;
   display: flex;

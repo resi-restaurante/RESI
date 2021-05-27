@@ -2,6 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
+  h1 {
+    color: #434343;
+    font-family: Ubuntu, sans-serif;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
   @media screen and (max-width: 720px) {
     #mulher {
       display: none;
@@ -115,7 +121,8 @@ export const InputContainer = styled.div`
 
 export const FormHelp = styled.div`
   @media screen and (max-width: 720px) {
-    h3 {
+    .card {
+      margin-left: 10rem;
     }
   }
   /* display: grid;
@@ -175,13 +182,14 @@ export const FormHelp = styled.div`
   }
 `;
 export const FormFuncionalites = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100%;
 
   display: flex;
   justify-content: center;
   align-items: center;
   color: #434343;
+  margin-bottom: 10rem;
 
   .card {
     display: flex;

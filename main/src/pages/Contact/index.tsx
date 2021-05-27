@@ -48,7 +48,7 @@ const ContactPage = () => {
                 />
               </div>
               <Button loading={false}>
-                <h1>enviar</h1>
+                <h1>Enviar</h1>
               </Button>
             </Form>
           </div>

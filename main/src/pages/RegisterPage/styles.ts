@@ -2,6 +2,21 @@ import styled from 'styled-components';
 import { shade } from 'polished';
 
 export const Container = styled.div`
+  @media screen and (max-width: 720px) {
+    background: #f0f0f0;
+    height: 80%;
+    button {
+      margin-right: 3rem;
+    }
+    .inputsContainer {
+      width: 80%;
+    }
+    footer {
+      p {
+        margin-left: 3rem;
+      }
+    }
+  }
   background: #e53935;
   main {
     display: flex;

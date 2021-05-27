@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  @media screen and (max-width: 720px) {
+    p {
+      display: none;
+    }
+  }
   height: 80px;
   padding: 0 30px;
   width: 100%;
-  /* background: #e53935;
-  color: #fff; */
-  background: transparent;
+  color: #fff;
+  background: #e53935;
+  /* background: transparent; */
   color: #000;
   display: flex;
   justify-content: space-between;
@@ -30,6 +35,16 @@ export const ContainerLabel = styled.div`
 
   a {
     margin-left: 10vh;
+  }
+  p {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    color: #fff;
+    &:hover {
+      transition: all 0.2s ease-in-out;
+      color: #c53030;
+    }
   }
 `;
 export const Nav = styled.div`
@@ -56,6 +71,9 @@ export const Nav = styled.div`
   }
 `;
 export const ButtonLogin = styled.button`
+  @media screen and (max-width: 720px) {
+    margin-right: 10rem;
+  }
   border-radius: 4rem;
   outline: none;
   border: none;

@@ -25,6 +25,9 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.p`
+  @media screen and (max-width: 720px) {
+    font-size: 1rem;
+  }
   color: #000;
   text-align: center;
   margin-top: 2rem;

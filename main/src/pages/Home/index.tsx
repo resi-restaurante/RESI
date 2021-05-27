@@ -65,7 +65,7 @@ export default function Home() {
           </div>
         </section>
       </FormHelp>
-
+      <h1>Como Funciona ?</h1>
       <FormFuncionalites>
         <section className="card">
           <div className="icon">
