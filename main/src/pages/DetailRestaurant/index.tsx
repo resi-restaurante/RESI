@@ -7,8 +7,9 @@ function DetailRestaurant() {
   return (
     <Container>
       <Header />
+
       <DetailsRestaurantWithBorder />
-      <h2>Cardapio do Restaurante</h2>
+
       <Footer />
     </Container>
   );

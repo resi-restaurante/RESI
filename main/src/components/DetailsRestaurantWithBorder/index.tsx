@@ -1,17 +1,29 @@
-import { Container } from './styles';
+import {
+  Container,
+  ContentRestaurant,
+  Description,
+  Price,
+  Photos,
+} from './styles';
 
 function DetailsRestaurantWithBorder() {
   return (
     <Container>
-      <img src="images/restaurante.jpg" alt="" />
-      <h1>DetailRestaurant</h1>
-      <p>
-        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-        Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-        Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-        Lorem ipsum Lorem ipsum Lorem ipsum
-      </p>
-      <p>R$39,90</p>
+      <ContentRestaurant>
+        <img src="images/restaurante.jpg" alt="" />
+        <h1>Restaurante Santa Fé</h1>
+        <Description>
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+          ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+          ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem
+          ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+        </Description>
+        <Price>R$39,90</Price>
+        <Photos>
+          <img src="images/restaurante.jpg" alt="" />
+          <img src="images/restaurante.jpg" alt="" />
+        </Photos>
+      </ContentRestaurant>
     </Container>
   );
 }
