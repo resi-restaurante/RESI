@@ -1,14 +1,26 @@
 import { FiSearch } from 'react-icons/fi';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Footer from '../../components/Footer';
 import { Header } from '../../components/Header';
 /* eslint-disable-next-line jsx-a11y/alt-text */
+
+// Import Swiper styles
+import 'swiper/swiper.min.css';
+import 'swiper/components/effect-coverflow/effect-coverflow.min.css';
+import 'swiper/components/pagination/pagination.min.css';
+
+// eslint-disable-next-line import/order
+import SwiperCore, { EffectCoverflow, Pagination } from 'swiper/core';
+
 import {
   Container,
   FormFuncionalites,
   FormHelp,
   InputContainer,
 } from './styles';
+// install Swiper modules
+SwiperCore.use([EffectCoverflow, Pagination]);
 
 export default function Home() {
   return (
@@ -49,21 +61,39 @@ export default function Home() {
       </div>
       <FormHelp>
         <h3>Veja alguns estabelecimentos: </h3>
-
-        <section>
-          <div className="card">
-            <img src="images/restaurante1.jpg" alt="Restaurante Real" />
-            <p>Restaurante Real</p>
-          </div>
-          <div className="card">
-            <img src="images/restaurante2.jpg" alt="Lanchonete da Maria" />
-            <p>Lanchonete da Maria</p>
-          </div>
-          <div className="card">
-            <img src="images/restaurante3.jpg" alt="Casa Americana" />
-            <p>Casa Americana</p>
-          </div>
-        </section>
+        <>
+          <Swiper
+            effect="coverflow"
+            grabCursor
+            centeredSlides
+            slidesPerView="auto"
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            pagination
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img src="images/restaurante1.jpg" alt="Restaurante Real" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="images/restaurante2.jpg" alt="Restaurante Real" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="images/restaurante3.jpg" alt="Restaurante Real" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="images/restaurante1.jpg" alt="Restaurante Real" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="images/restaurante3.jpg" alt="Restaurante Real" />
+            </SwiperSlide>
+          </Swiper>
+        </>
       </FormHelp>
       <h1>Como Funciona ?</h1>
       <FormFuncionalites>

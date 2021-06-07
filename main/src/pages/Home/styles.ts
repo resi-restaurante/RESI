@@ -2,10 +2,28 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
+  .swiper-container {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+  }
   h1 {
     color: #434343;
     font-family: Ubuntu, sans-serif;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
     text-align: center;
   }
   @media screen and (max-width: 720px) {
@@ -121,9 +139,6 @@ export const InputContainer = styled.div`
 
 export const FormHelp = styled.div`
   @media screen and (max-width: 720px) {
-    .card {
-      margin-left: 10rem;
-    }
   }
   /* display: grid;
   grid-template-rows: 1fr 2fr; */
@@ -147,11 +162,6 @@ export const FormHelp = styled.div`
     margin-left: 10rem;
     padding: 3rem 8rem;
 
-    img {
-      align-items: center;
-      grid-row-start: 1;
-      grid-row-end: 3;
-    }
     p {
       display: flex;
       align-items: flex-end;
@@ -161,23 +171,6 @@ export const FormHelp = styled.div`
 
       font-family: Roboto, sans-serif;
       color: #000;
-    }
-
-    .card {
-      background-color: #f0f0f0;
-      width: 15rem;
-      height: 16rem;
-      border-radius: 10px 10px 0 0;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-
-      img {
-        width: 90px;
-        height: 90px;
-        border-radius: 50px;
-        margin-top: 10px;
-      }
     }
   }
 `;
