@@ -17,6 +17,7 @@ export const Container = styled.div`
     box-shadow: 0 0 10px 2px #c53030;
   }
   button {
+    background: #fff;
     font-size: 2rem;
     font-weight: 700;
     color: #e53935;

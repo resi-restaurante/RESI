@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  color: #000;
+  footer {
+    margin-top: 30rem;
+  }
 `;
