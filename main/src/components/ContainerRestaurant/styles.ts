@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  @media screen and (max-width: 720px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25rem;
+    p {
+      display: none;
+    }
+  }
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -37,12 +46,22 @@ export const Container = styled.div`
   }
 `;
 export const RestaurantTitle = styled.h1`
+  @media screen and (max-width: 720px) {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1rem;
+    color: red;
+  }
   font-size: 2rem;
   font-weight: 400;
   align-items: baseline;
   margin: 2rem;
 `;
 export const FoodPlate = styled.h2`
+  @media screen and (max-width: 720px) {
+    display: flex;
+    justify-content: flex-end;
+  }
   font-weight: bold;
   font-size: 24px;
   line-height: 28px;

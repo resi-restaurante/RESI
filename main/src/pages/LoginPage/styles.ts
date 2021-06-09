@@ -7,6 +7,7 @@ export const Container = styled.div`
 export const ContainerLogin = styled.div`
   @media screen and (max-width: 720px) {
     background-image: none;
+    display: block;
     .FormLogin {
       width: 100%;
     }

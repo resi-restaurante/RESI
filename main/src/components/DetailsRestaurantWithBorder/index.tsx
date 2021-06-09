@@ -23,10 +23,11 @@ function DetailsRestaurantWithBorder() {
         <img src="images/restaurante.jpg" alt="" />
         <Title>Restaurante Santa Fé</Title>
         <Description>
-          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
-          ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
-          ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem
-          ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+          O Restaurante Santa fé é uma empresa do ramo alimentício fundada em
+          1991, com bases familiares sólidas passadas por 03 gerações da
+          familia, trabalhando com inovações em nossos serviços e sempre à
+          disposição para sugestões de melhorias, em busca da satisfação dos
+          nossos clientes.
         </Description>
         <Price>R$39,90</Price>
         <p>Por mês</p>
@@ -63,15 +64,15 @@ function DetailsRestaurantWithBorder() {
           </DatePickerCalendar>
           <h2>Escolha sua mesa</h2>
           <section>
-            <ButtonTable />
-            <ButtonTable />
-            <ButtonTable />
-            <ButtonTable />
-            <ButtonTable />
-            <ButtonTable />
-            <ButtonTable />
-            <ButtonTable />
-            <ButtonTable />
+            <ButtonTable numberTable="1" />
+            <ButtonTable numberTable="2" />
+            <ButtonTable numberTable="3" />
+            <ButtonTable numberTable="4" />
+            <ButtonTable numberTable="5" />
+            <ButtonTable numberTable="6" />
+            <ButtonTable numberTable="7" />
+            <ButtonTable numberTable="8" />
+            <ButtonTable numberTable="9" />
           </section>
           <DatePickerTime>
             <h3>Horário de entrada:</h3>

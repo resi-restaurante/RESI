@@ -4,13 +4,11 @@ import { shade } from 'polished';
 export const Container = styled.div`
   @media screen and (max-width: 720px) {
     background: #f0f0f0;
-    height: 80%;
+    height: 100%;
     button {
       margin-right: 3rem;
     }
-    .inputsContainer {
-      width: 80%;
-    }
+
     footer {
       p {
         margin-left: 3rem;

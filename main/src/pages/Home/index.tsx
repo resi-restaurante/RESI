@@ -1,5 +1,5 @@
 import { FiSearch } from 'react-icons/fi';
-
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Footer from '../../components/Footer';
 import { Header } from '../../components/Header';
@@ -46,9 +46,11 @@ export default function Home() {
               placeholder="Pesquise pela cidade"
               style={{ width: '100%' }}
             />
-            <button type="button" className="search-button">
-              <FiSearch size={20} color="#fff" />
-            </button>
+            <Link to="/restaurants">
+              <button type="button" className="search-button">
+                <FiSearch size={20} color="#fff" />
+              </button>
+            </Link>
           </InputContainer>
         </div>
         <div id="image-container">
