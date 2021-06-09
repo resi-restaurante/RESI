@@ -1,9 +1,12 @@
+import { Link } from 'react-router-dom';
 import { Container } from './styles';
 
 function Footer() {
   return (
     <Container>
-      <img src="images/logo.svg" alt="" />
+      <Link to="/contact">
+        <img src="images/logo.svg" alt="" />
+      </Link>
     </Container>
   );
 }
