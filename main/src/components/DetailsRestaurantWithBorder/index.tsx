@@ -4,6 +4,7 @@ import 'react-multi-date-picker/styles/colors/red.css';
 import 'react-multi-date-picker/styles/layouts/mobile.css';
 import { Link } from 'react-router-dom';
 import ButtonTable from '../ButtonTable';
+import SelectInput from '../SelectInput/Select';
 
 import {
   Container,
@@ -30,7 +31,6 @@ function DetailsRestaurantWithBorder() {
           nossos clientes.
         </Description>
         <Price>R$39,90</Price>
-        <p>Por mês</p>
 
         {/* <Photos>
           <img src="images/restaurante.jpg" alt="" />
@@ -62,6 +62,8 @@ function DetailsRestaurantWithBorder() {
               ]}
             />
           </DatePickerCalendar>
+          <h2>Quantidade de pessoas</h2>
+          <SelectInput />
           <h2>Escolha sua mesa</h2>
           <section>
             <ButtonTable numberTable="1" />

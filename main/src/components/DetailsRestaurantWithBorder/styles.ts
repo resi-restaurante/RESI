@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 export const ContentRestaurant = styled.div`
   width: 54.3rem;
-  height: 70rem;
+  height: 75rem;
   background: #ffffff;
   border-radius: 2rem;
   box-shadow: 20px 20px 50px -30px #e53935;
@@ -22,6 +22,7 @@ export const ContentRestaurant = styled.div`
     border-radius: 1rem;
   }
 `;
+
 export const Title = styled.h1`
   position: absolute;
   left: 50rem;
