@@ -11,6 +11,6 @@ export const Button: React.FC<ButtonProps> = ({
   ...rest
 }) => (
   <Container type="button" {...rest}>
-    {loading ? 'Carregando ...' : children}
+    <h3>{loading ? 'Carregando ...' : children}</h3>
   </Container>
 );

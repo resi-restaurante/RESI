@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.footer`
   width: 100%;
-  max-width: auto;
-  height: 6rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+  bottom: 0;
   background: #e53935;
+`;
+
+export const Description = styled.p`
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 400;
 `;

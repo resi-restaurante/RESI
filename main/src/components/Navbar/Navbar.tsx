@@ -1,4 +1,3 @@
-import { FiUser } from 'react-icons/fi';
 import {
   ButtonLogin,
   Container,
@@ -6,7 +5,11 @@ import {
   NavigationButton,
 } from './styles';
 
-export function Header() {
+interface NavbarProps {
+  itemVisible: boolean;
+}
+
+export const Navbar = ({ itemVisible }: NavbarProps) => {
   return (
     <Container>
       <div>
@@ -15,11 +18,12 @@ export function Header() {
         </NavigationButton>
       </div>
       <ContainerLabel>
-        <NavigationButton to="/login">
-          <FiUser size={16} color="#fff" />
-          <ButtonLogin>Entrar</ButtonLogin>
-        </NavigationButton>
+        {itemVisible && (
+          <NavigationButton to="/login">
+            <ButtonLogin>Entrar</ButtonLogin>
+          </NavigationButton>
+        )}
       </ContainerLabel>
     </Container>
   );
-}
+};

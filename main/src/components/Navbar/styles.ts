@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { shade } from 'polished';
 
 export const Container = styled.div`
   @media screen and (max-width: 720px) {
@@ -14,8 +15,7 @@ export const Container = styled.div`
   padding: 0 30px;
   width: 100%;
   color: #fff;
-  background: #e53935;
-  /* background: transparent; */
+  background: transparent;
   color: #000;
   display: flex;
   justify-content: space-between;
@@ -96,12 +96,14 @@ export const ButtonLogin = styled.button`
 
   white-space: nowrap;
   font-size: 1rem;
-
+  font-weight: bold;
+  margin-right: 1rem;
   background: transparent;
-  color: #fff;
+  color: #e53935;
   transition: all 0.3s ease-in-out;
+  transition: color 0.2s;
   &:hover {
     transition: all 0.3s ease-in-out;
-    color: #fff;
+    color: ${shade(0.25, '#e53935')};
   }
 `;
