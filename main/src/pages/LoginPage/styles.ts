@@ -4,80 +4,56 @@ import { shade } from 'polished';
 export const Container = styled.div`
   width: 100%;
 `;
+
 export const ContainerLogin = styled.div`
   @media screen and (max-width: 720px) {
-    background-image: none;
     display: block;
     .FormLogin {
       width: 100%;
     }
   }
+  margin-top: 5rem;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 
-  background-image: url('https://miro.medium.com/max/8000/1*2y73oaziSVYkYdH5Wbo1NA.jpeg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  img {
-    margin-top: 2rem;
-  }
-
   .Formlogin {
     width: 30rem;
-    height: 100vh;
-
+    margin-bottom: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
-    background-color: #e53935;
-    color: #fff;
-    box-shadow: 1px solid rgba(0, 0, 0.05, 0.05);
-
-    .inputForm {
-      width: 80%;
-      text-align: left;
-      margin: 10px;
-      p {
-        margin-bottom: 0.2rem;
-      }
-
-      > p {
-        margin-top: 2rem;
-      }
-    }
+    color: #000;
 
     main {
-      margin-top: 1rem;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: flex-end;
+      width: 75%;
 
       #forgetPassaword {
-        margin-bottom: 1rem;
-      }
+        margin-bottom: 2rem;
 
-      button {
-        width: 5.8rem;
-        height: 2rem;
-        margin-left: 2.5rem;
-        background: #ff6865;
-        color: #fff;
-        border-radius: 4px;
+        p {
+          color: #000;
+          font-size: 0.9rem;
+          font-weight: normal;
+        }
       }
     }
-    footer {
-      display: flex;
-      flex-direction: row;
-      padding: 5rem;
-      align-items: center;
+    button {
+      width: 75%;
+      height: 3rem;
+      background: #e53935;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
     }
+
     a {
       color: #fff;
       margin-top: 24px;
@@ -93,5 +69,45 @@ export const ContainerLogin = styled.div`
         margin-left: 0.2rem;
       }
     }
+  }
+`;
+
+export const AdviseContainer = styled.div`
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
+
+  width: 55%;
+  height: 300%;
+  margin: 0 0 13% 2%;
+
+  h3 {
+    color: #000;
+    font-size: 3rem;
+  }
+
+  div {
+    margin-top: 1rem;
+    display: flex;
+    p {
+      color: #000;
+    }
+
+    #register-link {
+      color: #e53935;
+      margin-left: 0.2rem;
+    }
+  }
+`;
+
+export const InputFormContainer = styled.section`
+  width: 80%;
+  text-align: left;
+  p {
+    margin-bottom: 0.2rem;
+  }
+
+  > p {
+    margin-top: 2rem;
   }
 `;

@@ -1,11 +1,15 @@
 import { useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { FiMail, FiLock, FiArrowRight } from 'react-icons/fi';
+import { FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import Input from '../../components/Input';
-
-import { Container, ContainerLogin } from './styles';
+import { Input, Footer, Navbar } from '../../components';
+import {
+  Container,
+  ContainerLogin,
+  AdviseContainer,
+  InputFormContainer,
+} from './styles';
 
 export default function LoginPage() {
   const formRef = useRef<FormHandles>(null);
@@ -16,13 +20,20 @@ export default function LoginPage() {
 
   return (
     <Container>
+      <Navbar itemVisible={false} />
       <ContainerLogin>
+        <AdviseContainer>
+          <h3>Entre agora</h3>
+          <h3>para agendar uma mesa !</h3>
+          <div>
+            <p>Não tem uma conta ?</p>
+            <Link to="/register">
+              <p id="register-link">Registre-se aqui !</p>
+            </Link>
+          </div>
+        </AdviseContainer>
         <Form ref={formRef} onSubmit={handleSubmit} className="Formlogin">
-          <Link to="/">
-            <img src="images/logo.svg" alt="" />
-          </Link>
-
-          <div className="inputForm">
+          <InputFormContainer>
             <p>Email</p>
             <Input
               name="email"
@@ -37,24 +48,18 @@ export default function LoginPage() {
               placeholder="Digite sua senha"
               type="password"
             />
-          </div>
+          </InputFormContainer>
 
           <main>
             <Link to="/forgotpassword" id="forgetPassaword">
               <p>Esqueci minha senha</p>
             </Link>
-
-            <button type="button">login</button>
           </main>
 
-          <footer>
-            <Link to="/register">
-              <p>Não tem uma conta ? Cadastre-se !</p>
-              <FiArrowRight size={20} />
-            </Link>
-          </footer>
+          <button type="button">Entrar</button>
         </Form>
       </ContainerLogin>
+      <Footer positionType="absolute" />
     </Container>
   );
 }

@@ -1,7 +1,7 @@
 import { FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Footer from '../../components/Footer';
+import { Footer } from '../../components';
 import { Header } from '../../components/Header';
 /* eslint-disable-next-line jsx-a11y/alt-text */
 
