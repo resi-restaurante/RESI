@@ -134,7 +134,7 @@ export default function Home() {
         </section>
       </FormFuncionalites>
 
-      <Footer />
+      <Footer positionType="relative" />
     </Container>
   );
 }

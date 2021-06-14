@@ -33,7 +33,7 @@ function Restaurants() {
         reservePrice="39.90"
       />
 
-      <Footer />
+      <Footer positionType="fixed" />
     </Container>
   );
 }

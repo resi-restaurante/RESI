@@ -10,7 +10,7 @@ function DetailRestaurant() {
 
       <DetailsRestaurantWithBorder />
 
-      <Footer />
+      <Footer positionType="fixed" />
     </Container>
   );
 }
