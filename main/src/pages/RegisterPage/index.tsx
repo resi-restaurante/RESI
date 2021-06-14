@@ -1,9 +1,15 @@
 import { useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { FiMail, FiUser, FiCalendar, FiPhone, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
-import { Navbar, Input, Button, Footer } from '../../components';
-import { Container, FormContainer, DescriptionContainer } from './styles';
-import api from '../../services/api';
+import { Input, Footer, Navbar, Button } from '../../components';
+import {
+  Container,
+  ContainerLogin,
+  AdviseContainer,
+  FormRow,
+  FormContainer,
+} from './styles';
 
 interface SignUpFormData {
   name: string;
@@ -20,7 +26,7 @@ export default function RegisterPage() {
 
   const handleSubmit = useCallback(
     async (data: SignUpFormData): Promise<void> => {
-      await api.post('/users', data);
+      console.log(data);
     },
     [],
   );
@@ -28,48 +34,81 @@ export default function RegisterPage() {
   return (
     <Container>
       <Navbar itemVisible />
-      <DescriptionContainer>
-        <h3>Chega de filas, se cadastre aqui !</h3>
-        <p>Informe seus dados para que você possa fazer diversas reservas.</p>
-      </DescriptionContainer>
-      <FormContainer
-        ref={formRef}
-        onSubmit={handleSubmit}
-        className="Formlogin"
-      >
-        <div className="inputsContainer">
-          <Input name="name" icon={FiUser} placeholder="Digite seu nome" />
-          <Input name="birth_date" icon={FiCalendar} placeholder="dd/mm/aa" />
-          <Input name="email" icon={FiMail} placeholder="Digite seu email" />
-          <Input name="document" icon={FiPhone} placeholder="Digite seu CPF" />
-          <Input
-            name="cellphone"
-            icon={FiPhone}
-            placeholder="Digite seu telefone"
-            type="password"
-          />
-          <Input
-            name="password"
-            icon={FiLock}
-            placeholder="Digite sua senha"
-            style={{ width: '100%' }}
-            type="password"
-          />
+      <ContainerLogin>
+        <FormContainer
+          ref={formRef}
+          onSubmit={handleSubmit}
+          className="Formlogin"
+        >
+          <FormRow>
+            <Input name="name" icon={FiUser} placeholder="Digite seu nome" />
+          </FormRow>
+          <FormRow>
+            <div>
+              <Input
+                name="birth_date"
+                icon={FiCalendar}
+                placeholder="dd/mm/aa"
+              />
+            </div>
+            <div>
+              <Input
+                name="email"
+                icon={FiMail}
+                placeholder="Digite seu email"
+              />
+            </div>
+          </FormRow>
+          <FormRow>
+            <div>
+              <Input
+                name="document"
+                icon={FiPhone}
+                placeholder="Digite seu CPF"
+              />
+            </div>
+            <div>
+              <Input
+                name="cellphone"
+                icon={FiPhone}
+                placeholder="Digite seu telefone"
+                type="password"
+              />
+            </div>
+          </FormRow>
+          <FormRow>
+            <div>
+              <Input
+                name="password"
+                icon={FiLock}
+                placeholder="Digite sua senha"
+                type="password"
+              />
+            </div>
+            <div>
+              <Input
+                name="type_plan"
+                icon={FiLock}
+                placeholder="Confirme sua senha"
+                type="password"
+              />
+            </div>
+          </FormRow>
 
-          <Input
-            name="type_plan"
-            icon={FiLock}
-            placeholder="Confirme sua senha"
-            style={{ width: '100%' }}
-            type="password"
-          />
-        </div>
-        <footer>
           <Button type="button">Registrar</Button>
-        </footer>
-      </FormContainer>
-
-      <Footer positionType="relative" />
+        </FormContainer>
+        <AdviseContainer>
+          <h3>Registre-se agora</h3>
+          <h3>para agendar uma mesa !</h3>
+          <div>
+            <p>Já tem uma conta ?</p>
+            <Link to="/register">
+              <p id="register-link">Acesse aqui</p>
+            </Link>
+          </div>
+        </AdviseContainer>
+      </ContainerLogin>
+      <Footer positionType="absolute" />
     </Container>
   );
 }
