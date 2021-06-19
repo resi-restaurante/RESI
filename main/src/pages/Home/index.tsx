@@ -1,7 +1,7 @@
 import { FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Footer } from '../../components';
+
 import { Header } from '../../components/Header';
 /* eslint-disable-next-line jsx-a11y/alt-text */
 
@@ -19,6 +19,8 @@ import {
   FormHelp,
   InputContainer,
 } from './styles';
+import Footer from '../../components/Footer';
+
 // install Swiper modules
 SwiperCore.use([EffectCoverflow, Pagination]);
 
@@ -134,7 +136,7 @@ export default function Home() {
         </section>
       </FormFuncionalites>
 
-      <Footer positionType="relative" />
+      <Footer />
     </Container>
   );
 }

@@ -40,7 +40,7 @@ export default function ForgotPassword() {
           </footer>
         </FormContainer>
       </ContainerCard>
-      <Footer positionType="absolute" />
+      <Footer />
     </Container>
   );
 }

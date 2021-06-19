@@ -182,7 +182,7 @@ export const FormFuncionalites = styled.div`
   justify-content: center;
   align-items: center;
   color: #434343;
-  margin-bottom: 10rem;
+  margin-bottom: 11rem;
 
   .card {
     display: flex;

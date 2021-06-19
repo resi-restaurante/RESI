@@ -59,7 +59,7 @@ export default function LoginPage() {
           <button type="button">Entrar</button>
         </Form>
       </ContainerLogin>
-      <Footer positionType="absolute" />
+      <Footer />
     </Container>
   );
 }
