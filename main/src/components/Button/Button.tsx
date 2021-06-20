@@ -10,7 +10,7 @@ export const Button: React.FC<ButtonProps> = ({
   loading,
   ...rest
 }) => (
-  <Container type="button" {...rest}>
+  <Container type="submit" {...rest}>
     <h3>{loading ? 'Carregando ...' : children}</h3>
   </Container>
 );
