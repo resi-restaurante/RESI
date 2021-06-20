@@ -3,20 +3,58 @@ import { Link } from 'react-router-dom';
 import { FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import { Input, Footer, Navbar } from '../../components';
+import * as Yup from 'yup';
+import { useAuth } from '../../hooks/AuthContext';
+import { Input, Footer, Navbar, Button } from '../../components';
 import {
   Container,
   ContainerLogin,
   AdviseContainer,
   InputFormContainer,
 } from './styles';
+import getValidationErrors from '../../utils/getValidationErrors';
+
+interface SignInFormData {
+  email: string;
+  password: string;
+}
 
 export default function LoginPage() {
   const formRef = useRef<FormHandles>(null);
+  const { signIn } = useAuth();
 
-  const handleSubmit = useCallback(() => {
-    console.log('Roi');
-  }, []);
+  const handleSubmit = useCallback(
+    async (data: SignInFormData) => {
+      try {
+        formRef.current?.setErrors({});
+
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .required('E-mail obrigatório.')
+            .email('Digite um e-mail válida'),
+          password: Yup.string().min(
+            6,
+            'Senha deve conter no mínimo 6 dígitos',
+          ),
+        });
+
+        await schema.validate(data, {
+          abortEarly: false,
+        });
+
+        signIn({
+          email: data.email,
+          password: data.password,
+        });
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
+          formRef.current?.setErrors(errors);
+        }
+      }
+    },
+    [signIn],
+  );
 
   return (
     <Container>
@@ -56,7 +94,7 @@ export default function LoginPage() {
             </Link>
           </main>
 
-          <button type="button">Entrar</button>
+          <Button>Entrar</Button>
         </Form>
       </ContainerLogin>
       <Footer />

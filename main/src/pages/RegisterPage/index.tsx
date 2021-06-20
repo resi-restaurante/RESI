@@ -2,6 +2,8 @@ import { useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMail, FiUser, FiCalendar, FiPhone, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
+import * as Yup from 'yup';
+import { useHistory } from 'react-router-dom';
 import { Input, Footer, Navbar, Button } from '../../components';
 import {
   Container,
@@ -10,23 +12,60 @@ import {
   FormRow,
   FormContainer,
 } from './styles';
+import api from '../../services/api';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 interface SignUpFormData {
   name: string;
-  date: Date;
-  cellphone: number;
-  document: number;
+  date: string;
+  cellphone: string;
+  document: string;
   email: string;
   password: string;
-  type_plan: number;
+  type_plan: string;
 }
 
 export default function RegisterPage() {
+  const history = useHistory();
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
     async (data: SignUpFormData): Promise<void> => {
-      console.log(data);
+      try {
+        formRef.current?.setErrors({});
+
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Nome obrigatório'),
+          birth_date: Yup.date().required('Data de aniversário obrigatório'),
+          email: Yup.string()
+            .required('E-mail obrigatório')
+            .email('Digite um e-mail válido'),
+          document: Yup.string().required('Documento obrigatório'),
+          cellphone: Yup.string().required('Número de telefone obrigatório'),
+          password: Yup.string().min(
+            6,
+            'Senha deve conter no mínimo 6 dígitos',
+          ),
+        });
+
+        await schema.validate(data, {
+          abortEarly: false,
+        });
+
+        await api.post('/users', {
+          ...data,
+          cellphone: Number(data.cellphone),
+          document: Number(data.document),
+          type_plan: Number(data.type_plan),
+        });
+
+        history.push('/');
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
+          formRef.current?.setErrors(errors);
+        }
+      }
     },
     [],
   );
@@ -65,6 +104,8 @@ export default function RegisterPage() {
                 name="document"
                 icon={FiPhone}
                 placeholder="Digite seu CPF"
+                onChange={e => Number(e.target.value)}
+                type="number"
               />
             </div>
             <div>
@@ -72,7 +113,8 @@ export default function RegisterPage() {
                 name="cellphone"
                 icon={FiPhone}
                 placeholder="Digite seu telefone"
-                type="password"
+                onChange={e => Number(e.target.value)}
+                type="number"
               />
             </div>
           </FormRow>
@@ -90,12 +132,13 @@ export default function RegisterPage() {
                 name="type_plan"
                 icon={FiLock}
                 placeholder="Confirme sua senha"
-                type="password"
+                onChange={e => Number(e.target.value)}
+                type="number"
               />
             </div>
           </FormRow>
-
-          <Button type="button">Registrar</Button>
+          {/* <button type="submit">Registrar</button> */}
+          <Button>Registrar</Button>
         </FormContainer>
         <AdviseContainer>
           <h3>Registre-se agora</h3>

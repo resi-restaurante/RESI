@@ -46,12 +46,6 @@ export const ContainerLogin = styled.div`
     }
     button {
       width: 75%;
-      height: 3rem;
-      background: #e53935;
-      color: #fff;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: bold;
     }
 
     a {

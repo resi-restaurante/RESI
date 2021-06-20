@@ -8,6 +8,7 @@ import RegisterPage from './RegisterPage';
 import RestaurantsListing from './Restaurants';
 import ContactPage from './Contact';
 import DetailRestaurant from './DetailRestaurant';
+import { AuthProvider } from '../hooks/AuthContext';
 
 export function Routes() {
   const location = useLocation();
@@ -19,9 +20,11 @@ export function Routes() {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
+          <AuthProvider>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+          </AuthProvider>
           <Route path="/register">
             <RegisterPage />
           </Route>
