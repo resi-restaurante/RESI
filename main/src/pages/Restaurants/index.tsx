@@ -1,15 +1,21 @@
 import { Link } from 'react-router-dom';
+import { FiSearch } from 'react-icons/fi';
 import ContainerRestaurant from '../../components/ContainerRestaurant';
-
-import { Footer } from '../../components';
-import { Header } from '../../components/Header';
-import { Container } from './styles';
+import { Footer, Navbar } from '../../components';
+import { Container, HeaderContainer, City, Input } from './styles';
 
 function Restaurants() {
   return (
     <Container>
-      <Header />
-      <h1>Aparecida, SP</h1>
+      <Navbar itemVisible />
+      <HeaderContainer>
+        <City>Aparecida, SP</City>
+        <Input placeholder="Digite o nome do restaurante" icon={FiSearch} />
+        <span>
+          <h4>5 restaurantes encontrados</h4>
+          <div />
+        </span>
+      </HeaderContainer>
       <Link to="/detailsrestaurants">
         <ContainerRestaurant
           restaurantName="Restaurante Santa Fé"
