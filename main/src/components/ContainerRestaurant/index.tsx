@@ -1,4 +1,9 @@
-import { Container, RestaurantTitle, FoodPlate } from './styles';
+import {
+  Container,
+  RestaurantTitleContainer,
+  FoodPlate,
+  ContentContainer,
+} from './styles';
 
 interface PropsRestaurantList {
   restaurantName: string;
@@ -13,9 +18,19 @@ function ContainerRestaurant({
   return (
     <Container>
       <img src="images/restaurante.jpg" alt="" />
-      <RestaurantTitle>{restaurantName}</RestaurantTitle>
-      <p>Mais informações...</p>
-      <FoodPlate>{`R$${reservePrice}`}</FoodPlate>
+      <ContentContainer>
+        <RestaurantTitleContainer>
+          <h1>{restaurantName}</h1>
+          <p>
+            O restaurante santa fé prioriza a divizão de cores e cartas para
+            que...
+          </p>
+        </RestaurantTitleContainer>
+        <footer>
+          <p>Mais informações...</p>
+          <FoodPlate>{`R$${reservePrice}`}</FoodPlate>
+        </footer>
+      </ContentContainer>
     </Container>
   );
 }

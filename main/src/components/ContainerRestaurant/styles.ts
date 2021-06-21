@@ -15,17 +15,18 @@ export const Container = styled.div`
   justify-content: center;
   margin: 0 auto;
 
-  flex-direction: row;
-  width: 54.3rem;
+  flex-direction: column;
+  width: 60%;
   height: 9.5rem;
 
-  margin: 4rem;
+  margin: 2rem 0 2rem 3rem;
   padding: 1rem;
 
   background: #fff;
-  border-radius: 10px;
+  border-radius: 0.4rem;
 
-  border: 2px solid #cccccc;
+  -webkit-box-shadow: 6px 9px 14px -1px rgba(107, 107, 107, 0.33);
+  box-shadow: 6px 9px 14px -1px rgba(107, 107, 107, 0.33);
   img {
     width: 179px;
     height: 119px;
@@ -35,28 +36,53 @@ export const Container = styled.div`
   h2 {
     color: #e53935;
   }
-  p,
+
   h1 {
-    color: #6f6f6f;
+    color: #e53935;
+    opacity: 90%;
   }
   p {
-    text-decoration-line: underline;
-    margin-top: 4.5rem;
     margin-right: 1rem;
+    color: #6f6f6f;
+  }
+
+  &:hover {
+    border: 2px solid #e53935;
   }
 `;
-export const RestaurantTitle = styled.h1`
-  @media screen and (max-width: 720px) {
+
+export const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 73%;
+  height: 100%;
+  margin-left: 1rem;
+
+  footer {
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
-    font-size: 1rem;
-    color: red;
+    align-items: center;
+    margin-top: 2.5rem;
+
+    p {
+      text-decoration-line: underline;
+      opacity: 80%;
+      cursor: pointer;
+    }
   }
-  font-size: 2rem;
-  font-weight: 400;
-  align-items: baseline;
-  margin: 2rem;
 `;
+
+export const RestaurantTitleContainer = styled.div`
+  align-self: left;
+
+  h1 {
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+`;
+
 export const FoodPlate = styled.h2`
   @media screen and (max-width: 720px) {
     display: flex;
@@ -64,6 +90,4 @@ export const FoodPlate = styled.h2`
   }
   font-weight: bold;
   font-size: 24px;
-  line-height: 28px;
-  margin-top: 5.5rem;
 `;
