@@ -1,6 +1,5 @@
 import DetailsRestaurantWithBorder from '../../components/DetailsRestaurantWithBorder';
-import { Footer } from '../../components';
-import { Header } from '../../components/Header';
+import { Footer, Header } from '../../components';
 import { Container } from './styles';
 
 function DetailRestaurant() {
