@@ -16,7 +16,7 @@ export const Container = styled.div`
   margin: 0 auto;
 
   flex-direction: column;
-  width: 60%;
+  width: 85%;
   height: 9.5rem;
 
   margin: 2rem 0 2rem 3rem;

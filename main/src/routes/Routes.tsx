@@ -12,8 +12,8 @@ interface RouterProps extends ReactDOMRouteProps {
   component: React.ComponentType;
 }
 
-export const Route: React.FC<RouterProps> = ({
-  isPrivate = false,
+export const PrivateRoute: React.FC<RouterProps> = ({
+  isPrivate = true,
   component: Component,
   ...rest
 }) => {
@@ -28,7 +28,7 @@ export const Route: React.FC<RouterProps> = ({
         ) : (
           <Redirect
             to={{
-              pathname: isPrivate ? '/login' : '/dashboard',
+              pathname: '/login',
               state: { from: location },
             }}
           />
@@ -38,4 +38,4 @@ export const Route: React.FC<RouterProps> = ({
   );
 };
 
-export default Route;
+export default PrivateRoute;

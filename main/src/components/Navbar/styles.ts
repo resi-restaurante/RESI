@@ -107,3 +107,28 @@ export const ButtonLogin = styled.button`
     color: ${shade(0.25, '#e53935')};
   }
 `;
+
+export const UserInformationContainer = styled(Link)`
+  display: flex;
+  transition: opacity 0.5s;
+  margin-right: 1rem;
+  svg {
+    margin-right: 0.5rem;
+    color: #000;
+  }
+
+  h4 {
+    font-size: 16px;
+    color: #000;
+  }
+
+  #userName {
+    margin: 0 0.2rem 0 0.2rem;
+    color: #000;
+  }
+
+  &:hover {
+    opacity: 0.25;
+    cursor: pointer;
+  }
+`;
