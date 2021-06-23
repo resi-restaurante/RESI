@@ -8,12 +8,14 @@ import RestaurantsListing from '../pages/Restaurants';
 import ContactPage from '../pages/Contact';
 import DetailRestaurant from '../pages/DetailRestaurant';
 import ProfilePage from '../pages/Profile';
+import ConfirmedTable from '../pages/ConfirmedTable';
 
 export function Routes() {
   const location = useLocation();
 
   return (
     <Switch location={location}>
+      <Route path="/confirmed" component={ConfirmedTable} />
       <Route path="/" exact component={Home} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
