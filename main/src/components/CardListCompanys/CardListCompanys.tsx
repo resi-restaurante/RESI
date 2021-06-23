@@ -1,4 +1,5 @@
 import { FiTrash, FiEye } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 import {
   Container,
   RestaurantTitleContainer,
@@ -16,6 +17,12 @@ export const CardListCompanys = ({
   id,
   restaurantName,
 }: PropsRestaurantList) => {
+  const history = useHistory();
+  const handleGoToCompany = () => {
+    const data = { id, restaurantName };
+    history.push('/mycompany', data);
+  };
+
   return (
     <Container>
       <ContentContainer>
@@ -25,7 +32,8 @@ export const CardListCompanys = ({
         </RestaurantTitleContainer>
       </ContentContainer>
       <IconMenu>
-        <FiEye size={20} />
+        <FiEye size={20} onClick={handleGoToCompany} />
+
         <FiTrash size={20} />
       </IconMenu>
     </Container>

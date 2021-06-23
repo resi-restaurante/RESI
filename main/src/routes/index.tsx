@@ -8,6 +8,8 @@ import RestaurantsListing from '../pages/Restaurants';
 import ContactPage from '../pages/Contact';
 import DetailRestaurant from '../pages/DetailRestaurant';
 import ProfilePage from '../pages/Profile';
+import CompanyPage from '../pages/Company';
+
 import ConfirmedTable from '../pages/ConfirmedTable';
 
 export function Routes() {
@@ -24,6 +26,7 @@ export function Routes() {
       <Route path="/contact" component={ContactPage} />
       <Route path="/detailsrestaurants" component={DetailRestaurant} />
       <PrivateRoute path="/profile" component={ProfilePage} />
+      <PrivateRoute path="/mycompany" component={CompanyPage} />
     </Switch>
   );
 }
