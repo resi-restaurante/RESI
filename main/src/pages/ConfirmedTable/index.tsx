@@ -1,6 +1,5 @@
 import { BsCheckCircle } from 'react-icons/bs';
-import { Button, Footer } from '../../components';
-import { Header } from '../../components/Header';
+import { Button, Footer, Header } from '../../components';
 import { Code, Container, ContainerConfirmed } from './styles';
 
 function ConfirmedTable() {
