@@ -92,7 +92,7 @@ function DetailsRestaurantWithBorder() {
               plugins={[<TimePicker hideSeconds />]}
             />
           </DatePickerTime>
-          <Link to="/">
+          <Link to="/confirmed">
             <button className="reserv" type="button">
               Reservar
             </button>
