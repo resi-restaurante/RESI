@@ -11,10 +11,10 @@ interface PropsRestaurantList {
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-function ContainerRestaurant({
+export const ContainerRestaurant = ({
   restaurantName,
   reservePrice,
-}: PropsRestaurantList) {
+}: PropsRestaurantList) => {
   return (
     <Container>
       <img src="images/restaurante.jpg" alt="" />
@@ -33,6 +33,4 @@ function ContainerRestaurant({
       </ContentContainer>
     </Container>
   );
-}
-
-export default ContainerRestaurant;
+};

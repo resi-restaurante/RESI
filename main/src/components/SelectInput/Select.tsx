@@ -12,7 +12,7 @@ const options = [
   { value: '9', label: '9' },
 ];
 
-function SelectInput() {
+export const SelectInput = () => {
   return (
     <Select
       options={options}
@@ -29,4 +29,3 @@ function SelectInput() {
     />
   );
 }
-export default SelectInput;

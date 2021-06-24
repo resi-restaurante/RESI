@@ -1,4 +1,4 @@
-import { FiUser } from 'react-icons/fi';
+import { FiUser, FiMapPin } from 'react-icons/fi';
 import {
   ButtonLogin,
   Container,
@@ -15,6 +15,10 @@ export function Header() {
         </NavigationButton>
       </div>
       <ContainerLabel>
+        <NavigationButton to="/restaurants">
+          <FiMapPin size={16} color="#fff" />
+          <ButtonLogin>Restaurantes</ButtonLogin>
+        </NavigationButton>
         <NavigationButton to="/login">
           <FiUser size={16} color="#fff" />
           <ButtonLogin>Entrar</ButtonLogin>

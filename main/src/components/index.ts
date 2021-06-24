@@ -8,6 +8,9 @@ import InputWithOutForm from './InputWithOutForm';
 import Header from './Header';
 import CardListAppointment from './CardListAppointment';
 import CardListCompanys from './CardListCompanys';
+import ContainerRestaurant from './ContainerRestaurant';
+import ButtonTable from './ButtonTable';
+import SelectInput from './SelectInput';
 
 export {
   TextArea,
@@ -20,4 +23,7 @@ export {
   Header,
   CardListAppointment,
   CardListCompanys,
+  ContainerRestaurant,
+  ButtonTable,
+  SelectInput,
 };

@@ -30,27 +30,7 @@ export const Container = styled.div`
     margin-top: 0.5rem;
   }
 `;
-export const ContainerLabel = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
 
-  a {
-    margin-left: 10vh;
-  }
-  p {
-    text-align: center;
-    font-family: Roboto, sans-serif;
-    font-weight: 400;
-    color: #fff;
-    &:hover {
-      transition: all 0.2s ease-in-out;
-      color: #c53030;
-    }
-  }
-`;
 export const Nav = styled.div`
   margin-top: -80;
   display: flex;
@@ -85,6 +65,32 @@ export const NavigationButton = styled(Link)`
 
   svg {
     margin-right: 0.3rem;
+  }
+`;
+
+export const ContainerLabel = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+
+  a {
+    margin-left: 5vh;
+  }
+  p {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    color: #fff;
+    &:hover {
+      transition: all 0.2s ease-in-out;
+      color: #c53030;
+    }
+  }
+
+  ${NavigationButton} + ${NavigationButton} {
+    margin-right: 2rem;
   }
 `;
 
