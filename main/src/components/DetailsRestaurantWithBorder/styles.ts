@@ -2,19 +2,16 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 5rem;
 `;
 export const ContentRestaurant = styled.div`
   width: 54.3rem;
-  height: 75rem;
   background: #ffffff;
   border-radius: 2rem;
   box-shadow: 20px 20px 50px -30px #e53935;
-  margin-top: 25rem;
+  margin-top: 1rem;
   img {
     width: 20rem;
     height: 14rem;
