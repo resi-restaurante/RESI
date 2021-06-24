@@ -18,6 +18,8 @@ export const RestaurantGrid = styled.div`
   border-radius: 2rem;
   box-shadow: 20px 20px 50px -30px #e53935;
   margin-top: 1rem;
+  width: 80%;
+
   img {
     @media screen and (max-width: 720px) {
       width: 15rem;
