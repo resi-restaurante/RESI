@@ -1,10 +1,25 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi';
-import ContainerRestaurant from '../../components/ContainerRestaurant';
-import { Footer, Navbar } from '../../components';
-import { Container, HeaderContainer, City, Input } from './styles';
+import { Footer, Navbar, ContainerRestaurant } from '../../components';
+import { Container, HeaderContainer, City, Input, Button } from './styles';
+import api from '../../services/api';
+import RestaurantData from '../../dtos/Restaurant';
 
 function Restaurants() {
+  const [restaurants, setRestaurants] = useState([{} as RestaurantData]);
+  const history = useHistory();
+
+  useEffect(() => {
+    api.get('establishments?city=Aparecida&state=SP').then((response: any) => {
+      setRestaurants(response.data);
+    });
+  }, []);
+
+  const handleGoToRestaurant = (data: RestaurantData) => {
+    history.push('/detailsrestaurants', data);
+  };
+
   return (
     <Container>
       <Navbar itemVisible />
@@ -12,33 +27,18 @@ function Restaurants() {
         <City>Aparecida, SP</City>
         <Input placeholder="Digite o nome do restaurante" icon={FiSearch} />
         <span>
-          <h4>5 restaurantes encontrados</h4>
+          <h4>{restaurants.length} restaurantes encontrados</h4>
           <div />
         </span>
       </HeaderContainer>
-      <Link to="/detailsrestaurants">
-        <ContainerRestaurant
-          restaurantName="Restaurante Santa Fé"
-          reservePrice="39.90"
-        />
-      </Link>
-      <ContainerRestaurant
-        restaurantName="Restaurante da Maria"
-        reservePrice="39.90"
-      />
-      <ContainerRestaurant
-        restaurantName="Buteco do Valdir"
-        reservePrice="39.90"
-      />
-      <ContainerRestaurant
-        restaurantName="Restaurante Gran Fino"
-        reservePrice="39.90"
-      />
-      <ContainerRestaurant
-        restaurantName="Restaurante do Palito"
-        reservePrice="39.90"
-      />
-
+      {restaurants.map((restaurant: RestaurantData) => (
+        <Button onClick={() => handleGoToRestaurant(restaurant)}>
+          <ContainerRestaurant
+            restaurantName={restaurant.nome}
+            reservePrice="39.90"
+          />
+        </Button>
+      ))}
       <Footer />
     </Container>
   );

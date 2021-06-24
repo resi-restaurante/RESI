@@ -31,3 +31,7 @@ export const City = styled.h1`
 `;
 
 export const Input = styled(InputWithOutForm)``;
+
+export const Button = styled.div`
+  cursor: pointer;
+`;
