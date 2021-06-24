@@ -9,6 +9,7 @@ import ContactPage from '../pages/Contact';
 import DetailRestaurant from '../pages/DetailRestaurant';
 import ProfilePage from '../pages/Profile';
 import CompanyPage from '../pages/Company';
+import PaymentPage from '../pages/Payment';
 
 import ConfirmedTable from '../pages/ConfirmedTable';
 
@@ -25,6 +26,7 @@ export function Routes() {
       <Route path="/restaurants" component={RestaurantsListing} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/detailsrestaurants" component={DetailRestaurant} />
+      <Route path="/payment" component={PaymentPage} />
       <PrivateRoute path="/profile" component={ProfilePage} />
       <PrivateRoute path="/mycompany" component={CompanyPage} />
     </Switch>
