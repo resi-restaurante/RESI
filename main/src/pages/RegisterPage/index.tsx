@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { FiMail, FiUser, FiCalendar, FiPhone, FiLock } from 'react-icons/fi';
+import { FiMail, FiUser, FiPhone, FiLock, FiFileText } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import { useHistory } from 'react-router-dom';
+import DatePicker from 'react-multi-date-picker';
 import { Input, Footer, Navbar, Button } from '../../components';
 import {
   Container,
@@ -13,7 +15,7 @@ import {
   FormContainer,
 } from './styles';
 import api from '../../services/api';
-import getValidationErrors from '../../utils/getValidationErrors';
+import { getValidationErrors, cpfMask, cellphoneMask } from '../../utils';
 
 interface SignUpFormData {
   name: string;
@@ -22,10 +24,14 @@ interface SignUpFormData {
   document: string;
   email: string;
   password: string;
-  type_plan: string;
+  password_confirmation?: string;
+  type_plan: number;
 }
 
 export default function RegisterPage() {
+  const [formatedDocument, setFormatedDocument] = useState('');
+  const [formatedCellphone, setFormattedCellphone] = useState('');
+
   const history = useHistory();
   const formRef = useRef<FormHandles>(null);
 
@@ -46,6 +52,9 @@ export default function RegisterPage() {
             6,
             'Senha deve conter no mínimo 6 dígitos',
           ),
+          password_confirmation: Yup.string()
+            .required('Deve ser inserido valor válido')
+            .oneOf([Yup.ref('password'), undefined], 'Confirmação incorreta.'),
         });
 
         await schema.validate(data, {
@@ -56,9 +65,8 @@ export default function RegisterPage() {
           ...data,
           cellphone: Number(data.cellphone),
           document: Number(data.document),
-          type_plan: Number(data.type_plan),
+          type_plan: 0,
         });
-
         history.push('/');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -84,11 +92,7 @@ export default function RegisterPage() {
           </FormRow>
           <FormRow>
             <div>
-              <Input
-                name="birth_date"
-                icon={FiCalendar}
-                placeholder="dd/mm/aa"
-              />
+              <DatePicker name="birth_date" type="input-icon" />
             </div>
             <div>
               <Input
@@ -102,10 +106,10 @@ export default function RegisterPage() {
             <div>
               <Input
                 name="document"
-                icon={FiPhone}
+                icon={FiFileText}
                 placeholder="Digite seu CPF"
-                onChange={e => Number(e.target.value)}
-                type="number"
+                value={cpfMask(formatedDocument)}
+                onChange={e => setFormatedDocument(e.target.value)}
               />
             </div>
             <div>
@@ -113,8 +117,9 @@ export default function RegisterPage() {
                 name="cellphone"
                 icon={FiPhone}
                 placeholder="Digite seu telefone"
-                onChange={e => Number(e.target.value)}
-                type="number"
+                value={cellphoneMask(formatedCellphone)}
+                onChange={e => setFormattedCellphone(e.target.value)}
+                max="12"
               />
             </div>
           </FormRow>
@@ -129,11 +134,10 @@ export default function RegisterPage() {
             </div>
             <div>
               <Input
-                name="type_plan"
+                name="password_confirmation"
                 icon={FiLock}
                 placeholder="Confirme sua senha"
-                onChange={e => Number(e.target.value)}
-                type="number"
+                type="password"
               />
             </div>
           </FormRow>
