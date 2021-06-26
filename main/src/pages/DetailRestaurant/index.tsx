@@ -11,7 +11,7 @@ import {
   RestaurantGrid,
   InformationContainer,
 } from './styles';
-import RestaurantData from '../../dtos/Restaurant';
+import RestaurantData from '../../hooks/dtos/Restaurant';
 
 function DetailRestaurant(props: any) {
   const [restaurantInfo, setRestaurantInfo] = useState({} as RestaurantData);

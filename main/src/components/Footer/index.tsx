@@ -51,15 +51,15 @@ function Footer() {
             <Links href="#">Preços</Links>
           </Column>
           <Column>
-            <h4>RESI</h4>
-            <Links href="#">Home</Links>
-            <Links href="#">Contato</Links>
-            <Links href="#">Sobre</Links>
-            <Links href="#">Como Funciona</Links>
+            <h4>Extras</h4>
+            <Links href="#">Privacidade</Links>
+            <Links href="#">Termos de Uso</Links>
+            <Links href="#">Direitos Autorais</Links>
+            <Links href="#">Marca</Links>
           </Column>
         </Row>
       </Wrapper>
-      <Description> © Todos os direitos reservados | Resi</Description>
+      <Description> © RESI 2021 | Todos os direitos reservados</Description>
     </Container>
   );
 }

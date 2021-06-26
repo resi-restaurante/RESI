@@ -2,6 +2,7 @@ import { FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'semantic-ui-css/semantic.min.css';
+import { Card } from 'semantic-ui-react';
 import { Header } from '../../components';
 /* eslint-disable-next-line jsx-a11y/alt-text */
 
@@ -19,6 +20,7 @@ import {
   FormHelp,
   InputContainer,
   SectionPrices,
+  Testimonials,
 } from './styles';
 import Footer from '../../components/Footer';
 import CardPrices from '../../components/CardPrices';
@@ -138,9 +140,37 @@ export default function Home() {
           <button type="submit">Finalizar</button>
         </section>
       </FormFuncionalites>
+
       <SectionPrices>
         <CardPrices />
       </SectionPrices>
+      <Testimonials>
+        <h2>Quem usou recomendou !!</h2>
+        <section>
+          <Card
+            className="CardOne"
+            image="/images/Dono1.jpg"
+            header="José Silva"
+            meta="Dono de Restaurante"
+            description="Muito boa essa plataforma com ela aumentei a 
+            quantidade de pessoas que reservam mesas em meu restaurante."
+          />
+          <Card
+            image="/images/restaurant.jpg"
+            header="Elisa Santos"
+            meta="Cliente"
+            description="É Muito simples realizar 
+            minhas reservas de mesa sem burocrácia, recomendo a todos "
+          />
+          <Card
+            image="/images/Dono2.jpg"
+            header="João Barbosa"
+            meta="Dono de Restaurante"
+            description="Simplesmente dobrei o número de reservas feitas em
+             meu restaurante, a RESI é incrivel!!!"
+          />
+        </section>
+      </Testimonials>
       <Footer />
     </Container>
   );

@@ -15,14 +15,14 @@ function CardPrices() {
         <h2>O Melhor Plano</h2>
         <p>
           Assine já seu plano e aumente o faturamento de seu restaurante com
-          nosso sistema de reservas{' '}
+          nosso sistema de reservas.
         </p>
       </SectionTitle>
       <Options>
         <Plan>
           <Subscription>
             <h2>Preço</h2>
-            <p>R$30,00 Ao Mês</p>
+            <p>R$34,90 Ao Mês</p>
           </Subscription>
           <MdAssignmentTurnedIn size={60} />
           <Benefits>
@@ -30,6 +30,7 @@ function CardPrices() {
             <li>Dinheiro na sua conta</li>
             <li>Reservas de forma simples e prática</li>
           </Benefits>
+          <button type="submit">Assine</button>
         </Plan>
       </Options>
     </Container>

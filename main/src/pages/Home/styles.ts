@@ -91,6 +91,7 @@ export const Container = styled.div`
 `;
 
 export const SectionPrices = styled.section`
+  padding-bottom: 4.4rem;
   background: linear-gradient(180deg, #cf6679, #c53030);
 `;
 
@@ -249,6 +250,39 @@ export const FormFuncionalites = styled.div`
     }
     button {
       font-size: 70%;
+    }
+  }
+`;
+export const Testimonials = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  margin-left: 1rem;
+  margin-top: 3rem;
+  h2 {
+    color: #e53935;
+    text-align: center;
+    font-weight: 600;
+    font-size: 3.5rem;
+    font-family: Ubuntu, sans-serif;
+  }
+  section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 2rem;
+
+    margin-bottom: 10rem;
+    margin-top: 5rem;
+  }
+  @media screen and (max-width: 720px) {
+    section {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      gap: 2rem;
     }
   }
 `;
