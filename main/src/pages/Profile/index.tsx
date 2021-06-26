@@ -17,6 +17,7 @@ import {
   Footer,
 } from '../../components';
 import profileAvatar from '../../assets/images/profile.jpg';
+import Modal from '../../components/Modal';
 import { useAuth } from '../../hooks/AuthContext';
 
 export default function ProfilePage() {
@@ -57,6 +58,7 @@ export default function ProfilePage() {
           >
             <FiCalendar size={20} />
             <h3>Agendamentos</h3>
+            <Modal />
           </ContentContainer>
           <ContentContainer
             onPressContent={showCompanys}

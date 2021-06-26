@@ -27,7 +27,7 @@ export function Routes() {
       <Route path="/contact" component={ContactPage} />
       <Route path="/detailsrestaurants" component={DetailRestaurant} />
       <Route path="/payment" component={PaymentPage} />
-      <PrivateRoute path="/profile" component={ProfilePage} />
+      <Route path="/profile" component={ProfilePage} />
       <PrivateRoute path="/mycompany" component={CompanyPage} />
     </Switch>
   );

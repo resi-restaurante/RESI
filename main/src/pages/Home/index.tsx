@@ -1,7 +1,7 @@
 import { FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import 'semantic-ui-css/semantic.min.css';
 import { Header } from '../../components';
 /* eslint-disable-next-line jsx-a11y/alt-text */
 
@@ -18,8 +18,10 @@ import {
   FormFuncionalites,
   FormHelp,
   InputContainer,
+  SectionPrices,
 } from './styles';
 import Footer from '../../components/Footer';
+import CardPrices from '../../components/CardPrices';
 
 // install Swiper modules
 SwiperCore.use([EffectCoverflow, Pagination]);
@@ -99,6 +101,7 @@ export default function Home() {
           </Swiper>
         </>
       </FormHelp>
+
       <h1>Como Funciona ?</h1>
       <FormFuncionalites>
         <section className="card">
@@ -135,7 +138,9 @@ export default function Home() {
           <button type="submit">Finalizar</button>
         </section>
       </FormFuncionalites>
-
+      <SectionPrices>
+        <CardPrices />
+      </SectionPrices>
       <Footer />
     </Container>
   );

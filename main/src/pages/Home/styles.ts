@@ -37,8 +37,6 @@ export const Container = styled.div`
     h3 {
       text-align: center;
     }
-    .InitialPage {
-    }
   }
 
   .InitialPage {
@@ -90,6 +88,10 @@ export const Container = styled.div`
       line-height: 2rem;
     }
   }
+`;
+
+export const SectionPrices = styled.section`
+  background: linear-gradient(180deg, #cf6679, #c53030);
 `;
 
 export const InputContainer = styled.div`
@@ -234,7 +236,6 @@ export const FormFuncionalites = styled.div`
       color: #f0f0f0;
     }
   }
-
   @media screen and (max-width: 720px) {
     margin-top: 10rem;
     margin-bottom: 12rem;
