@@ -1,5 +1,5 @@
 import { Switch, useLocation, Route } from 'react-router-dom';
-import PrivateRoute from './Routes';
+// import PrivateRoute from './Routes';
 import ForgotPassword from '../pages/ForgotPassword';
 import Home from '../pages/Home';
 import LoginPage from '../pages/LoginPage';
@@ -27,8 +27,8 @@ export function Routes() {
       <Route path="/contact" component={ContactPage} />
       <Route path="/detailsrestaurants" component={DetailRestaurant} />
       <Route path="/payment" component={PaymentPage} />
-      <PrivateRoute path="/profile" component={ProfilePage} />
-      <PrivateRoute path="/mycompany" component={CompanyPage} />
+      <Route path="/profile" component={ProfilePage} />
+      <Route path="/mycompany" component={CompanyPage} />
     </Switch>
   );
 }

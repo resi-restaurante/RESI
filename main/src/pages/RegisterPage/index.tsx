@@ -149,7 +149,7 @@ export default function RegisterPage() {
           <h3>para agendar uma mesa !</h3>
           <div>
             <p>Já tem uma conta ?</p>
-            <Link to="/register">
+            <Link to="/login">
               <p id="register-link">Acesse aqui</p>
             </Link>
           </div>

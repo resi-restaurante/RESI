@@ -4,7 +4,8 @@ import { FiSearch } from 'react-icons/fi';
 import { Footer, Navbar, ContainerRestaurant } from '../../components';
 import { Container, HeaderContainer, City, Input, Button } from './styles';
 import api from '../../services/api';
-import RestaurantData from '../../dtos/Restaurant';
+// eslint-disable-next-line import/extensions
+import RestaurantData from '../../hooks/dtos/Restaurant';
 
 function Restaurants() {
   const [restaurants, setRestaurants] = useState([{} as RestaurantData]);
