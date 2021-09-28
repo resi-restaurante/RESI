@@ -11,6 +11,7 @@ import {
   RestaurantGrid,
   InformationContainer,
 } from './styles';
+import DetalhesRestaurante from '../../components/DetalhesRestaurante';
 
 // import RestaurantData from '../../dtos/Restaurant';
 
@@ -62,7 +63,7 @@ function DetailRestaurant() {
         </InformationContainer>
         <Button>Reservar Agora !</Button>
       </RestaurantGrid>
-
+      <DetalhesRestaurante />
       <Footer />
     </Container>
   );

@@ -26,6 +26,7 @@ export default function LoginPage() {
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
       try {
+        console.log(data.email);
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -55,7 +56,6 @@ export default function LoginPage() {
     },
     [signIn],
   );
-
   return (
     <Container>
       <Navbar itemVisible={false} />

@@ -12,6 +12,7 @@ import CompanyPage from '../pages/Company';
 import PaymentPage from '../pages/Payment';
 
 import ConfirmedTable from '../pages/ConfirmedTable';
+import RegisterRestaurant from '../pages/RegisterRestaurant';
 
 export function Routes() {
   const location = useLocation();
@@ -29,6 +30,7 @@ export function Routes() {
       <Route path="/payment" component={PaymentPage} />
       <Route path="/profile" component={ProfilePage} />
       <Route path="/mycompany" component={CompanyPage} />
+      <Route path="/registerrestaurant" component={RegisterRestaurant} />
     </Switch>
   );
 }

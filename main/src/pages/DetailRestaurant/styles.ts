@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,6 +9,7 @@ export const Container = styled.div`
 `;
 
 export const RestaurantGrid = styled.div`
+  margin-bottom: 7rem;
   display: flex;
   flex-direction: column;
 
