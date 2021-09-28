@@ -3,16 +3,24 @@ import { useRef, useCallback } from 'react';
 import { FiMail } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import { Button, Footer, Header, Input } from '../../components';
 
-import { Container } from './styles';
+import { Button, Footer, Header, Input, TextArea } from '../../components';
+
+import { Container, ResgisterForm } from './styles';
 import { getValidationErrors } from '../../utils';
+import NewSelect from '../../components/NewSelect';
+import ImageInput from '../../components/FileInput';
 
 interface FormData {
   email: string;
 }
 
 export default function RegisterRestaurant() {
+  const selectOptions = [
+    { value: 'brazil', label: 'São Paulo' },
+    { value: 'usa', label: 'Rio de Janeiro' },
+    { value: 'argentina', label: 'Minas gerais' },
+  ];
   const formRef = useRef<FormHandles>(null);
   // const handleSubmit: SubmitHandler<FormData> = data => {
   //   console.log(data);
@@ -41,17 +49,73 @@ export default function RegisterRestaurant() {
       <Header />
 
       <h1>Cadastre seu Restaunte !!</h1>
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <Input
-          name="email"
-          icon={FiMail}
-          type="email"
-          placeholder="Digite seu email"
-          style={{ width: '100%' }}
-        />
-        <Button>Entrar</Button>
-      </Form>
+      <ResgisterForm>
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <Input
+            name="nameRestaurant"
+            icon={FiMail}
+            placeholder="Digite o nome do seu restaurante"
+            style={{ width: '100%' }}
+          />
+          <TextArea
+            placeholder="Descrição do seu Restaurante"
+            icon={FiMail}
+            name="sobre"
+          />
+          <Input
+            name="CNPJ"
+            type="number"
+            icon={FiMail}
+            placeholder="Digite o CNPJ de seu restauarnte"
+            style={{ width: '100%' }}
+          />
+          <NewSelect name="country" label="Choose your country">
+            {' '}
+            {selectOptions.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </NewSelect>
 
+          <Input
+            name="Cidade"
+            icon={FiMail}
+            placeholder="Digite sua cidade"
+            style={{ width: '100%' }}
+          />
+          <Input
+            name="Bairro"
+            icon={FiMail}
+            placeholder="Digite seu bairro"
+            style={{ width: '100%' }}
+          />
+          <Input
+            name="Rua/Avenida"
+            icon={FiMail}
+            placeholder="Digite sua rua/avenida"
+            style={{ width: '100%' }}
+          />
+          <Input
+            name="numberRestaurant"
+            type="number"
+            icon={FiMail}
+            placeholder="Numero"
+            style={{ width: '100%' }}
+          />
+          <Input
+            name="telefone"
+            type="number"
+            icon={FiMail}
+            placeholder="Digite o telefone de seu restaurante"
+            style={{ width: '100%' }}
+          />
+          <p>Escolha as imagens de seu restaurante</p>
+          <ImageInput name="ImgRestaurant" />
+
+          <Button>Cadastrar</Button>
+        </Form>
+      </ResgisterForm>
       <Footer />
     </Container>
   );
