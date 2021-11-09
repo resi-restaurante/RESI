@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiMail, FiUser, FiPhone, FiLock, FiFileText } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import { useHistory } from 'react-router-dom';
 import DatePicker from 'react-multi-date-picker';
 import { Input, Footer, Navbar, Button } from '../../components';
 import {
@@ -14,8 +13,10 @@ import {
   FormRow,
   FormContainer,
 } from './styles';
-import api from '../../services/api';
+// import api from '../../services/api';
 import { getValidationErrors, cpfMask, cellphoneMask } from '../../utils';
+
+import { useAuth } from '../../contexts/Auth';
 
 interface SignUpFormData {
   name: string;
@@ -32,12 +33,15 @@ export default function RegisterPage() {
   const [formatedDocument, setFormatedDocument] = useState('');
   const [formatedCellphone, setFormattedCellphone] = useState('');
 
+  const { signUp } = useAuth();
   const history = useHistory();
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
-    async (data: SignUpFormData): Promise<void> => {
+    async (data: SignUpFormData) => {
+      history.push('/profile');
       try {
+        console.log(data);
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -61,13 +65,10 @@ export default function RegisterPage() {
           abortEarly: false,
         });
 
-        await api.post('/users', {
-          ...data,
-          cellphone: Number(data.cellphone),
-          document: Number(data.document),
-          type_plan: 0,
+        await signUp({
+          email: data.email,
+          password: data.password,
         });
-        history.push('/');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -75,12 +76,12 @@ export default function RegisterPage() {
         }
       }
     },
-    [],
+    [signUp],
   );
 
   return (
     <Container>
-      <Navbar itemVisible />
+      <Navbar itemVisible={false} />
       <ContainerLogin>
         <FormContainer
           ref={formRef}

@@ -19,9 +19,10 @@ import {
 import profileAvatar from '../../assets/images/profile.jpg';
 import Modal from '../../components/Modal';
 // import { useAuth } from '../../hooks/AuthContext';
+import { useAuth } from '../../contexts/Auth';
 
 export default function ProfilePage() {
-  // const { user } = useAuth();
+  const { user } = useAuth();
 
   const [showSchedule, setShowSchedule] = useState(true);
   const [showCompanys, setShowCompanys] = useState(false);
@@ -45,7 +46,7 @@ export default function ProfilePage() {
             <img src={profileAvatar} alt="Foto do usuário" />
           </div>
           <div>
-            <h3>{/* {user.nome}#{user.id} */}</h3>
+            <h3>Olá,{user?.id} !</h3>
             <h3 id="user-email">{/* {user.email} */}</h3>
           </div>
         </CardUserInformationContainer>

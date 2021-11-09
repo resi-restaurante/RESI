@@ -1,10 +1,10 @@
 import { useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
-import { useAuth } from '../../hooks/AuthContext';
+// import { useAuth } from '../../hooks/AuthContext';
 import { Input, Footer, Navbar, Button } from '../../components';
 import {
   Container,
@@ -13,6 +13,8 @@ import {
   InputFormContainer,
 } from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
+//
+import { useAuth } from '../../contexts/Auth';
 
 interface SignInFormData {
   email: string;
@@ -20,13 +22,19 @@ interface SignInFormData {
 }
 
 export default function LoginPage() {
-  const formRef = useRef<FormHandles>(null);
+  // const emailRef = useRef();
+  // const passwordRef = useRef();
+  // const [error, setError] = useState(null);
+
   const { signIn } = useAuth();
+  const history = useHistory();
+
+  const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
+      history.push('/profile');
       try {
-        console.log(data.email);
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -70,7 +78,7 @@ export default function LoginPage() {
             </Link>
           </div>
         </AdviseContainer>
-        <Form ref={formRef} onSubmit={handleSubmit} className="Formlogin">
+        <Form onSubmit={handleSubmit} ref={formRef} className="Formlogin">
           <InputFormContainer>
             <p>Email</p>
             <Input
