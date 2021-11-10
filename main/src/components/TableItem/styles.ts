@@ -3,16 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   margin: 1%;
   color: #000;
-  .table-circule {
-    background: #fff;
-    border: 2px solid #e53935;
-    box-shadow: 0 0 3px #e53935;
-    box-sizing: border-box;
-    border-radius: 50%;
-    padding: 1px 10px;
-    margin: 3px;
-  }
   .table {
+    text-align: center;
     background: #fff;
     border: 1px solid #e53935;
     box-shadow: 0 0 3px #e53935;
@@ -33,16 +25,19 @@ export const Container = styled.div`
   }
 
   .full-table {
-    background-color: white;
-    border: solid 2px white;
-    // border: solid 2px rgba(245, 246, 250, 0.4)
+    background: #630000;
+    border: 2px solid #e53935;
+    box-shadow: 0 0 3px #630000;
+    box-sizing: border-box;
     border-radius: 50%;
     padding: 1px 10px;
     margin: 3px;
   }
   .empty-table {
-    background-color: red;
-    border: solid 2px white;
+    background: #fff;
+    border: 2px solid #e53935;
+    box-shadow: 0 0 3px #e53935;
+    box-sizing: border-box;
     border-radius: 50%;
     padding: 1px 10px;
     margin: 3px;

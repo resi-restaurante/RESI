@@ -11,15 +11,15 @@ export default function TableItem({ chairs }: TableProps) {
   function getRow1() {
     const chair = [];
     for (let i = 0; i < Math.ceil(chairs / 2); i++) {
-      chair.push(<span key={i} className="table-circule" />);
+      chair.push(<span key={i} className="empty-table" />);
     }
     return chair;
   }
 
   function getRow2() {
     const chair2 = [];
-    for (let i = 0; i < Math.ceil(chairs / 2); i++) {
-      chair2.push(<span key={i} className="table-circule" />);
+    for (let i = 0; i < Math.floor(chairs / 2); i++) {
+      chair2.push(<span key={i} className="empty-table" />);
     }
     return chair2;
   }

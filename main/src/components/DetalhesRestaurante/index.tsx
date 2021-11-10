@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable jsx-a11y/alt-text */
 import DatePicker from 'react-multi-date-picker';
 import TimePicker from 'react-multi-date-picker/plugins/time_picker';
@@ -6,8 +7,6 @@ import 'react-multi-date-picker/styles/layouts/mobile.css';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Navigation } from 'swiper';
-
-import BotaoTabela from '../BotãoTabela';
 
 import {
   Container,
@@ -21,6 +20,7 @@ import {
   ContainerCarrossel,
 } from './styles';
 import TableItem from '../TableItem';
+import { SelectInput } from '..';
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
@@ -95,14 +95,8 @@ function DetalhesRestaurante() {
           </DatePickerCalendar>
           <h2>Escolha sua mesa</h2>
           <section>
-            <BotaoTabela />
-            <BotaoTabela />
-            <BotaoTabela />
-            <BotaoTabela />
-            <BotaoTabela />
-            <BotaoTabela />
-
-            <TableItem chairs={3} />
+            <SelectInput />
+            <TableItem chairs={7} />
           </section>
           <DatePickerTime>
             <h3>Horário de entrada:</h3>
