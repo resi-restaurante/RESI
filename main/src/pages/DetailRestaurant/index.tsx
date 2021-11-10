@@ -30,7 +30,7 @@ function DetailRestaurant() {
           <img src="images/restaurante.jpg" alt="" />
 
           <div>
-            <Title>{/* {restaurantInfo.nome} */}</Title>
+            <Title>{/* {restaurantInfo.nome} */} Teste</Title>
             <Adress>
               <p>
                 {/* {restaurantInfo.endereco}, {restaurantInfo.cidade} -{' '}

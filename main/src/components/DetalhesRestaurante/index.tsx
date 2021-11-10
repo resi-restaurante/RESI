@@ -1,8 +1,12 @@
+/* eslint-disable jsx-a11y/alt-text */
 import DatePicker from 'react-multi-date-picker';
 import TimePicker from 'react-multi-date-picker/plugins/time_picker';
 import 'react-multi-date-picker/styles/colors/red.css';
 import 'react-multi-date-picker/styles/layouts/mobile.css';
 import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Pagination, Navigation } from 'swiper';
+
 import BotaoTabela from '../BotãoTabela';
 
 import {
@@ -14,13 +18,41 @@ import {
   DatePickerCalendar,
   DatePickerTime,
   Tables,
+  ContainerCarrossel,
 } from './styles';
+import TableItem from '../TableItem';
 
+// install Swiper modules
+SwiperCore.use([Pagination, Navigation]);
 function DetalhesRestaurante() {
   return (
     <Container>
       <ContentRestaurant>
-        <img src="images/restaurante.jpg" alt="" />
+        <ContainerCarrossel>
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            loop
+            pagination={{
+              clickable: true,
+            }}
+            navigation
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img src="images/restaurant.jpg" alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="images/restaurante.jpg" alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="images/restaurante1.jpg" alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="images/restaurante2.jpg" alt="" />
+            </SwiperSlide>
+          </Swiper>
+        </ContainerCarrossel>
         <Title>Restaurante Santa Fé</Title>
         <Description>
           Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
@@ -69,9 +101,8 @@ function DetalhesRestaurante() {
             <BotaoTabela />
             <BotaoTabela />
             <BotaoTabela />
-            <BotaoTabela />
-            <BotaoTabela />
-            <BotaoTabela />
+
+            <TableItem chairs={3} />
           </section>
           <DatePickerTime>
             <h3>Horário de entrada:</h3>
