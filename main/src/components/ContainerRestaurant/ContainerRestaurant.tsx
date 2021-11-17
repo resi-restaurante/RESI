@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 import {
   Container,
   RestaurantTitleContainer,
@@ -8,23 +10,21 @@ import {
 interface PropsRestaurantList {
   restaurantName: string;
   reservePrice: string;
+  restaurantDescription: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const ContainerRestaurant = ({
   restaurantName,
   reservePrice,
+  restaurantDescription,
 }: PropsRestaurantList) => {
   return (
     <Container>
       <img src="images/restaurante.jpg" alt="" />
       <ContentContainer>
         <RestaurantTitleContainer>
-          <h1>{restaurantName}</h1>
-          <p>
-            O restaurante santa fé prioriza a divizão de cores e cartas para
-            que...
-          </p>
+          <h1>{restaurantName} </h1>
+          <p>{restaurantDescription}</p>
         </RestaurantTitleContainer>
         <footer>
           <p>Mais informações...</p>

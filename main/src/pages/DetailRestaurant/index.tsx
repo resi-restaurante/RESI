@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // import { useEffect, useState } from 'react';
 import { FiMail, FiPhoneCall, FiExternalLink } from 'react-icons/fi';
 import { AiOutlineWhatsApp } from 'react-icons/ai';
