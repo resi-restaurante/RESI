@@ -1,16 +1,26 @@
 import { useEffect, useState } from 'react';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi';
 import { ContainerRestaurant, Footer, Navbar } from '../../components';
-import { Container, HeaderContainer, City, Input } from './styles';
+import { Container, HeaderContainer, City, Input, Button } from './styles';
 // import api from '../../services/api';
 // eslint-disable-next-line import/extensions
-import RestaurantData from '../../hooks/dtos/Restaurant';
+
 import { supabase } from '../../supabase';
 
+interface RestaurantData {
+  restaurante_id: string;
+  nome: string;
+  descricao: string;
+  endereco: string;
+  cidade: string;
+  estado: string;
+  telefone: number;
+  email: string;
+  documento: number;
+}
 function Restaurants() {
   // const [restaurants, setRestaurants] = useState([{} as RestaurantData]);
-  // const history = useHistory();
 
   // useEffect(() => {
   //   api.get('establishments?city=Aparecida&state=SP').then((response: any) => {
@@ -33,10 +43,10 @@ function Restaurants() {
       setRestaurante(data);
     }
   }
-
-  // const handleGoToRestaurant = (data: RestaurantData) => {
-  //   history.push('/detailsrestaurants', data);
-  // };
+  const history = useHistory();
+  const handleGoToRestaurant = (data: RestaurantData) => {
+    history.push(`/detailsrestaurants/${data.restaurante_id}`);
+  };
 
   return (
     <Container>
@@ -49,12 +59,15 @@ function Restaurants() {
           <div />
         </span>
       </HeaderContainer>
+
       {restaurante?.map((restaurant: RestaurantData) => (
-        <ContainerRestaurant
-          restaurantName={restaurant.nome}
-          reservePrice="39.90"
-          restaurantDescription={restaurant.descricao}
-        />
+        <Button onClick={() => handleGoToRestaurant(restaurant)}>
+          <ContainerRestaurant
+            restaurantName={restaurant.nome}
+            reservePrice="39.90"
+            restaurantDescription={restaurant.descricao}
+          />
+        </Button>
       ))}
       {/* {restaurants.map((restaurant: RestaurantData) => (
         <Button onClick={() => handleGoToRestaurant(restaurant)}>

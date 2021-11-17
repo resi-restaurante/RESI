@@ -26,7 +26,7 @@ export function Routes() {
       <Route path="/forgotpassword" component={ForgotPassword} />
       <Route path="/restaurants" component={RestaurantsListing} />
       <Route path="/contact" component={ContactPage} />
-      <Route path="/detailsrestaurants" component={DetailRestaurant} />
+      <Route path="/detailsrestaurants/:id" component={DetailRestaurant} />
       <Route path="/payment" component={PaymentPage} />
       <PrivateRoute path="/profile" component={ProfilePage} />
       <Route path="/mycompany" component={CompanyPage} />
