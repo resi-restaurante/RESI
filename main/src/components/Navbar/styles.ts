@@ -15,8 +15,7 @@ export const Container = styled.div`
   padding: 0 30px;
   width: 100%;
   color: #fff;
-  background: transparent;
-  color: #000;
+  background: #e53935;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -99,7 +98,7 @@ export const ButtonLogin = styled.button`
   font-weight: bold;
   margin-right: 1rem;
   background: transparent;
-  color: #e53935;
+  color: #fff;
   transition: all 0.3s ease-in-out;
   transition: color 0.2s;
   &:hover {

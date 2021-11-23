@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { FiMail, FiPhoneCall, FiExternalLink } from 'react-icons/fi';
 import { AiOutlineWhatsApp } from 'react-icons/ai';
 import { useParams } from 'react-router-dom';
-import { Footer, Header, Button } from '../../components';
+import { Footer, Button, Navbar } from '../../components';
 import {
   Container,
   ContentRestaurant,
@@ -47,7 +47,7 @@ function DetailRestaurant() {
 
   return (
     <Container>
-      <Header />
+      <Navbar itemVisible={false} />
       {restaurante?.map((restaurant: RestaurantData) => (
         <div>
           <Title>{restaurant.nome}</Title>

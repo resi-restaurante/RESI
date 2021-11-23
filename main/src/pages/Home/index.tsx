@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'semantic-ui-css/semantic.min.css';
 import { Card } from 'semantic-ui-react';
-import { Header } from '../../components';
+import { Navbar } from '../../components';
 /* eslint-disable-next-line jsx-a11y/alt-text */
 
 // Import Swiper styles
@@ -31,7 +31,7 @@ SwiperCore.use([EffectCoverflow, Pagination]);
 export default function Home() {
   return (
     <Container>
-      <Header />
+      <Navbar itemVisible />
 
       <div className="InitialPage">
         <div>
