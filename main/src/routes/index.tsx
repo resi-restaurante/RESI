@@ -6,13 +6,14 @@ import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import RestaurantsListing from '../pages/Restaurants';
 import ContactPage from '../pages/Contact';
-import DetailRestaurant from '../pages/DetailRestaurant';
+
 import ProfilePage from '../pages/Profile';
 import CompanyPage from '../pages/Company';
 import PaymentPage from '../pages/Payment';
 
 import ConfirmedTable from '../pages/ConfirmedTable';
 import RegisterRestaurant from '../pages/RegisterRestaurant';
+import DetailRestaurant from '../pages/DetailRestaurant';
 
 export function Routes() {
   const location = useLocation();

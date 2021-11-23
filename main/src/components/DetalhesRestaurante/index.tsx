@@ -54,12 +54,7 @@ function DetalhesRestaurante() {
           </Swiper>
         </ContainerCarrossel>
         <Title>Restaurante Santa Fé</Title>
-        <Description>
-          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
-          ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
-          ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem
-          ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-        </Description>
+        <Description>teste</Description>
         <Price>R$39,90</Price>
         <p>Por mês</p>
 

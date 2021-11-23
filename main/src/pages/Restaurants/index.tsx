@@ -1,24 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi';
 import { ContainerRestaurant, Footer, Navbar } from '../../components';
-import { Container, HeaderContainer, City, Input, Button } from './styles';
+import { Container, HeaderContainer, City, Input } from './styles';
 // import api from '../../services/api';
 // eslint-disable-next-line import/extensions
 
 import { supabase } from '../../supabase';
+import RestaurantData from '../../hooks/dtos/Restaurant';
 
-interface RestaurantData {
-  restaurante_id: string;
-  nome: string;
-  descricao: string;
-  endereco: string;
-  cidade: string;
-  estado: string;
-  telefone: number;
-  email: string;
-  documento: number;
-}
 function Restaurants() {
   // const [restaurants, setRestaurants] = useState([{} as RestaurantData]);
 
@@ -35,7 +25,6 @@ function Restaurants() {
     fecthDados();
   }, []);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async function fecthDados() {
     const { data } = await supabase.from('restaurants').select('*');
 
@@ -43,10 +32,10 @@ function Restaurants() {
       setRestaurante(data);
     }
   }
-  const history = useHistory();
-  const handleGoToRestaurant = (data: RestaurantData) => {
-    history.push(`/detailsrestaurants/${data.restaurante_id}`);
-  };
+  // const history = useHistory();
+  // const handleGoToRestaurant = (data: RestaurantData) => {
+  //   history.push(`/detailsrestaurants/${data.restaurante_id}`);
+  // };
 
   return (
     <Container>
@@ -61,13 +50,14 @@ function Restaurants() {
       </HeaderContainer>
 
       {restaurante?.map((restaurant: RestaurantData) => (
-        <Button onClick={() => handleGoToRestaurant(restaurant)}>
+        <Link to={`/detailsrestaurants/${restaurant.restaurante_id}`}>
           <ContainerRestaurant
+            key={restaurant.restaurante_id}
             restaurantName={restaurant.nome}
             reservePrice="39.90"
             restaurantDescription={restaurant.descricao}
           />
-        </Button>
+        </Link>
       ))}
       {/* {restaurants.map((restaurant: RestaurantData) => (
         <Button onClick={() => handleGoToRestaurant(restaurant)}>

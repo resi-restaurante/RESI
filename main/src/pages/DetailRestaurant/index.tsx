@@ -1,7 +1,9 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiMail, FiPhoneCall, FiExternalLink } from 'react-icons/fi';
 import { AiOutlineWhatsApp } from 'react-icons/ai';
+import { useParams } from 'react-router-dom';
 import { Footer, Header, Button } from '../../components';
 import {
   Container,
@@ -14,7 +16,8 @@ import {
 } from './styles';
 import DetalhesRestaurante from '../../components/DetalhesRestaurante';
 
-// import RestaurantData from '../../dtos/Restaurant';
+import { supabase } from '../../supabase';
+import RestaurantData from '../../hooks/dtos/Restaurant';
 
 function DetailRestaurant() {
   // const [restaurantInfo, setRestaurantInfo] = useState({} as RestaurantData);
@@ -23,19 +26,41 @@ function DetailRestaurant() {
   //   setRestaurantInfo(props.location.state);
   // }, []);
 
+  const [restaurante, setRestaurante] = useState<any[] | null>();
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    Dados();
+  }, []);
+
+  const { id }: { id?: number | string | null } = useParams();
+  async function Dados() {
+    const { data } = await supabase
+      .from('restaurants')
+      .select('*')
+      .in('restaurante_id', [id]);
+    console.log(data);
+    if (data) {
+      setRestaurante(data);
+    }
+  }
+
   return (
     <Container>
       <Header />
+      {restaurante?.map((restaurant: RestaurantData) => (
+        <div>
+          <Title>{restaurant.nome}</Title>
+        </div>
+      ))}
       <RestaurantGrid>
+        <img src="images/restaurante.jpg" alt="" />
         <ContentRestaurant>
-          <img src="images/restaurante.jpg" alt="" />
-
           <div>
-            <Title>{/* {restaurantInfo.nome} */} Teste</Title>
             <Adress>
               <p>
                 {/* {restaurantInfo.endereco}, {restaurantInfo.cidade} -{' '}
-                {restaurantInfo.estado} */}
+       {restaurantInfo.estado} */}
               </p>
               <a
                 href="https://www.google.com/maps/search/restaurant+augusto+aparecida+sp"
@@ -62,8 +87,10 @@ function DetailRestaurant() {
             <p>{/* {restaurantInfo.telefone} */}</p>
           </div>
         </InformationContainer>
+
         <Button>Reservar Agora !</Button>
       </RestaurantGrid>
+
       <DetalhesRestaurante />
       <Footer />
     </Container>
