@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 
 import { HTMLAttributes } from 'react';
+import { Checkbox } from 'semantic-ui-react';
 
 import { Container } from './styles';
 
@@ -33,6 +34,8 @@ export default function TableItem({ chairs }: TableProps) {
           <div>{getRow2()}</div>
         </div>
         <p className="table-name">MESA 01</p>
+        <p>Perto da porta</p>
+        <Checkbox />
       </div>
     </Container>
   );

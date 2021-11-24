@@ -1,4 +1,5 @@
-import { FiMapPin, FiUser } from 'react-icons/fi';
+import { FiUser } from 'react-icons/fi';
+import { IoRestaurantOutline } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import {
   ButtonLogin,
@@ -48,7 +49,8 @@ export const Navbar = ({ itemVisible }: NavbarProps) => {
       </div>
       <ContainerLabel>
         <NavigationButton to="/restaurants">
-          <FiMapPin size={16} color="#fff" />
+          <IoRestaurantOutline size={16} color="#fff" />
+
           <ButtonLogin>Restaurantes</ButtonLogin>
         </NavigationButton>
         {itemVisible && !user && (

@@ -10,44 +10,6 @@ export const Container = styled.div`
   margin-bottom: 50rem;
 `;
 
-export const ContainerCarrossel = styled.div`
-  .swiper {
-    width: 100%;
-    height: 100%;
-  }
-
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 50%;
-    height: 50%;
-    object-fit: cover;
-  }
-
-  .swiper {
-    margin-left: auto;
-    margin-right: auto;
-  }
-`;
 export const ContentRestaurant = styled.div`
   width: 54.3rem;
   height: 90rem;
@@ -145,6 +107,36 @@ export const Tables = styled.div`
     border-radius: 4px;
     margin-left: 42rem;
   }
+  .tableChairs {
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    span {
+      margin-right: 1.4rem;
+      height: 2rem;
+      width: 2rem;
+    }
+  }
+  .full-table {
+    background: #630000;
+    border: 2px solid #e53935;
+    box-shadow: 0 0 3px #630000;
+    box-sizing: border-box;
+    border-radius: 50%;
+    padding: 1px 10px;
+    margin: 3px;
+  }
+  .empty-table {
+    background: #fff;
+    border: 2px solid #e53935;
+    box-shadow: 0 0 3px #e53935;
+    box-sizing: border-box;
+    border-radius: 50%;
+    padding: 1px 10px;
+    margin: 3px;
+  }
 `;
 export const DatePickerCalendar = styled.div`
   display: flex;
@@ -157,7 +149,7 @@ export const DatePickerTime = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 3rem 3rem;
-  margin: 2rem;
+  margin: 1rem;
   h3 {
     margin: 1rem;
     color: #434343;

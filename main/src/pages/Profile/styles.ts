@@ -15,8 +15,8 @@ export const RedContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #e53935;
-  border-bottom: #f3f3f3;
+  background-color: #f3f3f3;
+  border-bottom: #e53935;
   width: 100vw;
 `;
 
@@ -25,9 +25,15 @@ export const CardUserInformationContainer = styled.header`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 50%;
   margin-top: 1rem;
+  margin-bottom: 7rem;
   text-align: center;
+
+  background: #e53935;
+  border-radius: 2rem;
+  box-shadow: 20px 20px 50px -30px #e53935;
+
   img {
     width: 100px;
     height: 100px;
@@ -67,6 +73,9 @@ export const ContentContainer = styled.div<ConteinerBottomBorder>`
   justify-content: center;
   align-items: center;
   border-bottom: ${props => (props.onPressContent ? '3px solid #fff' : '')};
+  h3 {
+    color: #e53935;
+  }
 `;
 
 export const ListContainer = styled.div`

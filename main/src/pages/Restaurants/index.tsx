@@ -41,7 +41,7 @@ function Restaurants() {
     <Container>
       <Navbar itemVisible />
       <HeaderContainer>
-        <City>Aparecida, SP</City>
+        <City>Guaratinguetá, SP</City>
         <Input placeholder="Digite o nome do restaurante" icon={FiSearch} />
         <span>
           <h4>{restaurante?.length} restaurantes encontrados</h4>
@@ -54,7 +54,7 @@ function Restaurants() {
           <ContainerRestaurant
             key={restaurant.restaurante_id}
             restaurantName={restaurant.nome}
-            reservePrice="39.90"
+            reservePrice={restaurant.preco}
             restaurantDescription={restaurant.descricao}
           />
         </Link>

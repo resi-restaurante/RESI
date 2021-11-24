@@ -26,6 +26,7 @@ import {
   Input,
   Footer,
   Button,
+  Navbar,
 } from '../../components';
 import profileAvatar from '../../assets/images/profile.jpg';
 import Modal from '../../components/Modal';
@@ -142,12 +143,14 @@ export default function ProfilePage() {
   };
   return (
     <Container>
-      <Header />
+      <Navbar itemVisible />
       <RedContainer>
         <CardUserInformationContainer>
+          <h1>Seu Perfil</h1>
           <div>
-            <h3>Olá,{user?.id} !</h3>
-            <input id="user-email" type="text" value={user?.email} disabled />
+            <h3>Olá, {username} !</h3>
+            <h4>Seu id: {user?.id} !</h4>
+            <input id="user-email" type="text" value={user?.email} />
           </div>
 
           <div>
@@ -159,8 +162,6 @@ export default function ProfilePage() {
               }}
             />
 
-            <h1>Seu Perfil</h1>
-            <h3>{username}</h3>
             <Form ref={formRef} onSubmit={handleSubmit}>
               <Input
                 name="name"
@@ -192,7 +193,7 @@ export default function ProfilePage() {
             onPressContent={showSchedule}
             onClick={() => handleDisableContainer('schedule')}
           >
-            <FiCalendar size={20} />
+            <FiCalendar size={20} color="#e53935" />
             <h3>Agendamentos</h3>
             <Modal />
           </ContentContainer>
@@ -200,7 +201,7 @@ export default function ProfilePage() {
             onPressContent={showCompanys}
             onClick={() => handleDisableContainer('companys')}
           >
-            <FiHome size={20} />
+            <FiHome size={20} color="#e53935" />
             <h3>Companhias</h3>
           </ContentContainer>
         </SelectionMenu>

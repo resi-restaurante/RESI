@@ -5,59 +5,23 @@ import TimePicker from 'react-multi-date-picker/plugins/time_picker';
 import 'react-multi-date-picker/styles/colors/red.css';
 import 'react-multi-date-picker/styles/layouts/mobile.css';
 import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Pagination, Navigation } from 'swiper';
 
 import {
   Container,
   ContentRestaurant,
-  Title,
-  Description,
-  Price,
   DatePickerCalendar,
   DatePickerTime,
   Tables,
-  ContainerCarrossel,
 } from './styles';
-import TableItem from '../TableItem';
+
 import { SelectInput } from '..';
 
 // install Swiper modules
-SwiperCore.use([Pagination, Navigation]);
+
 function DetalhesRestaurante() {
   return (
     <Container>
       <ContentRestaurant>
-        <ContainerCarrossel>
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={30}
-            loop
-            pagination={{
-              clickable: true,
-            }}
-            navigation
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <img src="images/restaurant.jpg" alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="images/restaurante.jpg" alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="images/restaurante1.jpg" alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="images/restaurante2.jpg" alt="" />
-            </SwiperSlide>
-          </Swiper>
-        </ContainerCarrossel>
-        <Title>Restaurante Santa Fé</Title>
-        <Description>teste</Description>
-        <Price>R$39,90</Price>
-        <p>Por mês</p>
-
         {/* <Photos>
           <img src="images/restaurante.jpg" alt="" />
           <img src="images/restaurante.jpg" alt="" />
@@ -88,11 +52,6 @@ function DetalhesRestaurante() {
               ]}
             />
           </DatePickerCalendar>
-          <h2>Escolha sua mesa</h2>
-          <section>
-            <SelectInput />
-            <TableItem chairs={7} />
-          </section>
           <DatePickerTime>
             <h3>Horário de entrada:</h3>
             <DatePicker
@@ -101,14 +60,17 @@ function DetalhesRestaurante() {
               format="HH:mm"
               plugins={[<TimePicker hideSeconds />]}
             />
-            <h3>Horário de saida:</h3>
-            <DatePicker
-              disableDayPicker
-              inputClass="custom-input"
-              format="HH:mm"
-              plugins={[<TimePicker hideSeconds />]}
-            />
           </DatePickerTime>
+          <h2>Selecione a quantidade de pessoas</h2>
+          <SelectInput />
+          <h2>Escolha sua mesa</h2>
+          <div className="tableChairs">
+            <p>Mesas Vazias:</p>
+            <span className="empty-table" />
+            <p>Mesas Cheias:</p>
+            <span className="full-table" />
+          </div>
+
           <Link to="/">
             <button className="reserv" type="button">
               Reservar
