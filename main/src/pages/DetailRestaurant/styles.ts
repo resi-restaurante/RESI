@@ -165,10 +165,12 @@ export const TableSection = styled.div`
   margin-bottom: 4rem;
 `;
 export const Table = styled.div`
+  width: 65%;
   height: 100%;
   border-radius: 1rem;
   box-shadow: 20px 20px 50px -30px #e53935;
   background: #faf9fa;
+  margin-left: 14rem;
   padding: 1.5rem;
   color: #434343;
   h1 {

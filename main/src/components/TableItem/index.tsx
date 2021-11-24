@@ -7,8 +7,14 @@ import { Container } from './styles';
 
 interface TableProps extends HTMLAttributes<HTMLSpanElement> {
   chairs: number;
+  numberTable: number;
+  description: string;
 }
-export default function TableItem({ chairs }: TableProps) {
+export default function TableItem({
+  chairs,
+  numberTable,
+  description,
+}: TableProps) {
   function getRow1() {
     const chair = [];
     for (let i = 0; i < Math.ceil(chairs / 2); i++) {
@@ -33,8 +39,8 @@ export default function TableItem({ chairs }: TableProps) {
         <div className="table-row">
           <div>{getRow2()}</div>
         </div>
-        <p className="table-name">MESA 01</p>
-        <p>Perto da porta</p>
+        <p className="table-name">{`MESA:${numberTable}`}</p>
+        <p>{description}</p>
         <Checkbox />
       </div>
     </Container>

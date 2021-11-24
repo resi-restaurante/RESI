@@ -7,19 +7,19 @@ import { FiHome, FiCalendar, FiSearch } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FiUser } from 'react-icons/fi';
 import * as Yup from 'yup';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getValidationErrors } from '../../utils';
 import {
   Container,
-  RedContainer,
   CardUserInformationContainer,
   SelectionMenu,
   ContentContainer,
+  SectionButton,
   ListContainer,
   ScrollView,
+  ContainerPage,
 } from './styles';
 import {
-  Header,
   CardListAppointment,
   CardListCompanys,
   InputWithOutForm,
@@ -144,7 +144,7 @@ export default function ProfilePage() {
   return (
     <Container>
       <Navbar itemVisible />
-      <RedContainer>
+      <ContainerPage>
         <CardUserInformationContainer>
           <h1>Seu Perfil</h1>
           <div>
@@ -152,7 +152,6 @@ export default function ProfilePage() {
             <h4>Seu id: {user?.id} !</h4>
             <input id="user-email" type="text" value={user?.email} />
           </div>
-
           <div>
             <PersonalAvatar
               url={avatar_url}
@@ -183,29 +182,36 @@ export default function ProfilePage() {
               {loading || 'Update'}
             </Button>
           </div>
-          {/* </Form> */}
+
           <div>
             <Button onClick={() => signOut()}>SAIR</Button>
           </div>
         </CardUserInformationContainer>
-        <SelectionMenu>
-          <ContentContainer
-            onPressContent={showSchedule}
-            onClick={() => handleDisableContainer('schedule')}
-          >
-            <FiCalendar size={20} color="#e53935" />
-            <h3>Agendamentos</h3>
-            <Modal />
-          </ContentContainer>
-          <ContentContainer
-            onPressContent={showCompanys}
-            onClick={() => handleDisableContainer('companys')}
-          >
-            <FiHome size={20} color="#e53935" />
-            <h3>Companhias</h3>
-          </ContentContainer>
-        </SelectionMenu>
-      </RedContainer>
+
+        <SectionButton>
+          <Link to="/registerrestaurant">
+            <Button>Cadastrar Restaurante</Button>
+          </Link>
+        </SectionButton>
+      </ContainerPage>
+      <SelectionMenu>
+        <ContentContainer
+          onPressContent={showSchedule}
+          onClick={() => handleDisableContainer('schedule')}
+        >
+          <FiCalendar size={20} color="#e53935" />
+          <h3>Agendamentos</h3>
+          <Modal />
+        </ContentContainer>
+        <ContentContainer
+          onPressContent={showCompanys}
+          onClick={() => handleDisableContainer('companys')}
+        >
+          <FiHome size={20} color="#e53935" />
+          <h3>Companhias</h3>
+        </ContentContainer>
+      </SelectionMenu>
+
       {showSchedule && (
         <ListContainer>
           <header>

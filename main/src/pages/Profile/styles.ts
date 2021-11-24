@@ -10,14 +10,17 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const RedContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+export const ContainerPage = styled.div`
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* display: flex;
+  flex-direction: column; */
+
+  align-items: start;
+  margin-left: 0.7rem;
   background-color: #f3f3f3;
   border-bottom: #e53935;
-  width: 100vw;
 `;
 
 export const CardUserInformationContainer = styled.header`
@@ -25,7 +28,7 @@ export const CardUserInformationContainer = styled.header`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 50%;
+  width: 80%;
   margin-top: 1rem;
   margin-bottom: 7rem;
   text-align: center;
@@ -50,7 +53,11 @@ export const CardUserInformationContainer = styled.header`
     font-size: 16px;
   }
 `;
-
+export const SectionButton = styled.section`
+  button {
+    width: 50%;
+  }
+`;
 export const SelectionMenu = styled.div`
   display: flex;
   align-self: center;

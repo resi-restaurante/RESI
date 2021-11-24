@@ -33,6 +33,7 @@ import TableItem from '../../components/TableItem';
 
 interface TableData {
   qtd_cadeiras: number;
+  mesa_id: number;
   descricao: string;
 }
 function DetailRestaurant() {
@@ -205,10 +206,31 @@ function DetailRestaurant() {
           <TableSection>
             {mesa?.map((table: TableData) => (
               <>
-                <TableItem chairs={table.qtd_cadeiras} />
-                <TableItem chairs={table.qtd_cadeiras} />
-                <TableItem chairs={table.qtd_cadeiras} />
-                <TableItem chairs={table.qtd_cadeiras} />
+                <TableItem
+                  chairs={table.qtd_cadeiras}
+                  numberTable={table.mesa_id}
+                  description={table.descricao}
+                />
+                <TableItem
+                  chairs={table.qtd_cadeiras}
+                  numberTable={table.mesa_id}
+                  description={table.descricao}
+                />
+                <TableItem
+                  chairs={table.qtd_cadeiras}
+                  numberTable={table.mesa_id}
+                  description={table.descricao}
+                />
+                <TableItem
+                  chairs={table.qtd_cadeiras}
+                  numberTable={table.mesa_id}
+                  description={table.descricao}
+                />
+                <TableItem
+                  chairs={table.qtd_cadeiras}
+                  numberTable={table.mesa_id}
+                  description={table.descricao}
+                />
               </>
             ))}
           </TableSection>

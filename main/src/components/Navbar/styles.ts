@@ -89,7 +89,7 @@ export const ButtonLogin = styled.button`
   cursor: pointer;
 
   white-space: nowrap;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   margin-right: 1rem;
   background: transparent;
