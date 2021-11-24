@@ -26,7 +26,6 @@ import {
   DatePickerTime,
   TableSection,
 } from './styles';
-import DetalhesRestaurante from '../../components/DetalhesRestaurante';
 
 import { supabase } from '../../supabase';
 import RestaurantData from '../../hooks/dtos/Restaurant';
@@ -157,8 +156,7 @@ function DetailRestaurant() {
           </RestaurantGrid>
         </>
       ))}
-      {/* 
-      <DetalhesRestaurante /> */}
+
       <div>
         <Table>
           <h1>Faça já sua Reserva !!</h1>

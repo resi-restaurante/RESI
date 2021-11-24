@@ -24,10 +24,6 @@ export const Container = styled.div`
   top: 0;
   z-index: 10;
   max-width: auto;
-
-  img {
-    margin-top: 0.5rem;
-  }
 `;
 export const ContainerLabel = styled.div`
   display: flex;
@@ -59,6 +55,7 @@ export const Nav = styled.div`
   padding: 0 24px;
   width: 100%;
   max-width: 1100px;
+
   p {
     margin-top: 2rem;
     text-align: center;
@@ -76,12 +73,10 @@ export const Nav = styled.div`
 export const NavigationButton = styled(Link)`
   display: flex;
   align-items: center;
-
   img {
-    width: 7rem;
-    height: 7rem;
+    width: 9rem;
+    height: 9rem;
   }
-
   svg {
     margin-right: 0.3rem;
   }
@@ -94,7 +89,7 @@ export const ButtonLogin = styled.button`
   cursor: pointer;
 
   white-space: nowrap;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   margin-right: 1rem;
   background: transparent;
@@ -109,23 +104,26 @@ export const ButtonLogin = styled.button`
 
 export const UserInformationContainer = styled(Link)`
   display: flex;
+  justify-content: center;
+  align-items: center;
   transition: opacity 0.5s;
   margin-right: 1rem;
+  img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 3rem;
+    margin: 1rem;
+  }
   svg {
-    margin-right: 0.5rem;
-    color: #000;
+    font-size: x-large;
+    color: #fff;
   }
 
   h4 {
-    font-size: 16px;
-    color: #000;
+    margin: 0.1rem 0.4rem 0.1rem 0.4rem;
+    color: #fff;
+    font-size: 1.1rem;
   }
-
-  #userName {
-    margin: 0 0.2rem 0 0.2rem;
-    color: #000;
-  }
-
   &:hover {
     opacity: 0.25;
     cursor: pointer;

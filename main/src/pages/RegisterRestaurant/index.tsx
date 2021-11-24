@@ -4,7 +4,7 @@ import { FiMail } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
-import { Button, Footer, Header, Input, TextArea } from '../../components';
+import { Button, Footer, Input, Navbar, TextArea } from '../../components';
 
 import { Container, ResgisterForm } from './styles';
 import { getValidationErrors } from '../../utils';
@@ -46,7 +46,7 @@ export default function RegisterRestaurant() {
 
   return (
     <Container>
-      <Header />
+      <Navbar itemVisible />
 
       <h1>Cadastre seu Restaunte !!</h1>
       <ResgisterForm>

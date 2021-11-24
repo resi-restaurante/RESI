@@ -35,6 +35,7 @@ export const Navbar = ({ itemVisible }: NavbarProps) => {
       .select(`username,avatar_url`)
       .eq('id', user?.id)
       .single();
+
     if (data) {
       setUsername(data.username);
       setAvatarUrl(data.avatar_url);
@@ -49,7 +50,7 @@ export const Navbar = ({ itemVisible }: NavbarProps) => {
       </div>
       <ContainerLabel>
         <NavigationButton to="/restaurants">
-          <IoRestaurantOutline size={16} color="#fff" />
+          <IoRestaurantOutline size={18} color="#fff" />
 
           <ButtonLogin>Restaurantes</ButtonLogin>
         </NavigationButton>
@@ -62,10 +63,12 @@ export const Navbar = ({ itemVisible }: NavbarProps) => {
           <UserInformationContainer to="/profile">
             <FiUser />
 
-            <h4>Olá, </h4>
-            <h4 id="userName">{username}</h4>
+            <h4>Olá,{username}</h4>
 
-            <img src={avatar_url} alt="Avatar" />
+            <img
+              src={`${process.env.REACT_APP_SUPABASE_URL}/storage/v1/object/sign/avatars/${avatar_url}?token=${process.env.REACT_APP_SUPABASE_STORAGE}`}
+              alt="Avatar"
+            />
           </UserInformationContainer>
         )}
       </ContainerLabel>

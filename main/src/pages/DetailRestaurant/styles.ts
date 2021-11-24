@@ -161,11 +161,11 @@ export const ContainerCarrossel = styled.div`
 export const TableSection = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 3rem;
+  gap: 2rem;
+  margin-bottom: 4rem;
 `;
 export const Table = styled.div`
-  height: 60rem;
+  height: 100%;
   border-radius: 1rem;
   box-shadow: 20px 20px 50px -30px #e53935;
   background: #faf9fa;
@@ -190,7 +190,7 @@ export const Table = styled.div`
     margin-left: 10rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     gap: 2rem;
   }
   .custom-input {
