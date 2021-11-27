@@ -1,10 +1,13 @@
-import { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable no-shadow */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useState } from 'react';
 import { useRef, useCallback } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiMail, FiUser, FiPhone, FiLock, FiFileText } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
+import { FiUser, FiPhone, FiFileText } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import DatePicker from 'react-multi-date-picker';
+
 import { Input, Footer, Navbar, Button } from '../../components';
 import {
   Container,
@@ -13,33 +16,102 @@ import {
   FormRow,
   FormContainer,
 } from './styles';
-// import api from '../../services/api';
+
 import { getValidationErrors, cpfMask, cellphoneMask } from '../../utils';
 
 import { useAuth } from '../../contexts/Auth';
+import { supabase } from '../../supabase';
 
 interface SignUpFormData {
   name: string;
   date: string;
   cellphone: string;
-  document: string;
-  email: string;
-  password: string;
-  password_confirmation?: string;
+  cpf: string;
   type_plan: number;
 }
 
 export default function RegisterPage() {
-  const [formatedDocument, setFormatedDocument] = useState('');
-  const [formatedCellphone, setFormattedCellphone] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [username, setUsername] = useState<string | null>(null);
+  const [telefone, setTelefone] = useState<string>('');
+  const [documento, setDocumento] = useState('');
+  const [dat_nascimento, setDat_nascimento] = useState<string>('');
+
+  const session = supabase.auth.session();
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    getProfile();
+  }, [session]);
+
+  async function getProfile() {
+    try {
+      setLoading(true);
+      const user = supabase.auth.user();
+      const { data, error, status } = await supabase
+        .from('profiles')
+        .select(`username,dat_nascimento,documento,telefone`)
+        .eq('id', user?.id)
+        .single();
+
+      if (error && status !== 406) {
+        console.log(error);
+      }
+      if (data) {
+        setUsername(data.username);
+        setDat_nascimento(data.dat_nascimento);
+        setDocumento(data.documento);
+        setTelefone(data.telefone);
+      }
+    } catch (error) {
+      alert(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function RegisterDatasUsers({
+    username,
+    documento,
+    dat_nascimento,
+    telefone,
+  }: {
+    username: string | null;
+    documento: string;
+    dat_nascimento: string;
+    telefone: string;
+  }) {
+    try {
+      setLoading(true);
+      const user = supabase.auth.user();
+
+      const registers = {
+        id: user?.id,
+        username,
+        dat_nascimento,
+        documento,
+        telefone,
+        updated_at: new Date(),
+      };
+
+      const { error } = await supabase.from('profiles').upsert(registers, {
+        returning: 'minimal', // Don't return the value after inserting
+      });
+      if (error) {
+        throw error;
+      }
+    } catch (error) {
+      alert(error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   const { signUp } = useAuth();
   const history = useHistory();
   const formRef = useRef<FormHandles>(null);
-
+  history.push('/profile');
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {
-      history.push('/profile');
       try {
         console.log(data);
         formRef.current?.setErrors({});
@@ -47,27 +119,13 @@ export default function RegisterPage() {
         const schema = Yup.object().shape({
           name: Yup.string().required('Nome obrigatório'),
           birth_date: Yup.date().required('Data de aniversário obrigatório'),
-          email: Yup.string()
-            .required('E-mail obrigatório')
-            .email('Digite um e-mail válido'),
-          document: Yup.string().required('Documento obrigatório'),
+
+          cpf: Yup.string().required('Documento obrigatório'),
           cellphone: Yup.string().required('Número de telefone obrigatório'),
-          password: Yup.string().min(
-            6,
-            'Senha deve conter no mínimo 6 dígitos',
-          ),
-          password_confirmation: Yup.string()
-            .required('Deve ser inserido valor válido')
-            .oneOf([Yup.ref('password'), undefined], 'Confirmação incorreta.'),
         });
 
         await schema.validate(data, {
           abortEarly: false,
-        });
-
-        await signUp({
-          email: data.email,
-          password: data.password,
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -89,71 +147,70 @@ export default function RegisterPage() {
           className="Formlogin"
         >
           <FormRow>
-            <Input name="name" icon={FiUser} placeholder="Digite seu nome" />
+            <Input
+              name="name"
+              id="username"
+              type="text"
+              value={username || ''}
+              onChange={e => setUsername(e.target.value)}
+              icon={FiUser}
+              placeholder="Digite seu nome"
+            />
+          </FormRow>
+          <FormRow>
+            <Input
+              name="dat_nascimento"
+              id="dat_nascimento"
+              type="date"
+              placeholder="Data de nascimento"
+              value={dat_nascimento}
+              pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+              onChange={e => setDat_nascimento(e.target.value)}
+            />
           </FormRow>
           <FormRow>
             <div>
-              <DatePicker name="birth_date" type="input-icon" />
-            </div>
-            <div>
               <Input
-                name="email"
-                icon={FiMail}
-                placeholder="Digite seu email"
-              />
-            </div>
-          </FormRow>
-          <FormRow>
-            <div>
-              <Input
-                name="document"
+                name="documento"
+                type="text"
+                id="documento"
                 icon={FiFileText}
                 placeholder="Digite seu CPF"
-                value={cpfMask(formatedDocument)}
-                onChange={e => setFormatedDocument(e.target.value)}
+                value={cpfMask(documento)}
+                onChange={e => setDocumento(e.target.value)}
               />
             </div>
             <div>
               <Input
-                name="cellphone"
+                name="telefone"
+                id="telefone"
+                type="text"
                 icon={FiPhone}
                 placeholder="Digite seu telefone"
-                value={cellphoneMask(formatedCellphone)}
-                onChange={e => setFormattedCellphone(e.target.value)}
+                value={cellphoneMask(telefone)}
+                onChange={e => setTelefone(e.target.value)}
                 max="12"
               />
             </div>
           </FormRow>
-          <FormRow>
-            <div>
-              <Input
-                name="password"
-                icon={FiLock}
-                placeholder="Digite sua senha"
-                type="password"
-              />
-            </div>
-            <div>
-              <Input
-                name="password_confirmation"
-                icon={FiLock}
-                placeholder="Confirme sua senha"
-                type="password"
-              />
-            </div>
-          </FormRow>
-          {/* <button type="submit">Registrar</button> */}
-          <Button>Registrar</Button>
+          <FormRow />
+
+          <Button
+            onClick={() =>
+              RegisterDatasUsers({
+                username,
+                documento,
+                dat_nascimento,
+                telefone,
+              })
+            }
+          >
+            {' '}
+            {loading || ' Registrar'}
+          </Button>
         </FormContainer>
         <AdviseContainer>
-          <h3>Registre-se agora</h3>
-          <h3>para agendar uma mesa !</h3>
-          <div>
-            <p>Já tem uma conta ?</p>
-            <Link to="/login">
-              <p id="register-link">Acesse aqui</p>
-            </Link>
-          </div>
+          <h3>Preencha com suas informações</h3>
         </AdviseContainer>
       </ContainerLogin>
       <Footer />

@@ -14,6 +14,7 @@ import PaymentPage from '../pages/Payment';
 import ConfirmedTable from '../pages/ConfirmedTable';
 import RegisterRestaurant from '../pages/RegisterRestaurant';
 import DetailRestaurant from '../pages/DetailRestaurant';
+import RegisterUsers from '../pages/RegisterUsers';
 
 export function Routes() {
   const location = useLocation();
@@ -23,8 +24,9 @@ export function Routes() {
       <Route path="/confirmed" component={ConfirmedTable} />
       <Route path="/" exact component={Home} />
       <Route path="/login" component={LoginPage} />
-      <Route path="/register" component={RegisterPage} />
+      <Route path="/register" component={RegisterUsers} />
       <Route path="/forgotpassword" component={ForgotPassword} />
+      <Route path="/dataset" component={RegisterPage} />
       <Route path="/restaurants" component={RestaurantsListing} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/detailsrestaurants/:id" component={DetailRestaurant} />

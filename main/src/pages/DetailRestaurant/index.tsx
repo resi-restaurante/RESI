@@ -69,7 +69,7 @@ function DetailRestaurant() {
     const { data } = await supabase
       .from('mesas')
       .select('*')
-      .in('mesa_id', [id]);
+      .in('restaurant_id', [id]);
     console.log(data);
     if (data) {
       setMesa(data);
@@ -81,7 +81,7 @@ function DetailRestaurant() {
       <Navbar itemVisible={false} />
       {restaurante?.map((restaurant: RestaurantData) => (
         <>
-          <RestaurantGrid>
+          <RestaurantGrid key={restaurant.restaurante_id}>
             <Title>{restaurant.nome}</Title>
             <ContainerCarrossel>
               <Swiper
@@ -207,26 +207,7 @@ function DetailRestaurant() {
             {mesa?.map((table: TableData) => (
               <>
                 <TableItem
-                  chairs={table.qtd_cadeiras}
-                  numberTable={table.mesa_id}
-                  description={table.descricao}
-                />
-                <TableItem
-                  chairs={table.qtd_cadeiras}
-                  numberTable={table.mesa_id}
-                  description={table.descricao}
-                />
-                <TableItem
-                  chairs={table.qtd_cadeiras}
-                  numberTable={table.mesa_id}
-                  description={table.descricao}
-                />
-                <TableItem
-                  chairs={table.qtd_cadeiras}
-                  numberTable={table.mesa_id}
-                  description={table.descricao}
-                />
-                <TableItem
+                  key={table.mesa_id}
                   chairs={table.qtd_cadeiras}
                   numberTable={table.mesa_id}
                   description={table.descricao}
