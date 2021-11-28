@@ -52,6 +52,12 @@ export const Container = styled.div`
 `;
 
 export const ContentContainer = styled.div`
+  @media screen and (max-width: 720px) {
+    footer {
+      font-size: 0.5rem;
+      margin-right: 10rem;
+    }
+  }
   display: flex;
   flex-direction: column;
   width: 73%;
@@ -63,7 +69,7 @@ export const ContentContainer = styled.div`
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    margin-top: 2.5rem;
+    margin-bottom: 1rem;
 
     p {
       text-decoration-line: underline;
@@ -74,17 +80,24 @@ export const ContentContainer = styled.div`
 `;
 
 export const RestaurantTitleContainer = styled.div`
-  align-self: left;
+  @media screen and (max-width: 720px) {
+    align-self: left;
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+  }
 
   h1 {
     text-align: left;
-    font-size: 2rem;
+
     font-weight: 400;
   }
 `;
 
 export const FoodPlate = styled.h2`
   @media screen and (max-width: 720px) {
+    font-size: 1.3rem;
     display: flex;
     justify-content: flex-end;
   }
