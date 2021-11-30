@@ -1,29 +1,42 @@
 import styled from 'styled-components';
 
+interface ConteinerBottomBorder {
+  onPressContent: boolean;
+}
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const RedContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #e53935;
-  border-bottom: #f3f3f3;
+export const ContainerPage = styled.div`
   width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* display: flex;
+  flex-direction: column; */
+
+  align-items: start;
+  margin-left: 0.7rem;
+  background-color: #f3f3f3;
+  border-bottom: #e53935;
 `;
 
-export const CardUserInformationContainer = styled.header`
+export const CardRestaurantInformationContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   margin-top: 1rem;
+  margin-bottom: 7rem;
   text-align: center;
+
+  background: #e53935;
+  border-radius: 2rem;
+  box-shadow: 20px 20px 50px -30px #e53935;
+
   img {
     width: 100px;
     height: 100px;
@@ -39,8 +52,21 @@ export const CardUserInformationContainer = styled.header`
     font-weight: 300;
     font-size: 16px;
   }
+  .InputsSection {
+    width: 90%;
+  }
 `;
-
+export const SectionTable = styled.section`
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #e53935;
+  h2 {
+    color: #000;
+  }
+  button {
+    width: 50%;
+  }
+`;
 export const SelectionMenu = styled.div`
   display: flex;
   align-self: center;
@@ -57,11 +83,15 @@ export const SelectionMenu = styled.div`
   }
 `;
 
-export const ContentContainer = styled.div`
+export const ContentContainer = styled.div<ConteinerBottomBorder>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-bottom: ${props => (props.onPressContent ? '3px solid #fff' : '')};
+  h3 {
+    color: #e53935;
+  }
 `;
 
 export const ListContainer = styled.div`

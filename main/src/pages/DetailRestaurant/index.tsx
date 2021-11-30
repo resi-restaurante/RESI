@@ -278,7 +278,7 @@ function DetailRestaurant() {
               <span className="empty-table" />
               <p>Mesas Cheias:</p>
               <span className="full-table" />
-              <Input
+              {/* <Input
                 name="dat_nascimento"
                 id="dat_nascimento"
                 type="date"
@@ -286,7 +286,7 @@ function DetailRestaurant() {
                 value={date}
                 pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
                 onChange={e => setDate(e.target.value)}
-              />
+              /> */}
             </div>
 
             <TableSection>
