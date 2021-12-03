@@ -111,6 +111,7 @@ function DetailRestaurant() {
             data_reserva,
             horario_entrada,
             restaurante_id: id,
+            mesaId,
           },
         ])
         .single();
@@ -154,8 +155,8 @@ function DetailRestaurant() {
     <Container>
       <Navbar itemVisible={false} />
       {restaurante?.map((restaurant: RestaurantData) => (
-        <>
-          <RestaurantGrid key={restaurant.restaurante_id}>
+        <div key={restaurant.restaurante_id}>
+          <RestaurantGrid>
             <Title>{restaurant.nome}</Title>
             <ContainerCarrossel>
               <Swiper
@@ -229,7 +230,7 @@ function DetailRestaurant() {
               </div>
             </InformationContainer>
           </RestaurantGrid>
-        </>
+        </div>
       ))}
 
       <div>
@@ -270,28 +271,17 @@ function DetailRestaurant() {
             </div>
             <TableSection>
               {mesa?.map((table: TableData) => (
-                <>
-                  <TableItem
-                    key={table.mesa_id}
-                    chairs={table.qtd_cadeiras}
-                    numberTable={table.mesa_id}
-                    description={table.descricao_mesa}
-                    valueProp={table.mesa_id.toString()}
-                    checkedProp={table.mesa_id.toString()}
-                    onChange={e => setMesaId(e.target.value)}
-                    selectedRadio={mesaId}
-                  />
-
-                  {console.log(mesaId)}
-                </>
+                <TableItem
+                  key={table.mesa_id}
+                  chairs={table.qtd_cadeiras}
+                  numberTable={table.mesa_id}
+                  description={table.descricao_mesa}
+                  valueProp={table.mesa_id.toString()}
+                  checkedProp={table.mesa_id.toString()}
+                  onChange={e => setMesaId(e.target.value)}
+                  selectedRadio={mesaId}
+                />
               ))}
-              {/* <input
-                type="radio"
-                name="react-radio-btn"
-                value={mesaId}
-                checked={isRadioSelected(mesaId)}
-                onChange={e => setMesaId(e.target.value)}
-              /> */}
             </TableSection>
             <button
               className="reserv"
