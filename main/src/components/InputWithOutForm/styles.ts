@@ -9,11 +9,11 @@ export const Container = styled.div<ContainerProps>`
   background: #fff;
   border-radius: 10px;
   padding: 16px;
-  width: 62%;
+  width: 42%;
   display: flex;
   align-items: center;
   color: #6c6c6c;
-  border: 2px solid #fff;
+  border: 2px solid #cccccc;
   & + div {
     margin-top: 8px;
   }

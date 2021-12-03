@@ -253,14 +253,16 @@ export const Table = styled.div`
 export const DatePickerCalendar = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-right: 3rem;
+  width: 95%;
+  margin-right: 5rem;
 `;
 export const DatePickerTime = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem 3rem;
-  margin: 1rem;
+  width: 90%;
+  padding: 2rem 4rem;
+  margin: 1rem 1rem 1rem 4rem;
   h3 {
     margin: 1rem;
     color: #434343;

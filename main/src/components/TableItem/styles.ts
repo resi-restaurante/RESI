@@ -3,14 +3,15 @@ import styled from 'styled-components';
 export const Container = styled.div`
   margin: 1%;
   color: #000;
+
   .table {
+    border-radius: 9px;
+    padding: 15px;
     text-align: center;
     background: #fff;
     border: 1px solid #e53935;
     box-shadow: 0 0 3px #e53935;
     box-sizing: border-box;
-    border-radius: 9px;
-    padding: 15px;
 
     min-width: 80px;
   }
@@ -18,8 +19,10 @@ export const Container = styled.div`
   .table-row {
     margin: 1rem;
   }
-  .selectable-table:hover {
+  .selectable-table {
     cursor: pointer;
+    border: 1px solid #630000;
+    box-shadow: 0 0 3px #e53935;
 
     padding: 5px;
   }

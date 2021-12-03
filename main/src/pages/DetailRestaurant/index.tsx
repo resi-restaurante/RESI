@@ -2,6 +2,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
+  ChangeEvent,
   InputHTMLAttributes,
   useCallback,
   useEffect,
@@ -17,10 +18,16 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Navigation } from 'swiper';
-import DatePicker, { DateObject } from 'react-multi-date-picker';
-import TimePicker from 'react-multi-date-picker/plugins/time_picker';
+
 import * as Yup from 'yup';
-import { Footer, Button, Navbar, SelectInput, Input } from '../../components';
+import {
+  Footer,
+  Button,
+  Navbar,
+  SelectInput,
+  Input,
+  InputWithOutForm,
+} from '../../components';
 import {
   Container,
   ContentRestaurant,
@@ -40,6 +47,7 @@ import { supabase } from '../../supabase';
 import RestaurantData from '../../hooks/dtos/Restaurant';
 import TableItem from '../../components/TableItem';
 import { getValidationErrors } from '../../utils';
+import Radio from '../../components/Radio';
 
 interface SignUpFormData {
   dateReservation: string;
@@ -49,17 +57,11 @@ interface SignUpFormData {
 interface TableData {
   qtd_cadeiras: number;
   mesa_id: number;
-  descricao: string;
+  descricao_mesa: string;
 }
 function DetailRestaurant() {
-  // const [restaurantInfo, setRestaurantInfo] = useState({} as RestaurantData);
-
-  // useEffect(() => {
-  //   setRestaurantInfo(props.location.state);
-  // }, []);
-
   // const [date, setDate] = useState<DateObject | DateObject[]>(new DateObject());
-  const [date, setDate] = useState('');
+  const [data_reserva, setData_reserva] = useState('');
   const [horario_entrada, setHorario_entrada] = useState<string>('');
   const [mesaId, setMesaId] = useState<number | any>();
 
@@ -98,30 +100,27 @@ function DetailRestaurant() {
       setMesa(data);
     }
   }
-  async function RegisterDatasUsers({
-    date,
-    horario_entrada,
-    mesaId,
-  }: {
-    date: string;
-    horario_entrada: string;
-    mesaId: number | any;
-  }) {
+  async function RegisterBooking() {
     try {
       const user = supabase.auth.user();
-
-      const registers = {
-        id: user?.id,
-        date,
-        horario_entrada,
-        mesaId,
-      };
-
-      const { error } = await supabase.from('agendamento').upsert(registers, {
-        returning: 'minimal', // Don't return the value after inserting
-      });
-      if (error) {
-        throw error;
+      const { data, error, status } = await supabase
+        .from('agendamento')
+        .insert([
+          {
+            profiles_id: user?.id,
+            data_reserva,
+            horario_entrada,
+            restaurante_id: id,
+          },
+        ])
+        .single();
+      if (error && status !== 406) {
+        console.log(error);
+      }
+      if (data) {
+        setData_reserva(data.data_reserva);
+        setHorario_entrada(data.horario_entrada);
+        setMesaId(data.mesaId);
       }
     } catch (error) {
       alert(error);
@@ -130,7 +129,7 @@ function DetailRestaurant() {
   const handleSubmit = useCallback(async (data: SignUpFormData) => {
     // history.push('/payament');
     try {
-      console.log(data);
+      // console.log(data);
       formRef.current?.setErrors({});
 
       const schema = Yup.object().shape({
@@ -149,6 +148,7 @@ function DetailRestaurant() {
       }
     }
   }, []);
+
   SwiperCore.use([Pagination, Navigation]);
   return (
     <Container>
@@ -238,36 +238,25 @@ function DetailRestaurant() {
           <h2>Escolha o dia:</h2>
           <Form ref={formRef} onSubmit={handleSubmit}>
             <DatePickerCalendar>
-              <DatePicker
-                value={date}
-                type="input-icon"
-                format="DD/MM/YYYY"
-                className="red rmdp-mobile"
-                inputClass="custom-input"
-                weekDays={['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB']}
-                months={[
-                  'Janeiro',
-                  'Fevereiro',
-                  'Março',
-                  'Abril',
-                  'Maio',
-                  'Junho',
-                  'Julho',
-                  'Agosto',
-                  'Setembro',
-                  'Outubro',
-                  'Novembro',
-                  'Dezembro',
-                ]}
+              <InputWithOutForm
+                name="dat_nascimento"
+                id="dat_nascimento"
+                type="date"
+                placeholder="Data de nascimento"
+                value={data_reserva}
+                pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                onChange={e => setData_reserva(e.target.value)}
               />
             </DatePickerCalendar>
             <DatePickerTime>
               <h3>Horário de entrada:</h3>
-              <DatePicker
-                disableDayPicker
-                inputClass="custom-input"
-                format="HH:mm"
-                plugins={[<TimePicker hideSeconds />]}
+              <InputWithOutForm
+                name="horario_entrada"
+                id="horario_entrada"
+                type="time"
+                placeholder="horário de entrada"
+                value={horario_entrada}
+                onChange={e => setHorario_entrada(e.target.value)}
               />
             </DatePickerTime>
             <h2>Selecione a quantidade de pessoas</h2>
@@ -278,17 +267,7 @@ function DetailRestaurant() {
               <span className="empty-table" />
               <p>Mesas Cheias:</p>
               <span className="full-table" />
-              {/* <Input
-                name="dat_nascimento"
-                id="dat_nascimento"
-                type="date"
-                placeholder="Data de nascimento"
-                value={date}
-                pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-                onChange={e => setDate(e.target.value)}
-              /> */}
             </div>
-
             <TableSection>
               {mesa?.map((table: TableData) => (
                 <>
@@ -296,22 +275,28 @@ function DetailRestaurant() {
                     key={table.mesa_id}
                     chairs={table.qtd_cadeiras}
                     numberTable={table.mesa_id}
-                    description={table.descricao}
+                    description={table.descricao_mesa}
+                    valueProp={table.mesa_id.toString()}
+                    checkedProp={table.mesa_id.toString()}
+                    onChange={e => setMesaId(e.target.value)}
+                    selectedRadio={mesaId}
                   />
+
+                  {console.log(mesaId)}
                 </>
               ))}
+              {/* <input
+                type="radio"
+                name="react-radio-btn"
+                value={mesaId}
+                checked={isRadioSelected(mesaId)}
+                onChange={e => setMesaId(e.target.value)}
+              /> */}
             </TableSection>
-
             <button
               className="reserv"
               type="submit"
-              onClick={() =>
-                RegisterDatasUsers({
-                  date,
-                  horario_entrada,
-                  mesaId,
-                })
-              }
+              onClick={() => RegisterBooking()}
             >
               Reservar
             </button>
