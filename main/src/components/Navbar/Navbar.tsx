@@ -9,8 +9,6 @@ import {
   UserInformationContainer,
 } from './styles';
 
-// import { useAuth } from '../../hooks/AuthContext';
-
 import { supabase } from '../../supabase';
 
 interface NavbarProps {

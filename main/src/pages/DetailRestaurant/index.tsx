@@ -70,26 +70,28 @@ function DetailRestaurant() {
 
   const [restaurante, setRestaurante] = useState<any[] | null>();
   const [mesa, setMesa] = useState<any[]>();
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    Dados();
-  }, []);
+
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     Tables();
   }, []);
 
   const { id }: { id?: number | string | null } = useParams();
-  async function Dados() {
-    const { data } = await supabase
-      .from('restaurants')
-      .select('*')
-      .in('restaurante_id', [id]);
 
-    if (data) {
-      setRestaurante(data);
+  useEffect(() => {
+    async function getRestaurant() {
+      const { data } = await supabase
+        .from('restaurants')
+        .select('*')
+        .in('restaurante_id', [id]);
+
+      if (data) {
+        setRestaurante(data);
+      }
     }
-  }
+    getRestaurant();
+  });
+
   async function Tables() {
     const { data } = await supabase
       .from('mesas')
@@ -155,8 +157,8 @@ function DetailRestaurant() {
     <Container>
       <Navbar itemVisible={false} />
       {restaurante?.map((restaurant: RestaurantData) => (
-        <div key={restaurant.restaurante_id}>
-          <RestaurantGrid>
+        <>
+          <RestaurantGrid key={restaurant.restaurante_id}>
             <Title>{restaurant.nome}</Title>
             <ContainerCarrossel>
               <Swiper
@@ -230,7 +232,7 @@ function DetailRestaurant() {
               </div>
             </InformationContainer>
           </RestaurantGrid>
-        </div>
+        </>
       ))}
 
       <div>

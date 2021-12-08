@@ -1,40 +1,42 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable no-shadow */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { useState, useEffect } from 'react';
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import { ChangeEvent, useEffect, useState } from 'react';
 import { supabase } from '../../supabase';
-import { Button } from '..';
+import Button from '../Button';
 
-function PersonalAvatar({
+export default function RestauntsImg({
   url,
+  size,
   onUpload,
 }: {
   url: string | null;
+  size: number;
   onUpload: any;
 }) {
-  const [avatarUrl, setAvatarUrl] = useState('');
+  const [restaurantUrl, setRestaurantUrl] = useState<string>();
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     if (url) downloadImage(url);
   }, [url]);
 
-  async function downloadImage(path: any) {
+  async function downloadImage(path: string) {
     try {
       const { data, error } = await supabase.storage
-        .from('avatars')
+        .from('imgrestaurant')
         .download(path);
       if (error) {
         throw error;
       }
       const url = URL.createObjectURL(data);
-      setAvatarUrl(url);
+      setRestaurantUrl(url);
     } catch (error) {
       console.log('Error downloading image: ', error);
     }
   }
 
-  async function uploadAvatar(event: any) {
+  async function uploadRestaurant(event: ChangeEvent<HTMLInputElement>) {
     try {
       setUploading(true);
 
@@ -48,12 +50,17 @@ function PersonalAvatar({
       const filePath = `${fileName}`;
 
       const { error: uploadError } = await supabase.storage
-        .from('avatars')
+        .from('imgrestaurant')
         .upload(filePath, file);
 
       if (uploadError) {
         throw uploadError;
       }
+
+      // const { error: updateError } = await supabase.from('restaurants').upsert({
+      //   id: user!.id,
+      //   images_url: filePath,
+      // });
 
       onUpload(filePath);
     } catch (error) {
@@ -62,12 +69,13 @@ function PersonalAvatar({
       setUploading(false);
     }
   }
+
   return (
     <div>
-      {avatarUrl ? (
-        <img src={avatarUrl} alt="Avatar" />
+      {restaurantUrl ? (
+        <img src={restaurantUrl} style={{ height: size, width: size }} />
       ) : (
-        <img src={avatarUrl} alt="Avatar" />
+        <img src={restaurantUrl} style={{ height: size, width: size }} />
       )}
       <div>
         <Button>
@@ -84,12 +92,10 @@ function PersonalAvatar({
           type="file"
           id="single"
           accept="image/*"
-          onChange={uploadAvatar}
+          onChange={uploadRestaurant}
           disabled={uploading}
         />
       </div>
     </div>
   );
 }
-
-export default PersonalAvatar;

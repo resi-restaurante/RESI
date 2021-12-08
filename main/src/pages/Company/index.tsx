@@ -7,7 +7,7 @@ import { FiHome, FiCalendar, FiSearch } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FiUser } from 'react-icons/fi';
 import * as Yup from 'yup';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 import { getValidationErrors } from '../../utils';
 import {
@@ -35,6 +35,7 @@ import Modal from '../../components/Modal';
 
 import { useAuth } from '../../contexts/Auth';
 import { supabase } from '../../supabase';
+import TableItem from '../../components/TableItem';
 
 interface SignUpFormData {
   name: string;
@@ -42,8 +43,9 @@ interface SignUpFormData {
   price: string;
 }
 interface TableFormData {
-  descricao_mesa: string;
   qtd_cadeiras: number;
+  mesa_id: number;
+  descricao_mesa: string;
 }
 export default function ProfileRestaurant() {
   const { user } = useAuth();
@@ -53,6 +55,8 @@ export default function ProfileRestaurant() {
   const [loading, setLoading] = useState(true);
 
   const [nome, setNome] = useState('');
+  const [mesa, setMesa] = useState<any[]>();
+  const [mesaId, setMesaId] = useState<number | any>();
   const [descricao, setDescricao] = useState('');
   const [preco, setPreco] = useState('');
 
@@ -77,18 +81,22 @@ export default function ProfileRestaurant() {
   useEffect(() => {
     getRestaurant();
   }, [session]);
-  // useEffect(() => {
-  //   // eslint-disable-next-line @typescript-eslint/no-use-before-define
-  //   getTables();
-  // }, [session]);
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    getTables();
+  }, [session]);
 
-  // async function getTables() {
-  //   const { data } = await supabase
-  //     .from('mesas')
-  //     .select(`descricao_mesa,qtd_cadeiras`)
-  //     .eq('mesa_id', [session])
-  //     .single();
-  // }
+  async function getTables() {
+    const { data } = await supabase
+      .from('mesas')
+      .select('*')
+      .in('restaurante_id', [id]);
+    // console.log(data);
+    if (data) {
+      setMesa(data);
+    }
+  }
+  const { id }: { id?: number | string | null } = useParams();
   async function getRestaurant() {
     try {
       setLoading(true);
@@ -96,7 +104,7 @@ export default function ProfileRestaurant() {
       const { data, error, status } = await supabase
         .from('restaurants')
         .select(`nome,descricao,preco`)
-        .eq('restaurante_id', [1])
+        .eq('restaurante_id', [id])
         .single();
 
       if (error && status !== 406) {
@@ -314,6 +322,20 @@ export default function ProfileRestaurant() {
             {loading || 'Cadastrar Mesa'}
           </Button>
         </SectionTable>
+        <div>
+          {mesa?.map((table: TableFormData) => (
+            <TableItem
+              key={table.mesa_id}
+              chairs={table.qtd_cadeiras}
+              numberTable={table.mesa_id}
+              description={table.descricao_mesa}
+              valueProp={table.mesa_id.toString()}
+              checkedProp={table.mesa_id.toString()}
+              onChange={e => setMesaId(e.target.value)}
+              selectedRadio={mesaId}
+            />
+          ))}
+        </div>
       </ContainerPage>
       <SelectionMenu>
         <ContentContainer

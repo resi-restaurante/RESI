@@ -62,6 +62,9 @@ export default function ProfilePage() {
 
   const session = supabase.auth.session();
   useEffect(() => {
+    history.push('/profile');
+  }, []);
+  useEffect(() => {
     getProfile();
   }, [session]);
   // função
@@ -149,8 +152,6 @@ export default function ProfilePage() {
           <h1>Seu Perfil</h1>
           <div>
             <h3>Olá, {username} !</h3>
-            <h4>Seu id: {user?.id} !</h4>
-            <input id="user-email" type="text" value={user?.email} />
           </div>
           <div>
             <PersonalAvatar
@@ -170,6 +171,13 @@ export default function ProfilePage() {
                 onChange={e => setUsername(e.target.value)}
                 icon={FiUser}
                 placeholder="Digite seu nome"
+              />
+              <Input
+                name="email"
+                id="user-email"
+                type="text"
+                icon={FiUser}
+                value={user?.email}
               />
             </Form>
           </div>

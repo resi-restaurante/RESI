@@ -1,10 +1,10 @@
-import { useRef, useCallback } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
-// import { useAuth } from '../../hooks/AuthContext';
+import { createBrowserHistory } from 'history';
 import { Input, Footer, Navbar, Button } from '../../components';
 import {
   Container,
@@ -13,7 +13,7 @@ import {
   InputFormContainer,
 } from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
-//
+
 import { useAuth } from '../../contexts/Auth';
 
 interface SignInFormData {
@@ -22,48 +22,43 @@ interface SignInFormData {
 }
 
 export default function LoginPage() {
-  // const emailRef = useRef();
-  // const passwordRef = useRef();
-  // const [error, setError] = useState(null);
-
   const { signIn } = useAuth();
-  const history = useHistory();
+
+  const history = createBrowserHistory();
+
+  const handleHistory = () => {
+    history.push('/profile');
+  };
 
   const formRef = useRef<FormHandles>(null);
+  async function handleSubmit(data: SignInFormData) {
+    try {
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .email('Digite um e-mail válido')
+          .required('E-mail obrigatório.'),
+        password: Yup.string()
+          .min(6, 'Senha deve conter no mínimo 6 dígitos')
+          .required('A senha é obrigatória'),
+      });
 
-  const handleSubmit = useCallback(
-    async (data: SignInFormData) => {
-      history.push('/profile');
-      try {
-        formRef.current?.setErrors({});
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+      formRef.current?.setErrors({});
 
-        const schema = Yup.object().shape({
-          email: Yup.string()
-            .required('E-mail obrigatório.')
-            .email('Digite um e-mail válida'),
-          password: Yup.string().min(
-            6,
-            'Senha deve conter no mínimo 6 dígitos',
-          ),
-        });
-
-        await schema.validate(data, {
-          abortEarly: false,
-        });
-
-        signIn({
-          email: data.email,
-          password: data.password,
-        });
-      } catch (err) {
-        if (err instanceof Yup.ValidationError) {
-          const errors = getValidationErrors(err);
-          formRef.current?.setErrors(errors);
-        }
+      signIn({
+        email: data.email,
+        password: data.password,
+      });
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErrors(err);
+        formRef.current?.setErrors(errors);
       }
-    },
-    [signIn],
-  );
+    }
+  }
+
   return (
     <Container>
       <Navbar itemVisible={false} />
@@ -102,7 +97,9 @@ export default function LoginPage() {
             </Link>
           </main>
 
-          <Button>Entrar</Button>
+          <Button type="submit" onClick={handleHistory}>
+            Entrar
+          </Button>
         </Form>
       </ContainerLogin>
       <Footer />
