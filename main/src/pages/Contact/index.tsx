@@ -3,7 +3,7 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiMail, FiUser, FiEdit } from 'react-icons/fi';
 import { Container, Title } from './styles';
-import { TextArea, InputWithBorder, Button, Header } from '../../components';
+import { TextArea, InputWithBorder, Button, Navbar } from '../../components';
 
 const ContactPage = () => {
   const formRef = useRef<FormHandles>(null);
@@ -14,7 +14,7 @@ const ContactPage = () => {
 
   return (
     <>
-      <Header />
+      <Navbar itemVisible />
       <Container>
         <div className="form-container">
           <Title>Tem alguma dúvida ? Mande um recado pra gente.</Title>

@@ -1,9 +1,10 @@
 import { useRef, useCallback } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
+import { createBrowserHistory } from 'history';
 import { Input, Footer, Navbar, Button } from '../../components';
 import {
   Container,
@@ -24,12 +25,17 @@ interface SignUpFormData {
 
 export default function RegisterUsers() {
   const { signUp } = useAuth();
-  const history = useHistory();
+  const history = createBrowserHistory();
+  const handleHistory = () => {
+    history.push('/dataset');
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  };
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {
-      history.push('/profile');
       try {
         console.log(data);
         formRef.current?.setErrors({});
@@ -104,7 +110,7 @@ export default function RegisterUsers() {
             </div>
           </FormRow>
 
-          <Button>Registrar</Button>
+          <Button onClick={handleHistory}>Registrar</Button>
         </FormContainer>
         <AdviseContainer>
           <h3>Registre-se agora</h3>

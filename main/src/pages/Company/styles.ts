@@ -44,7 +44,7 @@ export const CardRestaurantInformationContainer = styled.header`
   }
 
   h3 {
-    margin: 1rem 0 0 1rem;
+    margin: 1rem 0 1rem 2rem;
   }
 
   #user-email {
@@ -56,13 +56,15 @@ export const CardRestaurantInformationContainer = styled.header`
     width: 90%;
   }
 `;
+
 export const SectionTable = styled.section`
+  margin-right: 3rem;
   margin-top: 1rem;
   padding: 1rem;
   background: #e53935;
-  h2 {
-    color: #000;
-  }
+  border-radius: 2rem;
+  box-shadow: 20px 20px 50px -30px #e53935;
+
   button {
     width: 50%;
   }
@@ -80,6 +82,16 @@ export const SelectionMenu = styled.div`
     h3 {
       font-size: 20px;
     }
+  }
+`;
+export const TablesItems = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  margin-top: 3rem;
+  @media screen and (max-width: 720px) {
+    grid-template-columns: 1fr 1fr;
   }
 `;
 

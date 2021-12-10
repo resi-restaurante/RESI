@@ -7,6 +7,7 @@ export const Container = styled.div`
 `;
 
 export const ContainerLogin = styled.div`
+  margin-bottom: 16rem;
   @media screen and (max-width: 720px) {
     display: block;
     .FormLogin {

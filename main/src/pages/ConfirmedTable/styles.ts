@@ -38,9 +38,10 @@ export const ContainerConfirmed = styled.div`
 `;
 
 export const Code = styled.h1`
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: 900;
-  margin: 2rem;
+  margin: 1rem;
+  color: green;
   @media screen and (max-width: 720px) {
     font-size: 2rem;
   }

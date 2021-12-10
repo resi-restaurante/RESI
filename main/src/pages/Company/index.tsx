@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useRef, useEffect } from 'react';
 import { FormHandles } from '@unform/core';
-import { FiHome, FiCalendar, FiSearch } from 'react-icons/fi';
+import { FiHome, FiCalendar, FiSearch, FiCoffee, FiZap } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FiUser } from 'react-icons/fi';
 import * as Yup from 'yup';
@@ -19,6 +19,7 @@ import {
   ScrollView,
   ContainerPage,
   SectionTable,
+  TablesItems,
 } from './styles';
 import {
   CardListAppointment,
@@ -138,7 +139,7 @@ export default function ProfileRestaurant() {
           {
             descricao_mesa,
             qtd_cadeiras,
-            restaurante_id: 1,
+            restaurante_id: 2,
           },
         ])
         .single();
@@ -238,17 +239,8 @@ export default function ProfileRestaurant() {
           <h1>Seu Perfil</h1>
           <div>
             <h3>Bem vindo, {nome} !</h3>
-            <h4>Seu id: {user?.id} !</h4>
           </div>
           <div className="InputsSection">
-            {/* <PersonalAvatar
-              url={avatar_url}
-              onUpload={(url: string | any) => {
-                setAvatarUrl(url);
-                updateProfile({ username, avatar_url: url });
-              }}
-            /> */}
-
             <Form ref={formRef} onSubmit={handleSubmit}>
               <Input
                 name="name"
@@ -302,7 +294,7 @@ export default function ProfileRestaurant() {
               type="text"
               value={descricao_mesa || ''}
               onChange={e => setDescricao_mesa(e.target.value)}
-              icon={FiUser}
+              icon={FiCoffee}
               placeholder="descricao do local da mesa"
             />
             <Input
@@ -310,7 +302,7 @@ export default function ProfileRestaurant() {
               type="number"
               value={qtd_cadeiras || ''}
               onChange={e => setQtd_cadeiras(e.target.value)}
-              icon={FiUser}
+              icon={FiZap}
               placeholder="Quantidade de cadeiras"
             />
           </Form>
@@ -321,21 +313,23 @@ export default function ProfileRestaurant() {
             {' '}
             {loading || 'Cadastrar Mesa'}
           </Button>
+
+          <TablesItems>
+            {mesa?.map((table: TableFormData) => (
+              <TableItem
+                key={table.mesa_id}
+                chairs={table.qtd_cadeiras}
+                numberTable={table.mesa_id}
+                description={table.descricao_mesa}
+                valueProp={table.mesa_id.toString()}
+                checkedProp={table.mesa_id.toString()}
+                onChange={e => setMesaId(e.target.value)}
+                selectedRadio={mesaId}
+                classNameTable="empty-table"
+              />
+            ))}
+          </TablesItems>
         </SectionTable>
-        <div>
-          {mesa?.map((table: TableFormData) => (
-            <TableItem
-              key={table.mesa_id}
-              chairs={table.qtd_cadeiras}
-              numberTable={table.mesa_id}
-              description={table.descricao_mesa}
-              valueProp={table.mesa_id.toString()}
-              checkedProp={table.mesa_id.toString()}
-              onChange={e => setMesaId(e.target.value)}
-              selectedRadio={mesaId}
-            />
-          ))}
-        </div>
       </ContainerPage>
       <SelectionMenu>
         <ContentContainer
@@ -344,14 +338,6 @@ export default function ProfileRestaurant() {
         >
           <FiCalendar size={20} color="#e53935" />
           <h3>Agendamentos</h3>
-          <Modal />
-        </ContentContainer>
-        <ContentContainer
-          onPressContent={showCompanys}
-          onClick={() => handleDisableContainer('companys')}
-        >
-          <FiHome size={20} color="#e53935" />
-          <h3>Companhias</h3>
         </ContentContainer>
       </SelectionMenu>
 
@@ -367,21 +353,6 @@ export default function ProfileRestaurant() {
               restaurantName="Casa da Eshiha"
               date="01/07/2022"
             />
-            <CardListAppointment
-              id="1A2VQ"
-              restaurantName="Casa da Eshiha"
-              date="01/07/2022"
-            />
-            <CardListAppointment
-              id="1A2VQ"
-              restaurantName="Casa da Eshiha"
-              date="01/07/2022"
-            />
-            <CardListAppointment
-              id="1A2VQ"
-              restaurantName="Casa da Eshiha"
-              date="01/07/2022"
-            />
           </ScrollView>
         </ListContainer>
       )}
@@ -392,12 +363,6 @@ export default function ProfileRestaurant() {
             <InputWithOutForm icon={FiSearch} />
           </header>
           <ScrollView>
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
             <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
           </ScrollView>
         </ListContainer>

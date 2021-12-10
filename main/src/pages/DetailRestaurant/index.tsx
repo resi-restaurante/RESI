@@ -1,25 +1,19 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable no-shadow */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  ChangeEvent,
-  InputHTMLAttributes,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { FiMail, FiPhoneCall, FiExternalLink } from 'react-icons/fi';
 import { AiOutlineWhatsApp } from 'react-icons/ai';
 import { BiFoodMenu } from 'react-icons/bi';
 import { FiMapPin } from 'react-icons/fi';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Navigation } from 'swiper';
 
 import * as Yup from 'yup';
+import { createBrowserHistory } from 'history';
 import {
   Footer,
   Button,
@@ -59,21 +53,33 @@ interface TableData {
   mesa_id: number;
   descricao_mesa: string;
 }
+interface BookingData {
+  agendamento_id: string;
+  status: boolean;
+}
 function DetailRestaurant() {
-  // const [date, setDate] = useState<DateObject | DateObject[]>(new DateObject());
   const [data_reserva, setData_reserva] = useState('');
   const [horario_entrada, setHorario_entrada] = useState<string>('');
   const [mesaId, setMesaId] = useState<number | any>();
 
-  const history = useHistory();
+  const history = createBrowserHistory();
+
+  const handleHistory = () => {
+    history.push('/payment');
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  };
   const formRef = useRef<FormHandles>(null);
 
   const [restaurante, setRestaurante] = useState<any[] | null>();
   const [mesa, setMesa] = useState<any[]>();
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     Tables();
+  }, []);
+  useEffect(() => {
+    getBooking();
   }, []);
 
   const { id }: { id?: number | string | null } = useParams();
@@ -104,12 +110,16 @@ function DetailRestaurant() {
   }
   async function RegisterBooking() {
     try {
+      const VerificationCode = Math.random().toString(36).substring(7);
+      const status_booking = false;
       const user = supabase.auth.user();
       const { data, error, status } = await supabase
         .from('agendamento')
         .insert([
           {
             profiles_id: user?.id,
+            codigo_verificacao: VerificationCode,
+            status: status_booking,
             data_reserva,
             horario_entrada,
             restaurante_id: id,
@@ -129,10 +139,25 @@ function DetailRestaurant() {
       alert(error);
     }
   }
+  const [booking, setBooking] = useState<any[] | null>();
+  // const [status, setStatus] = useState<boolean | any[]>(false);
+
+  async function getBooking() {
+    const { data } = await supabase
+      .from('agendamento')
+      .select(`agendamento_id,status`)
+      .in('agendamento_id', [3]);
+
+    if (data) {
+      setBooking(data);
+    }
+  }
+  const status = booking?.map((bookingData: BookingData) => bookingData.status);
+
   const handleSubmit = useCallback(async (data: SignUpFormData) => {
-    // history.push('/payament');
+    handleHistory();
     try {
-      // console.log(data);
+      console.log(data);
       formRef.current?.setErrors({});
 
       const schema = Yup.object().shape({
@@ -155,7 +180,7 @@ function DetailRestaurant() {
   SwiperCore.use([Pagination, Navigation]);
   return (
     <Container>
-      <Navbar itemVisible={false} />
+      <Navbar itemVisible />
       {restaurante?.map((restaurant: RestaurantData) => (
         <>
           <RestaurantGrid key={restaurant.restaurante_id}>
@@ -203,16 +228,9 @@ function DetailRestaurant() {
                   <p>
                     <FiMapPin size={16} color="#e53935" />
                     <strong> Endereço: </strong>
-                    {restaurant.rua_avenida}, {restaurant.cidade}-{' '}
-                    {restaurant.estado}
+                    {restaurant.rua_avenida},{restaurant.numero_endereco}{' '}
+                    {restaurant.cidade}- {restaurant.estado}
                   </p>
-                  <a
-                    href="https://www.google.com/maps/search/restaurant+augusto+aparecida+sp"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    <FiExternalLink size={15} />
-                  </a>
 
                   <Description>
                     <BiFoodMenu size={16} color="#e53935" />
@@ -223,8 +241,10 @@ function DetailRestaurant() {
             </ContentRestaurant>
             <InformationContainer>
               <div>
-                <FiMail size={25} />
-                <p>{restaurant.email}</p>
+                <strong>
+                  Horário de Abertura: {restaurant.horario_abertura}:00 <br />
+                  Horário de Fechamento: {restaurant.horario_fechamento}:00
+                </strong>
               </div>
               <div>
                 <AiOutlineWhatsApp size={25} />
@@ -282,6 +302,7 @@ function DetailRestaurant() {
                   checkedProp={table.mesa_id.toString()}
                   onChange={e => setMesaId(e.target.value)}
                   selectedRadio={mesaId}
+                  classNameTable={false ? 'full-table' : 'empty-table'}
                 />
               ))}
             </TableSection>

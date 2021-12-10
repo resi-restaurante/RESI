@@ -3,7 +3,15 @@
 /* eslint-disable no-shadow */
 import { Form } from '@unform/web';
 import { useRef, useCallback, useState, useEffect } from 'react';
-import { FiMail, FiUser } from 'react-icons/fi';
+import {
+  FiMail,
+  FiUser,
+  FiPhone,
+  FiMapPin,
+  FiShield,
+  FiWatch,
+} from 'react-icons/fi';
+
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
@@ -207,7 +215,7 @@ export default function RegisterRestaurant() {
             type="number"
             value={cpfMask(cnpj)}
             onChange={e => setCnpj(e.target.value)}
-            icon={FiMail}
+            icon={FiShield}
             placeholder="Digite o CNPJ de seu restauarnte"
             style={{ width: '100%' }}
           />
@@ -226,7 +234,7 @@ export default function RegisterRestaurant() {
 
           <Input
             name="cidade"
-            icon={FiMail}
+            icon={FiMapPin}
             value={cidade}
             onChange={e => setCidade(e.target.value)}
             placeholder="Digite sua cidade"
@@ -235,7 +243,7 @@ export default function RegisterRestaurant() {
 
           <Input
             name="rua_avenida"
-            icon={FiMail}
+            icon={FiMapPin}
             value={rua_avenida}
             onChange={e => setRua_avenida(e.target.value)}
             placeholder="Digite sua rua/avenida"
@@ -244,7 +252,7 @@ export default function RegisterRestaurant() {
           <Input
             name="numero_endereco"
             type="number"
-            icon={FiMail}
+            icon={FiMapPin}
             value={numero_endereco}
             onChange={e => setNumero_endereco(e.target.value)}
             placeholder="Numero"
@@ -255,7 +263,7 @@ export default function RegisterRestaurant() {
             type="number"
             value={cellphoneMask(telefone)}
             onChange={e => setTelefone(e.target.value)}
-            icon={FiMail}
+            icon={FiPhone}
             placeholder="Digite o telefone de seu restaurante"
             style={{ width: '100%' }}
           />
@@ -273,7 +281,7 @@ export default function RegisterRestaurant() {
             type="number"
             value={horario_abertura}
             onChange={e => setHorarioAbertura(e.target.value)}
-            icon={FiMail}
+            icon={FiWatch}
             placeholder="Horario de abertura"
             style={{ width: '100%' }}
           />
@@ -282,7 +290,7 @@ export default function RegisterRestaurant() {
             type="number"
             value={horario_fechamento}
             onChange={e => setHorarioFechamento(e.target.value)}
-            icon={FiMail}
+            icon={FiWatch}
             placeholder="Horario de fechamento"
             style={{ width: '100%' }}
           />

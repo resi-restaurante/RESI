@@ -4,6 +4,7 @@ import { FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
+
 import { createBrowserHistory } from 'history';
 import { Input, Footer, Navbar, Button } from '../../components';
 import {
@@ -22,13 +23,16 @@ interface SignInFormData {
 }
 
 export default function LoginPage() {
-  const { signIn } = useAuth();
-
   const history = createBrowserHistory();
 
   const handleHistory = () => {
     history.push('/profile');
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
+
+  const { signIn } = useAuth();
 
   const formRef = useRef<FormHandles>(null);
   async function handleSubmit(data: SignInFormData) {
@@ -38,7 +42,7 @@ export default function LoginPage() {
           .email('Digite um e-mail válido')
           .required('E-mail obrigatório.'),
         password: Yup.string()
-          .min(6, 'Senha deve conter no mínimo 6 dígitos')
+          .min(8, 'Senha deve conter no mínimo 6 dígitos')
           .required('A senha é obrigatória'),
       });
 
@@ -90,13 +94,11 @@ export default function LoginPage() {
               type="password"
             />
           </InputFormContainer>
-
           <main>
             <Link to="/forgotpassword" id="forgetPassaword">
               <p>Esqueci minha senha</p>
             </Link>
           </main>
-
           <Button type="submit" onClick={handleHistory}>
             Entrar
           </Button>

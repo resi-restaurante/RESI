@@ -8,6 +8,7 @@ import { Form } from '@unform/web';
 import { FiUser } from 'react-icons/fi';
 import * as Yup from 'yup';
 import { Link, useHistory } from 'react-router-dom';
+import { Box, useToast } from '@chakra-ui/react';
 import { getValidationErrors } from '../../utils';
 import {
   Container,
@@ -28,8 +29,7 @@ import {
   Button,
   Navbar,
 } from '../../components';
-import profileAvatar from '../../assets/images/profile.jpg';
-import Modal from '../../components/Modal';
+
 // import { useAuth } from '../../hooks/AuthContext';
 import { useAuth } from '../../contexts/Auth';
 import { supabase } from '../../supabase';
@@ -39,6 +39,7 @@ interface SignUpFormData {
   name: string;
 }
 export default function ProfilePage() {
+  const toast = useToast();
   const { user } = useAuth();
   const [showSchedule, setShowSchedule] = useState(true);
   const [showCompanys, setShowCompanys] = useState(false);
@@ -61,9 +62,7 @@ export default function ProfilePage() {
   const formRef = useRef<FormHandles>(null);
 
   const session = supabase.auth.session();
-  useEffect(() => {
-    history.push('/profile');
-  }, []);
+
   useEffect(() => {
     getProfile();
   }, [session]);
@@ -117,6 +116,20 @@ export default function ProfilePage() {
       if (error) {
         throw error;
       }
+      toast({
+        title: 'Profile updated.',
+        position: 'top',
+        variant: 'subtle',
+        description: '',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+        render: () => (
+          <Box color="white" p={3} bg="red.500">
+            Hello World
+          </Box>
+        ),
+      });
     } catch (error) {
       alert(error);
     } finally {
@@ -209,7 +222,6 @@ export default function ProfilePage() {
         >
           <FiCalendar size={20} color="#e53935" />
           <h3>Agendamentos</h3>
-          <Modal />
         </ContentContainer>
         <ContentContainer
           onPressContent={showCompanys}
@@ -229,41 +241,18 @@ export default function ProfilePage() {
           <ScrollView>
             <CardListAppointment
               id="1A2VQ"
-              restaurantName="Casa da Eshiha"
-              date="01/07/2022"
-            />
-            <CardListAppointment
-              id="1A2VQ"
-              restaurantName="Casa da Eshiha"
-              date="01/07/2022"
-            />
-            <CardListAppointment
-              id="1A2VQ"
-              restaurantName="Casa da Eshiha"
-              date="01/07/2022"
-            />
-            <CardListAppointment
-              id="1A2VQ"
-              restaurantName="Casa da Eshiha"
-              date="01/07/2022"
+              restaurantName="Bom Gosto"
+              date="10/12/2021"
             />
           </ScrollView>
         </ListContainer>
       )}
       {showCompanys && (
         <ListContainer>
-          <header>
-            <h1>Pesquise aqui por sua companhia</h1>
-            <InputWithOutForm icon={FiSearch} />
-          </header>
           <ScrollView>
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
-            <CardListCompanys id="1A2VQ" restaurantName="Casa da Eshiha" />
+            <Link to="/mycompany/2">
+              <Button>Prata Fina</Button>
+            </Link>
           </ScrollView>
         </ListContainer>
       )}

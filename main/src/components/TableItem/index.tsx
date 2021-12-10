@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable no-plusplus */
 import { ChangeEventHandler, HTMLAttributes } from 'react';
 
@@ -8,6 +9,10 @@ import { ChangeEventHandler, HTMLAttributes } from 'react';
 import { Container } from './styles';
 // import { RadioGroup } from '../Radio';
 
+// interface BookingData {
+//   agendamento_id: string;
+//   status: boolean;
+// }
 interface TableProps extends HTMLAttributes<HTMLSpanElement> {
   chairs: number;
   numberTable: number;
@@ -16,6 +21,7 @@ interface TableProps extends HTMLAttributes<HTMLSpanElement> {
   checkedProp: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
   selectedRadio: string;
+  classNameTable: string;
 }
 export default function TableItem({
   chairs,
@@ -25,13 +31,32 @@ export default function TableItem({
   checkedProp,
   onChange,
   selectedRadio,
+  classNameTable,
 }: TableProps) {
   const isRadioSelected = (value: string): boolean => selectedRadio === value;
 
+  // const [booking, setBooking] = useState<any[] | null>();
+
+  // useEffect(() => {
+  //   getBooking();
+  // }, []);
+  // async function getBooking() {
+  //   const { data } = await supabase
+  //     .from('agendamento')
+  //     .select(`agendamento_id,status`);
+
+  //   if (data) {
+  //     setBooking(data);
+  //   }
+  // }
   function getRow1() {
+    // const status = booking?.map((bookingData: BookingData) =>
+    //   console.log(bookingData.status),
+    // );
+
     const chair = [];
     for (let i = 0; i < Math.ceil(chairs / 2); i++) {
-      chair.push(<span key={i} className="empty-table" />);
+      chair.push(<span key={i} className={classNameTable} />);
     }
     return chair;
   }
@@ -39,7 +64,7 @@ export default function TableItem({
   function getRow2() {
     const chair2 = [];
     for (let i = 0; i < Math.floor(chairs / 2); i++) {
-      chair2.push(<span key={i} className="empty-table" />);
+      chair2.push(<span key={i} className={classNameTable} />);
     }
     return chair2;
   }
@@ -47,6 +72,7 @@ export default function TableItem({
   // function handleSubmit(data: string) {
   //   console.log(data);
   // }
+
   return (
     <Container>
       <div className="table ">

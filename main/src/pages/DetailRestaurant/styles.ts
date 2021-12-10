@@ -44,6 +44,7 @@ export const RestaurantGrid = styled.div`
 
 export const ContentRestaurant = styled.div`
   @media screen and (max-width: 720px) {
+    width: 50vw;
     margin: 1rem;
   }
   display: flex;
@@ -163,14 +164,17 @@ export const TableSection = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 2rem;
   margin-bottom: 4rem;
+  @media screen and (max-width: 720px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 export const Table = styled.div`
-  width: 65%;
+  width: 60%;
   height: 100%;
   border-radius: 1rem;
   box-shadow: 20px 20px 50px -30px #e53935;
   background: #faf9fa;
-  margin-left: 14rem;
+  margin-left: 20rem;
   padding: 1.5rem;
   color: #434343;
   h1 {
@@ -195,6 +199,7 @@ export const Table = styled.div`
     grid-template-rows: 1fr;
     gap: 2rem;
   }
+
   .custom-input {
     border-radius: 1rem;
     border: 1px #e53945 solid;
@@ -217,7 +222,7 @@ export const Table = styled.div`
     font-weight: 700;
     font-size: 1rem;
     border-radius: 4px;
-    margin-left: 42rem;
+    margin-left: 51rem;
   }
   .tableChairs {
     margin: 2rem;
@@ -249,12 +254,23 @@ export const Table = styled.div`
     padding: 1px 10px;
     margin: 3px;
   }
+  @media screen and (max-width: 720px) {
+    width: 85vw;
+    margin: 5rem;
+    margin-right: 6rem;
+    .reserv {
+      margin-left: 14rem;
+    }
+  }
 `;
 export const DatePickerCalendar = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 95%;
   margin-right: 5rem;
+  div {
+    width: 80%;
+  }
 `;
 export const DatePickerTime = styled.div`
   display: flex;
@@ -264,7 +280,14 @@ export const DatePickerTime = styled.div`
   padding: 2rem 4rem;
   margin: 1rem 1rem 1rem 4rem;
   h3 {
-    margin: 1rem;
+    margin: 6rem;
     color: #434343;
+  }
+  @media screen and (max-width: 720px) {
+    width: 100%;
+    margin-left: 1rem;
+    h3 {
+      margin: 0.1rem;
+    }
   }
 `;

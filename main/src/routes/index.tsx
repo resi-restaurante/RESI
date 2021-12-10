@@ -1,4 +1,5 @@
 import { Switch, useLocation, Route } from 'react-router-dom';
+
 import PrivateRoute from './Routes';
 import ForgotPassword from '../pages/ForgotPassword';
 import Home from '../pages/Home';

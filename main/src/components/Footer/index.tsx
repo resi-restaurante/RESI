@@ -38,8 +38,10 @@ function Footer() {
         <Row>
           <Column>
             <h4>RESI</h4>
-            <Links href="#">Home</Links>
-            <Links href="#">Contato</Links>
+            <Links>Home</Links>
+            <Link to="/contact">
+              <Links>Contato</Links>
+            </Link>
             <Links href="#">Sobre</Links>
             <Links href="#">Como Funciona</Links>
           </Column>

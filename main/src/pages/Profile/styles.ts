@@ -86,7 +86,7 @@ export const ContentContainer = styled.div<ConteinerBottomBorder>`
 `;
 
 export const ListContainer = styled.div`
-  width: 100%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;

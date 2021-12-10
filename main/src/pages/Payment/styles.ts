@@ -16,6 +16,7 @@ export const ContentContainer = styled.div`
   box-shadow: 20px 20px 50px -30px #e53935;
   border-radius: 10px;
   height: 20rem;
+  margin-bottom: 9rem;
 `;
 
 export const MenuContainer = styled.div`
@@ -57,6 +58,9 @@ export const MenuContainer = styled.div`
 
 export const CreditCardContainer = styled.div`
   display: flex;
+  button {
+    margin-top: 3rem;
+  }
 
   .rccs__card--unknown > div {
     background: #75c9a5;

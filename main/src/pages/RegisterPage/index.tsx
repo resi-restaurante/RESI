@@ -3,11 +3,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 import { useRef, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
 import { FiUser, FiPhone, FiFileText } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
+import { createBrowserHistory } from 'history';
 import { Input, Footer, Navbar, Button } from '../../components';
 import {
   Container,
@@ -107,13 +107,19 @@ export default function RegisterPage() {
   }
 
   const { signUp } = useAuth();
-  const history = useHistory();
+  const history = createBrowserHistory();
+
+  const handleHistory = () => {
+    history.push('/profile');
+    setTimeout(() => {
+      window.location.reload();
+    }, 600);
+  };
   const formRef = useRef<FormHandles>(null);
-  history.push('/profile');
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {
       try {
-        console.log(data);
+        handleHistory();
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -194,7 +200,6 @@ export default function RegisterPage() {
             </div>
           </FormRow>
           <FormRow />
-
           <Button
             onClick={() =>
               RegisterDatasUsers({
@@ -205,8 +210,7 @@ export default function RegisterPage() {
               })
             }
           >
-            {' '}
-            {loading || ' Registrar'}
+            {loading || 'Registrar'}
           </Button>
         </FormContainer>
         <AdviseContainer>

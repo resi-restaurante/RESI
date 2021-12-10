@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { FiUser } from 'react-icons/fi';
 import { IoRestaurantOutline } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
@@ -22,7 +23,6 @@ export const Navbar = ({ itemVisible }: NavbarProps) => {
   const session = supabase.auth.session();
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     getProfileName();
   }, [session]);
   // função
@@ -37,6 +37,7 @@ export const Navbar = ({ itemVisible }: NavbarProps) => {
     if (data) {
       setUsername(data.username);
       setAvatarUrl(data.avatar_url);
+      console.log(avatar_url);
     }
   }
   return (
@@ -49,7 +50,6 @@ export const Navbar = ({ itemVisible }: NavbarProps) => {
       <ContainerLabel>
         <NavigationButton to="/restaurants">
           <IoRestaurantOutline size={18} color="#fff" />
-
           <ButtonLogin>Restaurantes</ButtonLogin>
         </NavigationButton>
         {itemVisible && !user && (
@@ -63,10 +63,15 @@ export const Navbar = ({ itemVisible }: NavbarProps) => {
 
             <h4>Olá,{username}</h4>
 
-            <img
-              src={`${process.env.REACT_APP_SUPABASE_URL}/storage/v1/object/sign/avatars/${avatar_url}?token=${process.env.REACT_APP_SUPABASE_STORAGE}`}
+            {/* <img
+              // src="https://kfdvcuepxkjunmtljrlo.supabase.in/storage/v1/object/sign/avatars/default.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhdmF0YXJzL2RlZmF1bHQucG5nIiwiaWF0IjoxNjM5MDk3NTY0LCJleHAiOjE5NTQ0NTc1NjR9.LUI30Y3KYS1UxiKj1NfQ4JEIR41OyOH6xfFocZgeK-w"
+              src={`${
+                process.env.REACT_APP_SUPABASE_URL
+              }/storage/v1/object/sign/avatars/${avatar_url.toString()}?token=${
+                process.env.REACT_APP_SUPABASE_STORAGE
+              }`}
               alt="Avatar"
-            />
+            /> */}
           </UserInformationContainer>
         )}
       </ContainerLabel>

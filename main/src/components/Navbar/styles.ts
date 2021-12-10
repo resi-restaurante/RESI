@@ -26,6 +26,11 @@ export const Container = styled.div`
   max-width: auto;
 `;
 export const ContainerLabel = styled.div`
+  @media screen and (max-width: 720px) {
+    a {
+      margin-left: 20rem;
+    }
+  }
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -71,6 +76,16 @@ export const Nav = styled.div`
   }
 `;
 export const NavigationButton = styled(Link)`
+  @media screen and (max-width: 720px) {
+    width: 100%;
+    font-size: 0.9rem;
+
+    img {
+      width: 5rem;
+      height: 5rem;
+      margin-left: 1rem;
+    }
+  }
   display: flex;
   align-items: center;
   img {
@@ -96,6 +111,7 @@ export const ButtonLogin = styled.button`
   color: #fff;
   transition: all 0.3s ease-in-out;
   transition: color 0.2s;
+
   &:hover {
     transition: all 0.3s ease-in-out;
     color: ${shade(0.25, '#e53935')};
@@ -123,6 +139,19 @@ export const UserInformationContainer = styled(Link)`
     margin: 0.1rem 0.4rem 0.1rem 0.4rem;
     color: #fff;
     font-size: 1.1rem;
+  }
+  @media screen and (max-width: 720px) {
+    margin-right: 8rem;
+    h4 {
+      font-size: 0.9rem;
+    }
+    img {
+      width: 2.6rem;
+      height: 2.6rem;
+    }
+    svg {
+      display: none;
+    }
   }
   &:hover {
     opacity: 0.25;

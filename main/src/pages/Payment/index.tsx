@@ -3,14 +3,16 @@ import { FiCreditCard, FiFileText, FiMail } from 'react-icons/fi';
 // import * as Yup from 'yup';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import { Input } from '../../components';
-import { Header, Footer } from '../../components';
+import { Link } from 'react-router-dom';
+import { Button, Input, Navbar } from '../../components';
+import { Footer } from '../../components';
 import {
   Container,
   ContentContainer,
   MenuContainer,
   CreditCardContainer,
 } from './styles';
+import { supabase } from '../../supabase';
 
 function PaymentPage() {
   const formRef = useRef<FormHandles>(null);
@@ -40,10 +42,29 @@ function PaymentPage() {
       [name]: value,
     });
   };
+  async function updateStatus() {
+    try {
+      const status_booking = true;
+      const updates = {
+        agendamento_id: 4,
+        status: status_booking,
+      };
+
+      const { error } = await supabase.from('agendamento').upsert(updates, {
+        returning: 'minimal',
+      });
+
+      if (error) {
+        throw error;
+      }
+    } catch (error) {
+      alert(error);
+    }
+  }
 
   return (
     <Container>
-      <Header />
+      <Navbar itemVisible />
       <ContentContainer>
         <MenuContainer>
           <div>
@@ -90,6 +111,9 @@ function PaymentPage() {
                 placeholder="Card Number"
                 onChange={handleInputChange}
               />
+              <Link to="/confirmed">
+                <Button onClick={() => updateStatus()}>CONFIRMAR</Button>
+              </Link>
             </Form>
           </CreditCardContainer>
         )}
