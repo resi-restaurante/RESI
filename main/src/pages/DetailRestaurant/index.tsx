@@ -40,7 +40,6 @@ import { supabase } from '../../supabase';
 import RestaurantData from '../../hooks/dtos/Restaurant';
 import TableItem from '../../components/TableItem';
 import { getValidationErrors } from '../../utils';
-import Radio from '../../components/Radio';
 
 interface SignUpFormData {
   dateReservation: string;

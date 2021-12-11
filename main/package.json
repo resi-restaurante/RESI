@@ -21,7 +21,6 @@
     "@unform/web": "^2.1.6",
     "axios": "^0.21.1",
     "eslint-import-resolver-typescript": "^2.4.0",
-    "firebase": "^8.4.1",
     "framer-motion": "^4",
     "history": "^4.10.1",
     "moment": "^2.29.1",
