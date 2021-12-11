@@ -33,7 +33,7 @@ export function Routes() {
       <Route path="/detailsrestaurants/:id" component={DetailRestaurant} />
       <Route path="/payment" component={PaymentPage} />
       <PrivateRoute path="/profile" component={ProfilePage} />
-      <Route path="/mycompany/:id" component={CompanyPage} />
+      <PrivateRoute path="/mycompany/:id" component={CompanyPage} />
       <Route path="/registerrestaurant" component={RegisterRestaurant} />
     </Switch>
   );

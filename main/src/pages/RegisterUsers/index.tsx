@@ -5,6 +5,7 @@ import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
 import { createBrowserHistory } from 'history';
+import { Box, useToast } from '@chakra-ui/react';
 import { Input, Footer, Navbar, Button } from '../../components';
 import {
   Container,
@@ -25,12 +26,10 @@ interface SignUpFormData {
 
 export default function RegisterUsers() {
   const { signUp } = useAuth();
+  const toast = useToast();
   const history = createBrowserHistory();
   const handleHistory = () => {
     history.push('/dataset');
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
   };
   const formRef = useRef<FormHandles>(null);
 
@@ -46,8 +45,8 @@ export default function RegisterUsers() {
             .email('Digite um e-mail válido'),
 
           password: Yup.string().min(
-            6,
-            'Senha deve conter no mínimo 6 dígitos',
+            8,
+            'Senha deve conter no mínimo 8 dígitos',
           ),
           password_confirmation: Yup.string()
             .required('Deve ser inserido valor válido')
@@ -61,6 +60,20 @@ export default function RegisterUsers() {
         await signUp({
           email: data.email,
           password: data.password,
+        });
+        toast({
+          title: 'Email enviado',
+          position: 'top',
+          variant: 'subtle',
+          description: '',
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+          render: () => (
+            <Box color="white" p={3} bg="green.500">
+              Email enviado
+            </Box>
+          ),
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {

@@ -125,8 +125,8 @@ export default function ProfilePage() {
         duration: 3000,
         isClosable: true,
         render: () => (
-          <Box color="white" p={3} bg="red.500">
-            Hello World
+          <Box color="white" p={3} bg="green.500">
+            Perfil atualizado
           </Box>
         ),
       });
@@ -251,7 +251,7 @@ export default function ProfilePage() {
         <ListContainer>
           <ScrollView>
             <Link to="/mycompany/2">
-              <Button>Prata Fina</Button>
+              <Button>Santa Refeição</Button>
             </Link>
           </ScrollView>
         </ListContainer>

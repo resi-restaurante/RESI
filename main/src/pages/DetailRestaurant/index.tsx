@@ -2,11 +2,10 @@
 /* eslint-disable no-shadow */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { FiMail, FiPhoneCall, FiExternalLink } from 'react-icons/fi';
 import { AiOutlineWhatsApp } from 'react-icons/ai';
 import { BiFoodMenu } from 'react-icons/bi';
 import { FiMapPin } from 'react-icons/fi';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -103,7 +102,7 @@ function DetailRestaurant() {
       .from('mesas')
       .select('*')
       .in('restaurante_id', [id]);
-    // console.log(data);
+
     if (data) {
       setMesa(data);
     }
@@ -231,12 +230,11 @@ function DetailRestaurant() {
                     {restaurant.rua_avenida},{restaurant.numero_endereco}{' '}
                     {restaurant.cidade}- {restaurant.estado}
                   </p>
-
-                  <Description>
-                    <BiFoodMenu size={16} color="#e53935" />
-                    {restaurant.descricao}
-                  </Description>
                 </Adress>
+                <Description>
+                  <BiFoodMenu size={16} color="#e53935" />
+                  {restaurant.descricao}
+                </Description>
               </div>
             </ContentRestaurant>
             <InformationContainer>

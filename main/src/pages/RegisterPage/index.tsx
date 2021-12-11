@@ -37,6 +37,15 @@ export default function RegisterPage() {
   const [documento, setDocumento] = useState('');
   const [dat_nascimento, setDat_nascimento] = useState<string>('');
 
+  const history = createBrowserHistory();
+
+  const handleHistory = () => {
+    history.push('/profile');
+    setTimeout(() => {
+      window.location.reload();
+    }, 700);
+  };
+
   const session = supabase.auth.session();
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -107,14 +116,7 @@ export default function RegisterPage() {
   }
 
   const { signUp } = useAuth();
-  const history = createBrowserHistory();
 
-  const handleHistory = () => {
-    history.push('/profile');
-    setTimeout(() => {
-      window.location.reload();
-    }, 600);
-  };
   const formRef = useRef<FormHandles>(null);
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {

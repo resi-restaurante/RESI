@@ -52,12 +52,6 @@ export const Container = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  @media screen and (max-width: 720px) {
-    footer {
-      font-size: 0.5rem;
-      margin-right: 10rem;
-    }
-  }
   display: flex;
   flex-direction: column;
   width: 73%;
@@ -75,6 +69,12 @@ export const ContentContainer = styled.div`
       text-decoration-line: underline;
       opacity: 80%;
       cursor: pointer;
+    }
+  }
+  @media screen and (max-width: 720px) {
+    footer {
+      font-size: 0.5rem;
+      margin-right: 10rem;
     }
   }
 `;

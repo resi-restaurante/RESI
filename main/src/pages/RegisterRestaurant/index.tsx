@@ -160,7 +160,6 @@ export default function RegisterRestaurant() {
   const handleSubmit = useCallback(async (data: FormData) => {
     try {
       history.push('/profile');
-      console.log(data);
       formRef.current?.setErrors({});
       const schema = Yup.object().shape({
         nome: Yup.string().required('Nome Obrigatório'),

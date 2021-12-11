@@ -46,7 +46,7 @@ function PaymentPage() {
     try {
       const status_booking = true;
       const updates = {
-        agendamento_id: 4,
+        agendamento_id: 8,
         status: status_booking,
       };
 

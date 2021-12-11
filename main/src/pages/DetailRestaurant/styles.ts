@@ -43,13 +43,13 @@ export const RestaurantGrid = styled.div`
 `;
 
 export const ContentRestaurant = styled.div`
-  @media screen and (max-width: 720px) {
-    width: 50vw;
-    margin: 1rem;
-  }
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
+  @media screen and (max-width: 720px) {
+    width: 50vw;
+    margin: 4rem;
+  }
 
   div {
     display: flex;
@@ -72,6 +72,10 @@ export const Adress = styled.h4`
     font-style: italic;
     font-size: 16px;
     font-weight: 300;
+  }
+  @media screen and (max-width: 720px) {
+    width: 50vw;
+    margin: 2rem;
   }
 
   svg {

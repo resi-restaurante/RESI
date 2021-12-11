@@ -42,7 +42,7 @@ export default function LoginPage() {
           .email('Digite um e-mail válido')
           .required('E-mail obrigatório.'),
         password: Yup.string()
-          .min(8, 'Senha deve conter no mínimo 6 dígitos')
+          .min(8, 'Senha deve conter no mínimo 8 dígitos')
           .required('A senha é obrigatória'),
       });
 
