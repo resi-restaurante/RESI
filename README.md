@@ -1,2 +1,2 @@
-# front-web
-Front-end da aplicação RESI.
+# Projeto Interdisciplinar
+Aplicação RESI.
